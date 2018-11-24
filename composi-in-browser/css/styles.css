@@ -1,0 +1,73 @@
+@import url(css-reset.css);
+:root{
+  --masthead-background-color:#f10;
+  --masthead__header-color:#fff
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  background-color:var(--masthead-background-color);
+  padding:20px;
+}
+header h1 {
+  color:var(--masthead__header-color);
+  margin:0;font-size:2rem;
+}
+
+section {
+  padding: 2rem;
+}
+.container {
+  width: 350px;
+}
+p {
+  display: flex;
+  justify-content: space-between;
+}
+input {
+  flex: 1;
+  margin-right: 10px;
+}
+.list {
+  list-style: none;
+  border: solid 1px #ccc;
+  margin: 0;
+  padding: 0;
+}
+.list li {
+  padding: 5px 10px;
+  border-bottom: solid 1px #ccc;
+  display: flex;
+  flex-direction: row;
+}
+.list li:last-of-type {
+  border: none;
+}
+.list li > span {
+  flex: 1;
+}
+.delete-item {
+  border: solid 1px red;
+  background-color: white;
+  color: red;
+  transition: all .25s ease-out;
+  cursor: pointer;
+}
+.delete-item:hover {
+  color: white;
+  background-color: red;
+}
+.add-item {
+  border: solid 1px green;
+  background-color: green;
+  color: white;
+  transition: all .25s ease-out;
+  cursor: pointer;
+}
+.add-item:hover {
+  color: green;
+  background-color: white;
+}

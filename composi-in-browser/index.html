@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+</head>
+<body>
+  <header></header>
+  <section></section>
+  <script type='module' src="/app.js"></script>
+  <!--<script type="module">
+    import { h, render, run } from './composi/composi-core.mjs?module'
+    import { htm } from './htm.js?module'
+    const html = htm.bind(h)
+    
+    function Title({greeting}) {
+      return html`
+        <nav>
+          <h1>World, ${greeting}!</h1>
+        </nav>
+      `
+    }
+    render(html`<${Title} greeting='Everyone'/>`, 'header')
+
+    const ref = {
+      target: undefined
+    }
+    function List({state, send}) {
+      function setTarget(input) {
+        ref.target = input
+      }
+      let inputValue
+      function getInputValue(value) {
+        inputValue = value
+      }
+      return html`
+        <div class='container'>
+          <p>
+            <input onmount=${input => setTarget(input)} value=${state.resetInput} type='text' onchange=${e => getInputValue(e.target.value)}>
+            <button onclick=${() => send({type:'add-item', data: inputValue})} class='add-item'>Add</button>
+          </p>
+          <ul class='list'>
+            ${
+              state.fruits.map(fruit => html`<li key=${fruit.key}>
+                <span>${fruit.value}</span>
+                <button class='delete-item' onclick=${() => send({type:'delete-item', data: fruit.key})}>X</button>
+              </li>`)
+            }
+          </ul>
+        </div>
+      `
+    }
+
+    const state = {
+      newKey: 104,
+      resetInput: '',
+      fruits: [
+        {
+          key: 101,
+          value: 'Apples'
+        }, 
+        {
+          key: 102,
+          value: 'Oranges'
+        }, 
+        {
+          key: 103,
+          value: 'Bananas'
+        }
+      ]
+    }
+    const program = {
+      init() {
+        return [state]
+      },
+      view(state, send) {
+        render(html`<${List} ...${{state, send}} />`, 'section')
+      },
+      update(msg, state) {
+        switch(msg.type) {
+          case 'add-item':
+            if (!msg.data) return [state]
+            state.fruits.push({
+              key: state.newKey++,
+              value: msg.data
+            })
+            ref.target.focus()
+            return [state]
+          case 'delete-item':
+            const filteredFruits = state.fruits.filter(fruit => fruit.key != msg.data)
+            state.fruits = filteredFruits
+            return [state]
+        }
+      }
+    }
+
+    run(program)
+  </script>
+  -->
+</body>
+</html>
