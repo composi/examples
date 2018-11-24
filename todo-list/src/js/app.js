@@ -1,4 +1,4 @@
-import { h, render, run, union, batchEffects } from '@composi/core'
+import { h, render, run, union } from '@composi/core'
 import { mergeObjects } from '@composi/merge-objects'
 import { idb } from '@composi/idb'
 
@@ -116,15 +116,12 @@ const three = () => {
     }
   }, 1000)
 }
-const effects = batchEffects([one, two, three])
-function effect() {
-  effects(effect => effect)
-}
+
 
 // Set up program.
 const program = {
   init() {
-    return [state, effect]
+    return [state]
   },
   view(state, send) {
     render(<TodoList {...{state, send}} />, 'section')
@@ -186,7 +183,7 @@ idb.get('todos')
   .then(todos => {
     if (todos) {
       // Reassign program init with new data.
-      program.init = () => [todos, effect]
+      program.init = () => [todos]
     }
   })
   // Run the program.

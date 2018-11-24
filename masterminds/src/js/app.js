@@ -7,8 +7,3 @@ import { program } from './components/game'
 render(<Title message='Masterminds'/>, 'header')
 
 run(program)
-
-// new Game({
-//   guess: null,
-//   difficulty: 'EASY'
-// })

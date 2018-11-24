@@ -41,7 +41,7 @@ function SlideShow({state}) {
 }
 
 // Define subscription to run during program startup:
-function startShow(state) {
+function startShow() {
   let count = 1
   setInterval(() => {
     count += 1

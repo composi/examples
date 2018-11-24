@@ -162,7 +162,6 @@ function actions(msg, prevState) {
 export const program = {
   init() {
     return [state]
-
   },
   view(state, send) {
     return render(<Game {...{ state, send }} />, 'section')
