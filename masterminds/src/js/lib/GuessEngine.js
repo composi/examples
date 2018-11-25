@@ -72,11 +72,11 @@ class GuessEngine {
             return 10;
 
         if (this.difficultyLevel === DifficultyLevel.MEDIUM) {
-            return 50;
+            return 20;
         }
 
         if (this.difficultyLevel === DifficultyLevel.HARD) {
-            return 100;
+            return 30;
         }
 
         throw Error(`The specified difficulty '${this.difficultyLevel}' is not supported.`);

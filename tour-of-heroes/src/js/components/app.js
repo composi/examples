@@ -16,7 +16,6 @@ function getHeroes(send) {
 
 function App({state, send}) {
   if (state.activeComponent === 'dashboard') {
-    // console.log(state)
     return (
       <div class="app-root">
         <HeroDashboard
@@ -24,7 +23,6 @@ function App({state, send}) {
       </div>
     )
   } else if (state.activeComponent === 'heroes') {
-    // console.log(state.heroes)
     return (
       <div class="app-root">
         <HeroList

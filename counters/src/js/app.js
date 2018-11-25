@@ -86,7 +86,9 @@ const state = {
 
 // Define program:
 const program = {
-  init: [state],
+  init() {
+    return [state]
+  },
   update(msg, state) {
     return actions(msg, state)
   },

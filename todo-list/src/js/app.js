@@ -103,20 +103,6 @@ const state = {
 // Create a tagged union.
 const Msg = union(['AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll'])
 
-const one = () => console.log('Hello')
-const two = () => console.log('World')
-const three = () => {
-  let count = 0
-  const id = setInterval(() => {
-    if (count > 4) {
-      clearInterval(id)
-    } else {
-      count++
-      console.log(`The count is ${count}`)
-    }
-  }, 1000)
-}
-
 
 // Set up program.
 const program = {
@@ -134,6 +120,8 @@ const program = {
           prevState.items.push({ active: true, value, id: id(), hidden: false })
           idb.set('todos', prevState)
           return [prevState]
+        } else {
+          alert('Please provide a value before submitting.')
         }
       },
       'DeleteItem': id => {
@@ -170,12 +158,11 @@ const program = {
         state.selectedButton = setButtonState(0)
         return [state]
       }
+    }, (msg) => {
+      console.log(`There was no match. We received: ${msg}`)
     })
   }
 }
-
-window.program = program
-
 
 // See if there are any todos stored in IndexedDB.
 // If so, use it as first value of program.init.
