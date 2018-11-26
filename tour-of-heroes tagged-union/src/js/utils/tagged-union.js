@@ -1,3 +1,3 @@
 import { union } from '@composi/core'
 
-export const Msg = union(['UseFetchedHeroes', 'ActiveComponent', 'ShowDetail', 'DeleteItem', 'ChangeHeroName', 'ResetName', 'SaveName', 'NewHero', 'AddHero'])
+export const Msg = union(['UseFetchedHeroes', 'ActivateComponent', 'ShowDetail', 'DeleteItem', 'ChangeHeroName', 'ResetName', 'SaveName', 'NewHero', 'AddHero'])

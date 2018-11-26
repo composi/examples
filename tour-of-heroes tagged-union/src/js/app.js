@@ -4,7 +4,6 @@ import { Title } from './components/title'
 import { Menu } from './components/menu'
 import { program } from './components/app'
 import { Msg } from './utils/tagged-union'
-import { actions } from './utils/actions'
 
 
 render(<Title message='Tour of Heroes' />, 'header')
@@ -18,19 +17,19 @@ router([
   {
     path: "/",
     action: () => {
-      program.send(Msg.ActiveComponent('dashboard'))
+      program.send(Msg.ActivateComponent('dashboard'))
     }
   },
   {
     path: '/dashboard',
     action: () => {
-      program.send(Msg.ActiveComponent('dashboard'))
+      program.send(Msg.ActivateComponent('dashboard'))
     }
   },
   {
     path: '/heroes',
     action: () => {
-      program.send(Msg.ActiveComponent('heroes'))
+      program.send(Msg.ActivateComponent('heroes'))
     }
   }
   ,

@@ -6,7 +6,7 @@ export function actions(msg, prevState) {
       prevState.heroes = heroes
       return [prevState]
     },
-    'ActiveComponent': component => {
+    'ActivateComponent': component => {
       prevState.activeComponent = component
       return [prevState]
     },
