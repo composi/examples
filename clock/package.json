@@ -6,8 +6,7 @@
   "scripts": {
     "build": "gulp",
     "start": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rbiggs",
   "repository": "foo",
