@@ -12,27 +12,29 @@ After that you can run the project with:
 npm start
 ```
 
-### Simple
+### 1-Simple Projects
 
 1. image-viewer
 2. slideshow
 3. movie-cards
 4. clock
 5. counter
+6. counters
+7. composi-in-browser
 
 
-### Complex
+### 2-Complex Projects
 
-1. counters
-2. rick-n-morty
-3. hacker-news-minimal
-4. masterminds
-5. todo-list
-6. temperature-converter
-7. spreadsheet
-8. tic-tac-toe
-9. tour-of-heroes
+1. . rick-n-morty
+2. hacker-news-minimal
+3. masterminds
+4. todo-list
+5. temperature-converter
+6. spreadsheet
+7. tic-tac-toe
+8. tour-of-heroes
+9. tour-of-heros tagged-union
 
 ### In Browseer Experience
 
-On project shows how to use @composi/core in the browser. This takes advantage of the fact that modern browsers can now import ES6 modules. The project just needs to be run in the browser using a server such as NPM's [http-server](https://www.npmjs.com/package/http-server).
+One of the simple projects, composi-in-browser, shows how to use @composi/core in the browser. This takes advantage of the fact that modern browsers can now import ES6 modules. The project just needs to be run in the browser using a server such as NPM's [http-server](https://www.npmjs.com/package/http-server).
