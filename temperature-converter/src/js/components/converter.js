@@ -72,7 +72,7 @@ export const program = {
   view(state, send) {
     return render(<Converter {...{state, send}}/>, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     // Clone state:
     let prevState = mergeObjects(state)
     let temperature

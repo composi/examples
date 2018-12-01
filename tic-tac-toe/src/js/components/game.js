@@ -144,7 +144,7 @@ function Game({ state, send }) {
 const Msg = union(['SelectTile', 'JumpTo'])
 
 // Define actions:
-function actions(msg, prevState) {
+function actions(prevState, msg) {
   return Msg.match(msg, {
     'SelectTile': tile => {
       prevState = handleSquareSelection(prevState, tile)
@@ -166,8 +166,8 @@ export const program = {
   view(state, send) {
     return render(<Game {...{ state, send }} />, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     let prevState = mergeObjects(state)
-    return actions(msg, prevState)
+    return actions(prevState, msg)
   }
 }

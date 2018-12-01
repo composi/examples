@@ -81,12 +81,12 @@ function createPopup() {
 
 const program = {
   init() {
-    return [state, createPopup]
+    return [state]
   },
   view(state, send) {
     return render(<List {...{state, send}} />, section)
   },
-  update(msg, state) {
+  update(state, msg) {
     // Clone state:
     let prevState = mergeObjects(state)
     switch(msg.type) {
@@ -113,6 +113,9 @@ const program = {
         }, 500)
         return [state]
     }
+  },
+  subscriptions() {
+    return createPopup
   }
 }
 

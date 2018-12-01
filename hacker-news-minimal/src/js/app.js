@@ -59,7 +59,7 @@ function HackerNews({ state, send }) {
 // Init will run effect "loadItems" to fetch data from HackerNews.
 const program = {
   init() {
-    return [state, loadItems]
+    return [state]
   },
   view(state, send) {
     return render(<HackerNews {...{ state, send }} />, 'section')
@@ -69,7 +69,7 @@ const program = {
   // 'sort' sorts posts.
   // 'reload' will reload data after sort.
   // 'reload will also cause lastUpdate to update.
-  update(msg, state) {
+  update(state, msg) {
     switch(msg.type) {
       case 'load':
         state.items = msg.data
@@ -83,6 +83,9 @@ const program = {
         state.lastUpdate = new Date()
         return [state]
     }
+  },
+  subscriptions() {
+    return loadItems
   }
 }
 

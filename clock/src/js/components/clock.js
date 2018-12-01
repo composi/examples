@@ -124,12 +124,12 @@ function startClock(send) {
 // Define program to run:
 export const program = {
   init() {
-    return [state, startClock]
+    return [state]
   },
   view(state, send) {
     render(<Clock {...{ state, send }} />, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     const prevState = mergeObjects(state)
     switch (msg.type) {
       case 'toggle-date':
@@ -140,5 +140,8 @@ export const program = {
         return [prevState]
 
     }
+  },
+  subscriptions() {
+    return startClock
   }
 }

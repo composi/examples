@@ -43,7 +43,7 @@ function TableRow({row, idx, send}) {
   )
 }
 
-function TableFooter({ state}) {
+function TableFooter({state}) {
   return (
     <tfoot>
       <tr>
@@ -112,7 +112,7 @@ const state = {
 
 const Msg = union(['AddItem', 'DeleteItem', 'UpdateItemPrice', 'UpdateItemQuantity'])
 
-function actions(msg, state) {
+function actions(state, msg) {
   const prevState = mergeObjects(state)
   return Msg.match(msg, {
     'AddItem': item => {
@@ -160,75 +160,7 @@ export const program = {
   view(state, send) {
     return render(<SpreadSheet {...{state, send}}/>, 'section')
   },
-  update(msg, state) {
-    return actions(msg, state)
+  update(state, msg) {
+    return actions(state, msg)
   }
 }
-
-/*
-export class SpreadSheet extends Component{
-  render(rows) {
-    return (
-      <ul class='list--spreadsheet'>
-        <Spreadsheet {...{rows}}/>
-        <AddNewRow/>
-      </ul>
-    )
-  }
-
-  addNewRow(e) {
-    const productInput = this.element.querySelector('#product')
-    const priceInput = this.element.querySelector('#price')
-    const quantityInput = this.element.querySelector('#quantity')
-    const product = productInput.value
-    const price = Number(priceInput.value) || 0
-    const quantity = Number(quantityInput.value) || 0
-    productInput.value = ''
-    priceInput.value = ''
-    quantityInput.value = ''
-    const state = this.state
-    if (product) {
-      state.push({product, price, quantity})
-      this.state = state
-    } else {
-      alert('Please provide a product name before trying to add a row.')
-    }
-  }
-
-  deleteRow(e) {
-    const index = e.target.dataset.index
-    console.log(index)
-    const state = this.state
-    state.splice(index, 1)
-    this.state = state
-  }
-
-  updateQuantity(e) {
-    const index = e.target.dataset.index
-    const value = Number(e.target.value)
-    const state = this.state
-    state[index].quantity = value
-    this.state = state
-  }
-
-  updatePrice(e) {
-    const index = e.target.dataset.index
-    const value = Number(e.target.value)
-    const state = this.state
-    state[index].price = value
-    this.state = state
-  }
-
-  handleEvent(e) {
-    e.target.id === 'addRow' && this.addNewRow(e)
-    e.target.className === 'list-item__button--delete' && this.deleteRow(e)
-    e.target.className === 'quantity' && this.updateQuantity(e)
-    e.target.className === 'price' && this.updatePrice(e)
-  }
-
-  componentDidMount() {
-    this.element.addEventListener('click', this)
-    this.element.addEventListener('input', this)
-  }
-}
-*/

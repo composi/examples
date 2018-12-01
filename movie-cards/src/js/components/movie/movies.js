@@ -22,17 +22,20 @@ function loadMovies(send) {
 
 export const program = {
   init() {
-    return [{ movies: []}, loadMovies]
+    return [{ movies: []}]
   },
   view(state, send) {
     return render(<Movies {...{state, send}}/>, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     const prevState = mergeObjects(state)
     switch(msg.type) {
       case 'load-movies':
         prevState.movies = MovieService.getMovies()
         return [prevState]
     }
+  },
+  subscriptions() {
+    return loadMovies
   }
 }

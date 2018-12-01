@@ -8,7 +8,7 @@ import { Msg } from '../utils/tagged-union'
 import { actions } from '../utils/actions'
 
 
-function getHeroes(send) {
+function getHeroes() {
   fetchHeroes()
     .then(heroes => {
       program.send(Msg.UseFetchedHeroes(heroes))
@@ -52,13 +52,16 @@ const state = {
 
 export const program = {
   init() {
-    return [state, getHeroes]
+    return [state]
   },
   view(state, send) {
     return render(<App {...{ state, send }} />, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     let prevState = mergeObjects(state)
-    return actions(msg, prevState)
+    return actions(prevState, msg)
+  },
+  subscriptions() {
+    return getHeroes
   }
 }

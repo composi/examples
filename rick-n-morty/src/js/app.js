@@ -69,7 +69,7 @@ const program = {
   view(state, send) {
     return render(<App {...{state, send}}/>, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     // Clone state:
     let prevState = mergeObjects(state)
     switch(msg.type) {

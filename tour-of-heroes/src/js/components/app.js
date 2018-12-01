@@ -7,7 +7,7 @@ import fetchHeroes from '../utils/fetch-heroes'
 
 
 
-function getHeroes(send) {
+function getHeroes() {
   fetchHeroes()
     .then(heroes => {
       program.send({ type: 'use-fetched-heroes', data:heroes})
@@ -52,12 +52,12 @@ const state = {
 
 export const program = {
   init() {
-    return [state, getHeroes]
+    return [state]
   },
   view(state, send) {
     return render(<App {...{ state, send }} />, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     let prevState = mergeObjects(state)
     switch (msg.type) {
       case 'use-fetched-heroes':
@@ -98,5 +98,8 @@ export const program = {
         prevState.newHero = ''
         return [prevState]
     }
+  },
+  subscriptions() {
+    return getHeroes
   }
 }

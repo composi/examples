@@ -42,7 +42,7 @@ function Counter({state, send}) {
 const Msg = union(['AddCounter', 'Increase', 'Decrease', 'Delete'])
 
 // Define actions for update method:
-function actions(msg, state) {
+function actions(state, msg) {
   return Msg.match(msg, {
     'AddCounter': () => {
       state.counters.push({
@@ -89,8 +89,8 @@ const program = {
   init() {
     return [state]
   },
-  update(msg, state) {
-    return actions(msg, state)
+  update(state, msg) {
+    return actions(state, msg)
   },
   view(state, send) {
     return render(<Counter {...{state, send}} />, 'section')

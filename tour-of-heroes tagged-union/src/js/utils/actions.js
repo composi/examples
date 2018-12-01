@@ -1,6 +1,6 @@
 import { Msg } from './tagged-union'
 
-export function actions(msg, prevState) {
+export function actions(prevState, msg) {
   return Msg.match(msg, {
     'UseFetchedHeroes': heroes => {
       prevState.heroes = heroes

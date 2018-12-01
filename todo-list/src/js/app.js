@@ -112,7 +112,7 @@ const program = {
   view(state, send) {
     render(<TodoList {...{state, send}} />, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     return Msg.match(msg, {
       'AddItem': value => {
         if (value) {
@@ -166,17 +166,19 @@ const program = {
 
 // See if there are any todos stored in IndexedDB.
 // If so, use it as first value of program.init.
-idb.get('todos')
-  .then(todos => {
-    if (todos) {
-      // Reassign program init with new data.
-      program.init = () => [todos]
-    }
-  })
-  // Run the program.
-  .then(() => {
-    run(program)
-  })
+async function getTodos() {
+  const todos = await idb.get('todos')
+  if (todos) {
+    console.log('found todos')
+    console.log(todos)
+    program.init = () => [todos]
+  }
+  console.log('running program')
+  run(program)
+}
+
+getTodos()
+
 
 
 

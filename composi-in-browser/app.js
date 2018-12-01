@@ -66,7 +66,7 @@ const state = {
     }
   ]
 }
-function actions(msg, state) {
+function actions(state, msg) {
   const prevState = mergeObjects(state)
   return Msg.match(msg, {
     'AddItem': value => {
@@ -90,8 +90,8 @@ const program = {
   view(state, send) {
     render(html`<${List} ...${{state, send}} />`, 'section')
   },
-  update(msg, state) {
-    return actions(msg, state)
+  update(state, msg) {
+    return actions(state, msg)
   }
 }
 

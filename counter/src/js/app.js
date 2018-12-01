@@ -37,7 +37,7 @@ const program = {
   view(state, send) {
     return render(<Clicker {...{state, send}}/>, 'section')
   },
-  update(msg, state) {
+  update(state, msg) {
     const prevState = mergeObjects(state)
     switch (msg.type) {
       case 'increment-count':

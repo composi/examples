@@ -1,10 +1,5 @@
 import { h, render } from '@composi/core'
 import { mergeObjects } from '@composi/merge-objects'
-  
-// const pics = []
-// for (let i = 17; i !=0; i--) {
-//   pics.push(`/pics/IMG_${i}.jpg`)
-// }
 
 function Slide({img, idx, count}) {
   return (
@@ -58,51 +53,19 @@ export const program = {
       count: 1,
       pics: setupPics()
     }
-    return [state, startShow]
+    return [state]
   },
   view(state, send) {
     return render(<SlideShow {...{state}}/>, document.body)
   },
-  update(msg, state) {
+  update(state, msg) {
     const prevState = mergeObjects(state)
     if (msg.type === 'update-slide') {
       prevState.count = msg.data
     }
     return [prevState]
+  },
+  subscriptions() {
+    return startShow
   }
 }
-
-
-/*
-export class SlideShow extends Component {
-  constructor(props) {
-    super(props)
-    this.container = 'section'
-    this.state = {
-      count: 1,
-      pics: pics
-    }
-  }
-  render(state) {
-    // console.log(state.pics)
-    return (
-      <div class='slide-show'>
-        {
-          state.pics.map((img, idx) => <Slide {...{count: this.state.count, idx, img}} />)
-        }
-      </div>
-    )
-  }
-  tick() {
-    let count = parseInt(this.state.count)
-    count += 1
-    if (count > 17) count = 1
-    this.setState({count})
-  }
-  componentDidMount() {
-    setInterval(() => {
-      this.tick()
-    }, 5000)
-  }
-}
-*/
