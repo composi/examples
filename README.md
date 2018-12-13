@@ -25,7 +25,7 @@ npm start
 
 ### 2-Complex Projects
 
-1. . rick-n-morty
+1. rick-n-morty
 2. hacker-news-minimal
 3. masterminds
 4. todo-list
