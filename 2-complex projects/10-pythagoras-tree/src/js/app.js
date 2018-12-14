@@ -104,35 +104,33 @@ const Pythagoras = ({
 const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
-function Tree({ state, send }) {
-  if (!send) send = () => {}
-
-  const init = el => {
-    const onMouseMove = e => {
-      e.preventDefault()
-      let x = e.clientX
-      let y = e.clientY
-      if (e.touches) {
-        x = e.pageX
-        y = e.pageY
-      }
-      let scaleFactor = scaleLinear().domain([SVG_HEIGHT(), 0]).range([0, 0.8]);
-      let scaleLean = scaleLinear().domain([0, SVG_WIDTH() / 2, SVG_WIDTH()]).range([0.5, 0, -0.5]);
-      move({
-        heightFactor: scaleFactor(y),
-        lean: scaleLean(x)
-      })
+function effect() {
+  const onMouseMove = e => {
+    e.preventDefault()
+    let x = e.clientX
+    let y = e.clientY
+    if (e.touches) {
+      x = e.pageX
+      y = e.pageY
     }
-    const move = ({ heightFactor, lean }) => {
-      send({ type: 'update-tree', data: { heightFactor, lean }})
-    }
-    document.body.addEventListener('mousemove', onMouseMove)
-    document.body.addEventListener('touchmove', onMouseMove)
-    document.body.addEventListener('touchcancel', onMouseMove)
+    let scaleFactor = scaleLinear().domain([SVG_HEIGHT(), 0]).range([0, 0.8]);
+    let scaleLean = scaleLinear().domain([0, SVG_WIDTH() / 2, SVG_WIDTH()]).range([0.5, 0, -0.5]);
+    move({
+      heightFactor: scaleFactor(y),
+      lean: scaleLean(x)
+    })
   }
+  const move = ({ heightFactor, lean }) => {
+    program.send({ type: 'update-tree', data: { heightFactor, lean } })
+  }
+  document.body.addEventListener('mousemove', onMouseMove)
+  document.body.addEventListener('touchmove', onMouseMove)
+  document.body.addEventListener('touchcancel', onMouseMove)
+}
+
+function Tree({ state, send }) {
   return (
     <svg
-      onmount={init}
       width={SVG_WIDTH()}
       height={SVG_HEIGHT()}
     >
@@ -177,6 +175,9 @@ const program = {
       state.lean = msg.data.lean
       return [state]
     }
+  },
+  subscriptions() {
+    return effect
   },
   firstRender: false
 }
