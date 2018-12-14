@@ -42,7 +42,7 @@ function startShow() {
     count += 1
     if (count > 17) count = 1
     program.send({type: 'update-slide', data: count})
-  }, 5000)
+  }, 2000)
 }
 
 
