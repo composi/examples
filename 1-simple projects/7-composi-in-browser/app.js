@@ -21,19 +21,15 @@ const ref = {
   target: undefined
 }
 
-const Msg = union(['AddItem', 'DeleteItem'])
-function List({state, send}) {
-  function setTarget(input) {
-    ref.target = input
-  }
-  let inputValue
-  function getInputValue(value) {
-    inputValue = value
+const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem'])
+function List({ state, send }) {
+  function setFocus(input) {
+    input.focus()
   }
   return html`
     <div class='container'>
       <p>
-        <input autofocus onmount=${input => setTarget(input)} value=${state.resetInput} type='text' onchange=${e => getInputValue(e.target.value)}>
+        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(Msg.UpdateInputValue(e.target.value))} />
         <button onclick=${() => send(Msg.AddItem(inputValue))} class='add-item'>Add</button>
       </p>
       <ul class='list'>
@@ -50,7 +46,7 @@ function List({state, send}) {
 
 const state = {
   newKey: 104,
-  resetInput: '',
+  inputValue: '',
   fruits: [
     {
       key: 101,
@@ -69,11 +65,20 @@ const state = {
 function actions(state, msg) {
   const prevState = mergeObjects(state)
   return Msg.match(msg, {
-    'AddItem': value => {
-      if (!value) return [prevState]
-      const key = prevState.newKey++
-      prevState.fruits.push({key, value})
-      ref.target.focus()
+    'UpdateInputValue': value => {
+      prevState.inputValue = value
+      return [prevState]
+    },
+    'AddItem': () => {
+      if (!prevState.inputValue) {
+        alert('Please provide a value before submitting.')
+        return
+      }
+      prevState.fruits.push({
+        key: prevState.newKey++,
+        value: prevState.inputValue
+      })
+      prevState.inputValue = ''
       return [prevState]
     },
     'DeleteItem': key => {
@@ -92,6 +97,15 @@ const program = {
   },
   update(state, msg) {
     return actions(state, msg)
+  },
+  subscriptions(state, send) {
+    return () => {
+      document.addEventListener('keypress', e => {
+        if (e.keyCode == 13) {
+          send(Msg.AddItem())
+        }
+      })
+    }
   }
 }
 
