@@ -117,7 +117,7 @@ function Clock({ state, send }) {
   )
 }
 
-function startClock(send) {
+function startClock(state, send) {
   setInterval(() => send({ type: 'update-time' }), 1000)
 }
 
@@ -141,7 +141,7 @@ export const program = {
 
     }
   },
-  subscriptions() {
-    return startClock
+  subscriptions(state, send) {
+    return startClock(state, send)
   }
 }

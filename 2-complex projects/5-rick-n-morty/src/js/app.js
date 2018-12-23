@@ -27,6 +27,7 @@ function findCharacter(e, state) {
   }
 }
 
+// Main component for app where we assemble the pieces together:
 function App({state, send}) {
   const dashboard = state.dashboard
   const char = state.characters[0]
@@ -61,6 +62,28 @@ const state = {
   dashboard: true
 }
 
+// Define actions for program:
+function actions(prevState, msg) {
+  switch (msg.type) {
+    case 'show-character':
+      const target = msg.data.target.closest('.infobox')
+      const characters = prevState.characters
+      const id = target.dataset.id
+      const character = characters.filter(char => id === char.id)[0]
+      prevState.character = character
+      prevState.dashboard = false
+      return [prevState]
+    case 'show-dashboard':
+      prevState.dashboard = 'true'
+      return [prevState]
+    case 'find-character':
+      if (msg.data.keyCode == 13) {
+        prevState = findCharacter(msg.data, state)
+      }
+      return [prevState]
+  }
+}
+
 // Define program to run:
 const program = {
   init() {
@@ -72,24 +95,7 @@ const program = {
   update(state, msg) {
     // Clone state:
     let prevState = mergeObjects(state)
-    switch(msg.type) {
-      case 'show-character':
-        const target = msg.data.target.closest('.infobox')
-        const characters = prevState.characters
-        const id = target.dataset.id
-        const character = characters.filter(char => id === char.id)[0]
-        prevState.character = character
-        prevState.dashboard = false
-        return [prevState]
-      case 'show-dashboard':
-        prevState.dashboard = 'true'
-        return [prevState]
-      case 'find-character':
-        if (msg.data.keyCode == 13) {
-          prevState = findCharacter(msg.data, state)
-        }
-        return [prevState]
-    }
+    return actions(prevState, msg)
   }
 }
 

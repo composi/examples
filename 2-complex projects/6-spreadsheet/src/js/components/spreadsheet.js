@@ -2,6 +2,7 @@ import { h, render, union } from '@composi/core'
 import { mergeObjects } from '@composi/merge-objects'
 import { fruitData } from '../data'
 
+// Get sum of all items:
 function sumUp(rows) {
   let total = 0
   rows.forEach((row) => {
@@ -10,7 +11,7 @@ function sumUp(rows) {
   return total
 }
 
-
+// Create header for spreadsheet:
 function TableHeader() {
   return (
     <tr>
@@ -23,6 +24,7 @@ function TableHeader() {
   )
 }
 
+// Component to create a spreadsheet row:
 function TableRow({row, idx, send}) {
   return (
     <tr>
@@ -43,6 +45,7 @@ function TableRow({row, idx, send}) {
   )
 }
 
+// Spreadsheet footer:
 function TableFooter({state}) {
   return (
     <tfoot>
@@ -56,6 +59,7 @@ function TableFooter({state}) {
   )
 }
 
+// Form to add new item to spreadsheet:
 function NewRowForm({send}) {
   let product, price, quantity
   function setProduct(value) {
@@ -88,6 +92,7 @@ function NewRowForm({send}) {
   )
 }
 
+// Combine parts of spreadsheet into one component:
 function Spreadsheet({state, send}) {
   return (
     <li class='list--spreadsheet__item'>
@@ -104,14 +109,17 @@ function Spreadsheet({state, send}) {
   )
 }
 
-
+// Inital state for program:
 const state = {
   inputValue: '',
   fruits: fruitData
 }
 
+// Tagged union for spreadsheet actions:
 const Msg = union(['AddItem', 'DeleteItem', 'UpdateItemPrice', 'UpdateItemQuantity'])
 
+
+// Actions for spreadsheet:
 function actions(state, msg) {
   const prevState = mergeObjects(state)
   return Msg.match(msg, {
@@ -130,19 +138,17 @@ function actions(state, msg) {
     },
     'UpdateItemPrice': item => {
       prevState.fruits[item.idx].price = parseInt(item.price)
-      console.log(prevState.fruits)
       return [prevState]
     },
     'UpdateItemQuantity': item => {
       prevState.fruits[item.idx].quantity = parseInt(item.quantity)
-      console.log(prevState.fruits)
       return [prevState]
     }
   })
 }
 
+// Create complete spreadsheet:
 function SpreadSheet({state, send}) {
-
   return (
     <ul class='list--spreadsheet'>
       <Spreadsheet {...{ state, send }} />
@@ -153,6 +159,7 @@ function SpreadSheet({state, send}) {
   )
 }
 
+// Define program to setup and run spreadsheet.
 export const program = {
   init() {
     return [state]

@@ -4,4 +4,5 @@ import {program} from './components/spreadsheet'
 
 render(<Title message='@composi/core Spreadsheet'/>, 'header')
 
+// Launch imported spreadsheet program.
 run(program)

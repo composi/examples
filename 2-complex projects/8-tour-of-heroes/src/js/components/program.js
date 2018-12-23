@@ -91,6 +91,7 @@ export const program = {
         prevState.newHero = msg.data
         return [prevState]
       case 'add-hero':
+        if (prevState.newHero)
         prevState.heroes.push({
           id: prevState.newId++,
           name: prevState.newHero

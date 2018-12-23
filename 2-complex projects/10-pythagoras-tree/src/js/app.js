@@ -148,22 +148,26 @@ function Tree({ state, send }) {
   )
 }
 
+// Set up initial state for program.
 const state = {
   currentMax: 10,
   baseW: 80,
   heightFactor: 0,
-  lean: 0
+  lean: 0,
+  firstRender: false
 }
 
+// Get reference to component container.
 const section = document.querySelector('section')
 
+// Define program to run animated fractal.
 const program = {
   init() {
     return [state]
   },
   view(state, send) {
-    if (program.firstRender === false) {
-      program.firstRender = true
+    if (state.firstRender === false) {
+      state.firstRender = true
       return render(<Tree SVG_HEIGHT={0} {...{state, send}} />, section, 'img')
     } else {
       return render(<Tree SVG_HEIGHT={0} {...{ state, send }} />, section)
@@ -178,8 +182,7 @@ const program = {
   },
   subscriptions() {
     return effect
-  },
-  firstRender: false
+  }
 }
 
 run(program)

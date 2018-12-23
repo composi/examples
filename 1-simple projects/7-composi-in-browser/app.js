@@ -7,21 +7,19 @@ import { mergeObjects } from 'https://unpkg.com/@composi/merge-objects/src/index
 
 const html = htm.bind(h)
 
-function Title({greeting}) {
+function Title({msg}) {
   return html`
     <nav>
-      <h1>Hello, ${greeting}!</h1>
+      <h1>@composi/core: ${msg}!</h1>
     </nav>
   `
 }
-render(html`<${Title} greeting='Everyone'/>`, 'header')
+render(html`<${Title} msg='In the Browser'/>`, 'header')
 
-
-const ref = {
-  target: undefined
-}
-
+// Tagged union for program actions:
 const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem'])
+
+// Functional list component for view:
 function List({ state, send }) {
   function setFocus(input) {
     input.focus()
@@ -44,6 +42,7 @@ function List({ state, send }) {
   `
 }
 
+// State for program:
 const state = {
   newKey: 104,
   inputValue: '',
@@ -62,13 +61,17 @@ const state = {
     }
   ]
 }
+
+// Define actions for program update method:
 function actions(state, msg) {
   const prevState = mergeObjects(state)
   return Msg.match(msg, {
+    // Update value as user types.
     'UpdateInputValue': value => {
       prevState.inputValue = value
       return [prevState]
     },
+    // Add new item to list:
     'AddItem': () => {
       if (!prevState.inputValue) {
         alert('Please provide a value before submitting.')
@@ -81,6 +84,7 @@ function actions(state, msg) {
       prevState.inputValue = ''
       return [prevState]
     },
+    // Delete item based on its key:
     'DeleteItem': key => {
       const filteredFruits = prevState.fruits.filter(fruit => fruit.key != key)
       prevState.fruits = filteredFruits
@@ -88,6 +92,8 @@ function actions(state, msg) {
     }
   })
 }
+
+// Define runtime program
 const program = {
   init() {
     return [state]
@@ -101,6 +107,7 @@ const program = {
   subscriptions(state, send) {
     return () => {
       document.addEventListener('keypress', e => {
+        // Handle Enter key press:
         if (e.keyCode == 13) {
           send(Msg.AddItem())
         }
@@ -109,5 +116,6 @@ const program = {
   }
 }
 
+// Run program:
 run(program)
 

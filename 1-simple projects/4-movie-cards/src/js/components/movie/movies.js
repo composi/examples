@@ -16,7 +16,7 @@ function Movies({state, send}) {
 }
 
 // Effect to load movies when program starts:
-function loadMovies(send) {
+function loadMovies(state, send) {
   send({type: 'load-movies'})
 }
 
@@ -35,7 +35,7 @@ export const program = {
         return [prevState]
     }
   },
-  subscriptions() {
-    return loadMovies
+  subscriptions(state, send) {
+    return loadMovies(state, send)
   }
 }

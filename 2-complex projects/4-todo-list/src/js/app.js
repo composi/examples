@@ -103,6 +103,57 @@ const state = {
 // Create a tagged union.
 const Msg = union(['AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll'])
 
+// Actions for program's update method:
+function actions(state, msg) {
+  return Msg.match(msg, {
+    'AddItem': value => {
+      if (value) {
+        const prevState = mergeObjects(state)
+        prevState.items.push({ active: true, value, id: id(), hidden: false })
+        idb.set('todos', prevState)
+        return [prevState]
+      } else {
+        alert('Please provide a value before submitting.')
+      }
+    },
+    'DeleteItem': id => {
+      state.items = state.items.filter(item => item.id != id)
+      idb.set('todos', state)
+      return [state]
+    },
+    'SetActiveState': id => {
+      const index = state.items.findIndex(item => {
+        return item.id == id
+      })
+      state.items[index].active = !state.items[index].active
+      idb.set('todos', state)
+      return [state]
+    },
+    'ShowActive': () => {
+      state.items.map(item => {
+        if (!item.active) item.hidden = true
+        else item.hidden = false
+      })
+      state.selectedButton = setButtonState(1)
+      return [state]
+    },
+    'ShowCompleted': () => {
+      state.items.map(item => {
+        if (item.active) item.hidden = true
+        else item.hidden = false
+      })
+      state.selectedButton = setButtonState(2)
+      return [state]
+    },
+    'ShowAll': () => {
+      state.items.map(item => item.hidden = false)
+      state.selectedButton = setButtonState(0)
+      return [state]
+    }
+  }, (msg) => {
+    console.log(`There was no match. We received: ${msg}`)
+  })
+}
 
 // Set up program.
 const program = {
@@ -113,54 +164,7 @@ const program = {
     render(<TodoList {...{state, send}} />, 'section')
   },
   update(state, msg) {
-    return Msg.match(msg, {
-      'AddItem': value => {
-        if (value) {
-          const prevState = mergeObjects(state)
-          prevState.items.push({ active: true, value, id: id(), hidden: false })
-          idb.set('todos', prevState)
-          return [prevState]
-        } else {
-          alert('Please provide a value before submitting.')
-        }
-      },
-      'DeleteItem': id => {
-        state.items = state.items.filter(item => item.id != id)
-        idb.set('todos', state)
-        return [state]
-      },
-      'SetActiveState': id => {
-        const index = state.items.findIndex(item => {
-          return item.id == id
-        })
-        state.items[index].active = !state.items[index].active
-        idb.set('todos', state)
-        return [state]
-      },
-      'ShowActive': () => {
-        state.items.map(item => {
-          if (!item.active) item.hidden = true
-          else item.hidden = false
-        })
-        state.selectedButton = setButtonState(1)
-        return [state]
-      },
-      'ShowCompleted': () => {
-       state.items.map(item => {
-         if (item.active) item.hidden = true
-         else item.hidden = false
-       })
-        state.selectedButton = setButtonState(2)
-        return [state]
-      },
-      'ShowAll': () => {
-        state.items.map(item => item.hidden = false)
-        state.selectedButton = setButtonState(0)
-        return [state]
-      }
-    }, (msg) => {
-      console.log(`There was no match. We received: ${msg}`)
-    })
+    return actions(state, msg)
   }
 }
 
@@ -169,11 +173,8 @@ const program = {
 async function getTodos() {
   const todos = await idb.get('todos')
   if (todos) {
-    console.log('found todos')
-    console.log(todos)
     program.init = () => [todos]
   }
-  console.log('running program')
   run(program)
 }
 

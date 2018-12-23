@@ -2,7 +2,7 @@ import { h, render, run } from '@composi/core'
 import { Router } from '@composi/router'
 import { Title } from './components/title'
 import { Menu } from './components/menu'
-import { program } from './components/app'
+import { program } from './components/program'
 
 
 render(<Title message='Tour of Heroes' />, 'header')

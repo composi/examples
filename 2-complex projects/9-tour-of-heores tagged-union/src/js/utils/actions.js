@@ -41,6 +41,7 @@ export function actions(prevState, msg) {
       return [prevState]
     },
     'AddHero': () => {
+      if (prevState.newHero)
       prevState.heroes.push({
         id: prevState.newId++,
         name: prevState.newHero
