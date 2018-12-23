@@ -104,7 +104,7 @@ const Pythagoras = ({
 const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
-function effect() {
+function effect(state, send) {
   const onMouseMove = e => {
     e.preventDefault()
     let x = e.clientX
@@ -121,7 +121,7 @@ function effect() {
     })
   }
   const move = ({ heightFactor, lean }) => {
-    program.send({ type: 'update-tree', data: { heightFactor, lean } })
+    send({ type: 'update-tree', data: { heightFactor, lean } })
   }
   document.body.addEventListener('mousemove', onMouseMove)
   document.body.addEventListener('touchmove', onMouseMove)
@@ -180,8 +180,8 @@ const program = {
       return [state]
     }
   },
-  subscriptions() {
-    return effect
+  subscriptions(state, send) {
+    return effect(state, send)
   }
 }
 
