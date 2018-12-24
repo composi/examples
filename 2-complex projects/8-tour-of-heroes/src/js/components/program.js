@@ -30,7 +30,6 @@ function App({state, send}) {
       </div>
     )
   } else if (state.activeComponent === 'detail') {
-    console.log('gonna render detail')
     return (
       <div class="app-root">
         <HeroDetail

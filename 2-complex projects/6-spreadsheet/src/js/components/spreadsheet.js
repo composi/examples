@@ -129,7 +129,6 @@ function actions(state, msg) {
         price: parseInt(item.price),
         quantity: parseInt(item.quantity)
       })
-      console.log(prevState)
       return [prevState]
     },
     'DeleteItem': product => {
