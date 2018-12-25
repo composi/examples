@@ -15,7 +15,7 @@ function Movies({state, send}) {
   )
 }
 
-// Effect to load movies when program starts:
+// Effect to run as subscription to load movies when program starts:
 function loadMovies(state, send) {
   send({type: 'load-movies'})
 }

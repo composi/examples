@@ -114,7 +114,7 @@ const state = {
 // Define program:
 export const program = {
   init() {
-    return [state, initGame]
+    return [state]
   },
   view(state, send) {
     render(<Game {...{state, send}}/>, 'section')
@@ -159,5 +159,8 @@ export const program = {
         startGame('EASY')
         return [prevState]
     }
+  },
+  subscriptions(state, send) {
+    return initGame()
   }
 }

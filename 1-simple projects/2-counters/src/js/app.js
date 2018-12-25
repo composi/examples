@@ -15,6 +15,7 @@ function CounterButtons({ counter, send }) {
   )
 }
 
+// Counter component:
 function Counter({state, send}) {
   return (
     <div class='counters-container'>

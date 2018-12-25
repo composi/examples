@@ -1,6 +1,7 @@
 import { h } from '@composi/core';
 import StarRating from '../starRating';
 
+// Define movie card component:
 const MovieCard = (props) => (
   <div class="movie-card">
     <div class="movie-card card">

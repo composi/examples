@@ -6,6 +6,7 @@ import { interpolateWarm, scaleLinear } from 'd3'
 
 Math.deg = radians => radians * (180 / Math.PI)
 
+// Memoize values to avoid unnecessary calculations.
 const memoizedCalc = (function() {
   const memo = {}
 
@@ -34,7 +35,7 @@ const memoizedCalc = (function() {
   }
 })()
 
-
+// Function component to create tree segments.
 const Pythagoras = ({
   w,
   x,
@@ -101,9 +102,12 @@ const Pythagoras = ({
   )
 }
 
+// Get initial window dimensions.
+// These are used for first render of tree.
 const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
+// Effect to track cursor and redraw tree:
 function effect(state, send) {
   const onMouseMove = e => {
     e.preventDefault()
@@ -120,14 +124,19 @@ function effect(state, send) {
       lean: scaleLean(x)
     })
   }
+  // When cursor move detected,
+  // send a message to the update action.
   const move = ({ heightFactor, lean }) => {
     send({ type: 'update-tree', data: { heightFactor, lean } })
   }
+  
+  // Listeners to track cursor and finger movement.
   document.body.addEventListener('mousemove', onMouseMove)
   document.body.addEventListener('touchmove', onMouseMove)
   document.body.addEventListener('touchcancel', onMouseMove)
 }
 
+// View for tree component
 function Tree({ state, send }) {
   return (
     <svg
@@ -181,6 +190,7 @@ const program = {
     }
   },
   subscriptions(state, send) {
+    // Run subscription to track cursor movement:
     return effect(state, send)
   }
 }

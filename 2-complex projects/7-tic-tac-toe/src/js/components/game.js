@@ -100,6 +100,7 @@ const state = {
 
 // Define Game component:
 function Game({ state, send }) {
+  // Keep track of choice to enable time travel:
   const history = state.history
   const current = state.history[state.stepNumber]
   const winner = calculateWinner(current.squares)
@@ -115,6 +116,7 @@ function Game({ state, send }) {
     )
   })
 
+  // Determine winner:
   let status
   if (winner) {
     status = "Winner: " + winner.who

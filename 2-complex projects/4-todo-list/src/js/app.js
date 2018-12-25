@@ -168,8 +168,9 @@ const program = {
   }
 }
 
-// See if there are any todos stored in IndexedDB.
-// If so, use it as first value of program.init.
+// Before running program, 
+// check to see if there are any todos stored in IndexedDB.
+// If there are, use them as state for program.init.
 async function getTodos() {
   const todos = await idb.get('todos')
   if (todos) {

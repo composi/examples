@@ -1,4 +1,5 @@
-import {h, render, run} from '@composi/core'
+import { h, render, run } from '@composi/core'
+import { mergeObjects } from '@composi/merge-objects'
 import Navigation from './components/navigation'
 import Item from './components/item'
 
@@ -13,7 +14,8 @@ const state = {
 
 // Effect to fetch data during program init:
 function loadItems() {
-  fetch(`${API_ORIGIN}/v0/topstories.json`).then(asJson)
+  fetch(`${API_ORIGIN}/v0/topstories.json`)
+    .then(asJson)
     .then(items => Promise.all(items.slice(0, 19).map(
       item => fetch(`${API_ORIGIN}/v0/item/${item}.json`).then(asJson)
     )))
@@ -70,18 +72,19 @@ const program = {
   // 'reload' will reload data after sort.
   // 'reload will also cause lastUpdate to update.
   update(state, msg) {
+    const prevState = mergeObjects(state)
     switch(msg.type) {
       case 'load':
-        state.items = msg.data
-        return [state]
+        prevState.items = msg.data
+        return [prevState]
       case 'sort':
-        const sorted = sortByScore(state)
-        state.items = sorted
-        return [state]
+        const sorted = sortByScore(prevState)
+        prevState.items = sorted
+        return [prevState]
       case 'reload':
         loadItems()
-        state.lastUpdate = new Date()
-        return [state]
+        prevState.lastUpdate = new Date()
+        return [prevState]
     }
   },
   subscriptions() {

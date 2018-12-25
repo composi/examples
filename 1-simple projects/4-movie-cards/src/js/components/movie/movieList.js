@@ -1,7 +1,8 @@
 import { h } from '@composi/core';
 import MovieCard from './movieCard';
 
-const getMovies = (movies) => {
+// Functional component to display movies:
+const showMovies = (movies) => {
   return (
     <div class="card-deck">
       {
@@ -13,7 +14,7 @@ const getMovies = (movies) => {
 
 const MovieList = (props) => (
   <div>
-    {getMovies(props.movies)}
+    {showMovies(props.movies)}
   </div>
 );
 

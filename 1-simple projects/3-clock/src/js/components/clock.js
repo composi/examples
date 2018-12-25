@@ -101,7 +101,7 @@ function Panel({ state, send }) {
   )
 }
 
-// Inital state for program:
+// Initial state for program:
 const state = {
   date: new Date(),
   isDateVisible: true
@@ -117,6 +117,7 @@ function Clock({ state, send }) {
   )
 }
 
+// Effect to run as subscription to start clock ticking:
 function startClock(state, send) {
   setInterval(() => send({ type: 'update-time' }), 1000)
 }
