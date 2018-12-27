@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "gulp",
+    "build:production": "gulp production",
     "start": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
