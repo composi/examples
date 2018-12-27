@@ -93,6 +93,10 @@ gulp.task('default', gulp.series('build:js', 'build:css', 'move-images', 'watch'
   done()
 })
 
+gulp.task('fresh-build', gulp.series('build:js', 'build:css', 'move-images'), function(done) {
+  done()
+})
+
 // Create production-ready version of this project.
 gulp.task('production', function(done) {
   const name = pkg.name + '-production'

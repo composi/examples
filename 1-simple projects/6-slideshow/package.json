@@ -4,6 +4,11 @@
   "description": "A simple slideshow implemented with Composi",
   "scripts": {
     "build": "gulp",
+    "build:fresh": "gulp fresh-build",
+    "build:production": "gulp production",
+    "clean": "rimraf dist/*",
+    "format": "prettier --no-semi --single-quote --write ./src/js/*",
+    "lint": "eslint --config ./.eslintrc.json src/js",
     "start": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
