@@ -14,7 +14,7 @@ class DateTime {
     ];
 
     this.dayNames = [
-      'Sunday', 'Monday', 'Tuesday', 'Wednesday', 
+      'Sunday', 'Monday', 'Tuesday', 'Wednesday',
       'Thursday', 'Friday', 'Saturday'
     ]
   }
@@ -122,6 +122,17 @@ function startClock(state, send) {
   setInterval(() => send({ type: 'update-time' }), 1000)
 }
 
+function actions(prevState, msg) {
+  switch (msg.type) {
+    case 'toggle-date':
+      prevState.isDateVisible = !prevState.isDateVisible
+      return [prevState]
+    case 'update-time':
+      prevState.date = new Date()
+      return [prevState]
+  }
+}
+
 // Define program to run:
 export const program = {
   init() {
@@ -132,15 +143,7 @@ export const program = {
   },
   update(state, msg) {
     const prevState = mergeObjects(state)
-    switch (msg.type) {
-      case 'toggle-date':
-        prevState.isDateVisible = !prevState.isDateVisible
-        return [prevState]
-      case 'update-time':
-        prevState.date = new Date()
-        return [prevState]
-
-    }
+    return actions(prevState, msg)
   },
   subscriptions(state, send) {
     return startClock(state, send)

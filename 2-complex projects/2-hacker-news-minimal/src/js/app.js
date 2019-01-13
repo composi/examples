@@ -57,6 +57,23 @@ function HackerNews({ state, send }) {
   }
 }
 
+// Actions for program update:
+function actions(prevState, msg) {
+  switch (msg.type) {
+    case 'load':
+      prevState.items = msg.data
+      return [prevState]
+    case 'sort':
+      const sorted = sortByScore(prevState)
+      prevState.items = sorted
+      return [prevState]
+    case 'reload':
+      loadItems()
+      prevState.lastUpdate = new Date()
+      return [prevState]
+  }
+}
+
 // Define program to run.
 // Init will run effect "loadItems" to fetch data from HackerNews.
 const program = {
@@ -73,19 +90,7 @@ const program = {
   // 'reload will also cause lastUpdate to update.
   update(state, msg) {
     const prevState = mergeObjects(state)
-    switch(msg.type) {
-      case 'load':
-        prevState.items = msg.data
-        return [prevState]
-      case 'sort':
-        const sorted = sortByScore(prevState)
-        prevState.items = sorted
-        return [prevState]
-      case 'reload':
-        loadItems()
-        prevState.lastUpdate = new Date()
-        return [prevState]
-    }
+    return actions(prevState, msg)
   },
   subscriptions() {
     return loadItems

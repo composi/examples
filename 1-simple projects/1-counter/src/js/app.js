@@ -14,19 +14,34 @@ function Clicker({state, send}) {
           <div class="mx-auto display-1">{state.count}</div>
         </div>
         <div class="clicker-button-panel d-flex flex-row">
-          <button class="btn btn-success w-100" onclick={() => send({type: 'increment-count'})}>
+          <button class="btn btn-success w-100" onclick={() => send({type: 'increment'})}>
             <i class="fa fa-plus fa-2x"></i>
           </button>
-          <button class="btn btn-warning w-100" onclick={() => send({type: 'reset-count'})}>
+          <button class="btn btn-warning w-100" onclick={() => send({type: 'reset'})}>
             <i class="fa fa-refresh fa-2x"></i>
           </button>
-          <button class="btn btn-danger w-100" onclick={() => send({type: 'decrement-count'})}>
+          <button class="btn btn-danger w-100" onclick={() => send({type: 'decrement'})}>
             <i class="fa fa-minus fa-2x"></i>
           </button>
         </div>
       </div>
     </div>
   )
+}
+
+// Actions for program update method:
+function actions(state, msg) {
+  switch (msg.type) {
+    case 'increment':
+      state.count++
+      return [state]
+    case 'reset':
+      state.count = 0
+      return [state]
+    case 'decrement':
+      state.count--
+      return [state]
+  }
 }
 
 // Define program to run:
@@ -39,17 +54,7 @@ const program = {
   },
   update(state, msg) {
     const prevState = mergeObjects(state)
-    switch (msg.type) {
-      case 'increment-count':
-        prevState.count++
-        return [prevState]
-      case 'reset-count':
-        prevState.count = 0
-        return [prevState]
-      case 'decrement-count':
-        prevState.count--
-        return [prevState]
-    }
+    return actions(prevState, msg)
   }
 }
 

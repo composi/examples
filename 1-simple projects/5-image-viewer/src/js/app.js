@@ -76,7 +76,35 @@ function createPopup() {
   }
   render(<Mask />, 'body')
   popup = document.querySelector('#mask')
-  popupImage = document.querySelector('#popup-image') 
+  popupImage = document.querySelector('#popup-image')
+}
+
+// Actions for program update:
+function actions(prevState, msg) {
+  switch (msg.type) {
+    // Add 10 more images:
+    case 'add-10-more':
+      const data = buildData(10)
+      const newState = prevState.concat(data)
+      return [newState]
+    // Show chosen image in popup:
+    case 'show-image':
+      popup.style.display = 'flex'
+      popupImage.style.backgroundImage = `url(${msg.data})`
+      setTimeout(() => {
+        popup.classList.add('opened')
+        popupImage.classList.add('opened')
+      }, 200)
+      return [prevState]
+    // Close the popup
+    case 'close-popup':
+      popup && popup.classList.remove('opened')
+      popupImage.classList.remove('opened')
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 500)
+      return [prevState]
+  }
 }
 
 const program = {
@@ -89,30 +117,7 @@ const program = {
   update(state, msg) {
     // Clone state:
     let prevState = mergeObjects(state)
-    switch(msg.type) {
-      // Add 10 more images:
-      case 'add-10-more':
-        const data = buildData(10)
-        const newState = prevState.concat(data)
-        return [newState]
-      // Show chosen image in popup:
-      case 'show-image':
-        popup.style.display = 'flex'
-        popupImage.style.backgroundImage = `url(${msg.data})`
-        setTimeout(() => {
-          popup.classList.add('opened')
-          popupImage.classList.add('opened')
-        }, 200)
-        return [state]
-      // Close the popup
-      case 'close-popup':
-        popup && popup.classList.remove('opened')
-        popupImage.classList.remove('opened')
-        setTimeout(() => {
-          popup.style.display = 'none';
-        }, 500)
-        return [state]
-    }
+    return actions(prevState, msg)
   },
   subscriptions() {
     return createPopup
@@ -120,5 +125,3 @@ const program = {
 }
 
 run(program)
-
-

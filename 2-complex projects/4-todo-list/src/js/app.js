@@ -73,7 +73,7 @@ function TodoList({ state, send }) {
   return (
     <div class="parent-view">
       <p class="add-todo">
-        <input type="text" onmount={el => focusInput(el)} onchange={updateValue} value={state.inputValue} />
+        <input type="text" onmount={el => focusInput(el)} onchange={e => send(Msg.UpdateInputValue(e.target.value))} value={state.inputValue} />
         <button class='addItem' onclick={() => send(Msg.AddItem(value))}>Add Item</button>
       </p>
       <ul class='todo-list'>
@@ -101,15 +101,18 @@ const state = {
 }
 
 // Create a tagged union.
-const Msg = union(['AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll'])
+const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll'])
 
 // Actions for program's update method:
-function actions(state, msg) {
+function actions(prevState, msg) {
   return Msg.match(msg, {
-    'AddItem': value => {
-      if (value) {
-        const prevState = mergeObjects(state)
-        prevState.items.push({ active: true, value, id: id(), hidden: false })
+    'UpdateInputValue': value => {
+      prevState.inputValue = value
+      return [prevState]
+    },
+    'AddItem': () => {
+      if (prevState.inputValue) {
+        prevState.items.push({ active: true, value: prevState.inputValue, id: id(), hidden: false })
         idb.set('todos', prevState)
         return [prevState]
       } else {
@@ -117,38 +120,38 @@ function actions(state, msg) {
       }
     },
     'DeleteItem': id => {
-      state.items = state.items.filter(item => item.id != id)
-      idb.set('todos', state)
-      return [state]
+      prevState.items = prevState.items.filter(item => item.id != id)
+      idb.set('todos', prevState)
+      return [prevState]
     },
     'SetActiveState': id => {
-      const index = state.items.findIndex(item => {
+      const index = prevState.items.findIndex(item => {
         return item.id == id
       })
-      state.items[index].active = !state.items[index].active
-      idb.set('todos', state)
-      return [state]
+      prevState.items[index].active = !prevState.items[index].active
+      idb.set('todos', prevState)
+      return [prevState]
     },
     'ShowActive': () => {
-      state.items.map(item => {
+      prevState.items.map(item => {
         if (!item.active) item.hidden = true
         else item.hidden = false
       })
-      state.selectedButton = setButtonState(1)
-      return [state]
+      prevState.selectedButton = setButtonState(1)
+      return [prevState]
     },
     'ShowCompleted': () => {
-      state.items.map(item => {
+      prevState.items.map(item => {
         if (item.active) item.hidden = true
         else item.hidden = false
       })
-      state.selectedButton = setButtonState(2)
-      return [state]
+      prevState.selectedButton = setButtonState(2)
+      return [prevState]
     },
     'ShowAll': () => {
-      state.items.map(item => item.hidden = false)
-      state.selectedButton = setButtonState(0)
-      return [state]
+      prevState.items.map(item => item.hidden = false)
+      prevState.selectedButton = setButtonState(0)
+      return [prevState]
     }
   }, (msg) => {
     console.log(`There was no match. We received: ${msg}`)
@@ -164,11 +167,12 @@ const program = {
     render(<TodoList {...{state, send}} />, 'section')
   },
   update(state, msg) {
-    return actions(state, msg)
+    const prevState = mergeObjects(state)
+    return actions(prevState, msg)
   }
 }
 
-// Before running program, 
+// Before running program,
 // check to see if there are any todos stored in IndexedDB.
 // If there are, use them as state for program.init.
 async function getTodos() {
@@ -180,8 +184,3 @@ async function getTodos() {
 }
 
 getTodos()
-
-
-
-
-

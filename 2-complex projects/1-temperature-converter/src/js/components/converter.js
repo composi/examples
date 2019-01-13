@@ -39,8 +39,9 @@ const TemperatureInput = (props) => {
 
 // Initial state for program:
 const state = {
-  celsius: 0, 
-  fahrenheit: 32 
+  celsius: 0,
+  fahrenheit: 32,
+  temperature: ''
 }
 
 // Component to render:
@@ -64,6 +65,27 @@ function toFahrenheit(celsius) {
   return (celsius * 9 / 5) + 32;
 }
 
+function actions(prevState, msg) {
+  let temperature = prevState.temperature
+  switch (msg.type) {
+    case 'f':
+      temperature = msg.data.target.value
+      if (temperature) {
+        const celsius = tryConvert(temperature, toCelsius) || temperature
+        prevState.celsius = celsius
+        prevState.fahrenheit = temperature
+      }
+      return [prevState]
+    case 'c':
+      temperature = msg.data.target.value
+      if (temperature) {
+        const fahrenheit = tryConvert(temperature, toFahrenheit) || temperature
+        prevState.fahrenheit = fahrenheit
+        prevState.celsius = temperature
+      }
+      return [prevState]
+  }
+}
 // Define program:
 export const program = {
   init() {
@@ -75,24 +97,6 @@ export const program = {
   update(state, msg) {
     // Clone state:
     let prevState = mergeObjects(state)
-    let temperature
-    switch(msg.type) {
-      case 'f':
-        temperature = msg.data.target.value
-        if (temperature) {
-          const celsius = tryConvert(temperature, toCelsius) || temperature
-          prevState.celsius = celsius
-          prevState.fahrenheit = temperature
-        }
-        return [prevState]
-      case 'c':
-        temperature = msg.data.target.value
-        if (temperature) {
-          const fahrenheit = tryConvert(temperature, toFahrenheit) || temperature
-          prevState.fahrenheit = fahrenheit
-          prevState.celsius = temperature
-        }
-        return[prevState]
-    }
+    return actions(prevState, msg)
   }
 }
