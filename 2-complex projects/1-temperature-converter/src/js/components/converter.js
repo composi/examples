@@ -1,4 +1,4 @@
-import { h, render, run } from '@composi/core'
+import { h, render } from '@composi/core'
 import { mergeObjects } from '@composi/merge-objects'
 
 // Use for printing out which scale is being used:
@@ -8,7 +8,7 @@ const scaleNames = {
 }
 
 // Convert between Celsius and Fahrenheit:
-function tryConvert(temperature, convert) {
+function tryToConvert(temperature, convert) {
   const input = parseFloat(temperature);
   if (Number.isNaN(input)) {
     return '';
@@ -19,7 +19,7 @@ function tryConvert(temperature, convert) {
 }
 
 // Determine if the boiling point was reached:
-function BoilingVerdict({celsius}) {
+function BoilingVerdict({ celsius }) {
   if (celsius >= 100) {
     return <p class='boiling'>The water would boil!</p>;
   }
@@ -28,11 +28,11 @@ function BoilingVerdict({celsius}) {
 
 // Component for temperature control, either Celsius or Fahrenheit:
 const TemperatureInput = (props) => {
-  const {send, scale, temperature} = props
+  const { send, scale, temperature } = props
   return (
     <fieldset>
       <legend>Enter temperature in {scaleNames[props.scale]}:</legend>
-      <input oninput={e => send({type:scale, data: e, id: scale})} value={temperature} type='number' />
+      <input oninput={e => send({ type: scale, data: e })} value={temperature} type='number' />
     </fieldset>
   )
 }
@@ -45,11 +45,11 @@ const state = {
 }
 
 // Component to render:
-function Converter({state, send}) {
+function Converter({ state, send }) {
   return (
     <div class='converter'>
-      <TemperatureInput {...{send, temperature: state.celsius, scale: 'c'}}/>
-      <TemperatureInput {...{ send, temperature: state.fahrenheit, scale: 'f'}} />
+      <TemperatureInput {...{ send, temperature: state.celsius, scale: 'c' }} />
+      <TemperatureInput {...{ send, temperature: state.fahrenheit, scale: 'f' }} />
       <BoilingVerdict celsius={state.celsius} />
     </div>
   )
@@ -70,19 +70,15 @@ function actions(prevState, msg) {
   switch (msg.type) {
     case 'f':
       temperature = msg.data.target.value
-      if (temperature) {
-        const celsius = tryConvert(temperature, toCelsius) || temperature
-        prevState.celsius = celsius
-        prevState.fahrenheit = temperature
-      }
+      const celsius = tryToConvert(temperature, toCelsius) || temperature
+      prevState.celsius = celsius
+      prevState.fahrenheit = temperature
       return [prevState]
     case 'c':
       temperature = msg.data.target.value
-      if (temperature) {
-        const fahrenheit = tryConvert(temperature, toFahrenheit) || temperature
-        prevState.fahrenheit = fahrenheit
-        prevState.celsius = temperature
-      }
+      const fahrenheit = tryToConvert(temperature, toFahrenheit) || temperature
+      prevState.fahrenheit = fahrenheit
+      prevState.celsius = temperature
       return [prevState]
   }
 }
@@ -92,7 +88,7 @@ export const program = {
     return [state]
   },
   view(state, send) {
-    return render(<Converter {...{state, send}}/>, 'section')
+    return render(<Converter {...{ state, send }} />, 'section')
   },
   update(state, msg) {
     // Clone state:

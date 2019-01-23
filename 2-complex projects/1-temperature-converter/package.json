@@ -1,6 +1,6 @@
 {
   "name": "temperature-converter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Put your description here.",
   "main": "app.js",
   "scripts": {
