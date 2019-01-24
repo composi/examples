@@ -3,6 +3,7 @@ import MovieCard from './movieCard';
 
 // Functional component to display movies:
 const showMovies = (movies) => {
+  if (!movies) return
   return (
     <div class="card-deck">
       {
