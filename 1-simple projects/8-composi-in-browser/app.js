@@ -28,15 +28,15 @@ function List({ state, send }) {
     <div class='container'>
       <p>
         <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(Msg.UpdateInputValue(e.target.value))} />
-        <button onclick=${() => send(Msg.AddItem(inputValue))} class='add-item'>Add</button>
+        <button onclick=${() => send(Msg.AddItem())} class='add-item'>Add</button>
       </p>
       <ul class='list'>
         ${
-          state.fruits.map(fruit => html`<li key=${fruit.key}>
+    state.fruits.map(fruit => html`<li key=${fruit.key}>
             <span>${fruit.value}</span>
             <button class='delete-item' onclick=${() => send(Msg.DeleteItem(fruit.key))}>X</button>
           </li>`)
-        }
+    }
       </ul>
     </div>
   `
@@ -50,11 +50,11 @@ const state = {
     {
       key: 101,
       value: 'Apples'
-    }, 
+    },
     {
       key: 102,
       value: 'Oranges'
-    }, 
+    },
     {
       key: 103,
       value: 'Bananas'
@@ -118,4 +118,3 @@ const program = {
 
 // Run program:
 run(program)
-

@@ -8,6 +8,18 @@ function id() {
   return Math.floor(Math.random() * 100000000 + Math.random() * 1000)
 }
 
+// Default state:
+const state = {
+  newKey: 104,
+  items: [
+    { active: true, value: 'Take a nap', id: id(), hidden: false },
+    { active: false, value: 'Eat a snack', id: id(), hidden: false },
+    { active: true, value: 'Talk with Mom', id: id(), hidden: false }
+  ],
+  selectedButton: [true, false, false],
+  inputValue: ''
+}
+
 // Set state of footer bottons to show tasks.
 const setButtonState = index => {
   const buttons = [false, false, false]
@@ -86,18 +98,6 @@ function TodoList({ state, send }) {
       <Footer {...{ state, setButtonState, send}} />
     </div>
   )
-}
-
-// Default state:
-const state = {
-  newKey: 104,
-  items: [
-    { active: true, value: 'Take a nap', id: id(), hidden: false },
-    { active: false, value: 'Eat a snack', id: id(), hidden: false },
-    { active: true, value: 'Talk with Mom', id: id(), hidden: false }
-  ],
-  selectedButton: [true, false, false],
-  inputValue: ''
 }
 
 // Create a tagged union.
