@@ -75,15 +75,15 @@ function NewRowForm({send}) {
     <div id='newRowForm'>
       <p>
         <label for="product">Product: </label>
-        <input oninput={e => setProduct(e.target.value)} name='product' id='product' type="text" tabindex='1' />
+        <input value={state.inputValue} placeholder='product name' oninput={e => setProduct(e.target.value)} name='product' id='product' type="text" tabindex='1' />
       </p>
       <p>
         <label for="price">Price: </label>
-        <input oninput={e => setPrice(e.target.value)} name='price' id='price' type="text" tabindex='2' />
+        <input placeholder='0.00' oninput={e => setPrice(e.target.value)} name='price' id='price' type="text" tabindex='2' />
       </p>
       <p>
         <label for="quantity">Quantity: </label>
-        <input oninput={e => setQuantity(e.target.value)} name='quantity' id='quantity' type="text" tabindex='3' />
+        <input placeholder='0.00' oninput={e => setQuantity(e.target.value)} name='quantity' id='quantity' type="text" tabindex='3' />
       </p>
       <p>
         <button onclick={() => send(Msg.AddItem({product, price, quantity}))} id='addRow'>Add Row</button>
@@ -124,11 +124,13 @@ function actions(state, msg) {
   const prevState = mergeObjects(state)
   return Msg.match(msg, {
     'AddItem': item => {
+      if (!item.product) return
       prevState.fruits.push({
         product: item.product,
-        price: parseInt(item.price),
-        quantity: parseInt(item.quantity)
+        price: parseInt(item.price) || 0,
+        quantity: parseInt(item.quantity) || 0
       })
+      prevState.inputValue = ''
       return [prevState]
     },
     'DeleteItem': product => {
