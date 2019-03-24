@@ -1,5 +1,4 @@
 import { h } from '@composi/core'
-import HeroSearch from './hero-search'
 
 export default function HeroDashboard({state, send}) {
   if (!state) {
