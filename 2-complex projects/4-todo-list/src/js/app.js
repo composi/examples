@@ -85,7 +85,7 @@ function TodoList({ state, send }) {
   return (
     <div class="parent-view">
       <p class="add-todo">
-        <input type="text" onmount={el => focusInput(el)} onchange={e => send(Msg.UpdateInputValue(e.target.value))} value={state.inputValue} />
+        <input value={state.inputValue} type="text" onmount={el => focusInput(el)} oninput={e => send(Msg.UpdateInputValue(e.target.value))} value={state.inputValue} />
         <button class='addItem' onclick={() => send(Msg.AddItem(value))}>Add Item</button>
       </p>
       <ul class='todo-list'>
@@ -112,7 +112,13 @@ function actions(prevState, msg) {
     },
     'AddItem': () => {
       if (prevState.inputValue) {
-        prevState.items.push({ active: true, value: prevState.inputValue, id: id(), hidden: false })
+        prevState.items.push({
+          active: true,
+          value: prevState.inputValue,
+          id: id(),
+          hidden: false
+        })
+        prevState.inputValue = ''
         idb.set('todos', prevState)
         return [prevState]
       } else {
@@ -169,6 +175,13 @@ const program = {
   update(state, msg) {
     const prevState = mergeObjects(state)
     return actions(prevState, msg)
+  },
+  subscriptions(state, send) {
+    return () => document.addEventListener('keypress', e => {
+      if (e.keyCode === 13) {
+        send(Msg.AddItem())
+      }
+    })
   }
 }
 
