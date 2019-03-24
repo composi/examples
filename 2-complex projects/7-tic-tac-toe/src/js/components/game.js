@@ -17,27 +17,28 @@ function handleSquareSelection(state, idx) {
 }
 
 // Square component:
-function Square(props) {
+function Square({won, idx, value, send}) {
   return (
-    <button class={`square ${props.won ? 'won' : ''}`} onclick={props.onClick}>
-      {props.value}
+    <button class={`square ${won ? 'won' : ''}`} onclick={() => send(Msg.SelectTile(idx))}>
+      {value}
     </button>
   )
 }
 
 // Board component:
-function Board(props) {
+function Board({ squares, winner, send}) {
   function renderSquare(i) {
     let won
-    if (props.winner) {
-      var arr1 = props.winner.map(item => String(item))
+    if (winner) {
+      var arr1 = winner.map(item => String(item))
       won = arr1.find((item) => item === String(i))
     }
     return (
       <Square
-        value={props.squares[i]}
-        onClick={() => props.send(Msg.SelectTile(i))}
+        value={squares[i]}
+        idx={i}
         won={won}
+        send={send}
       />
     )
   }
@@ -129,7 +130,6 @@ function Game({ state, send }) {
       <div class="game-board">
         <Board
           squares={current.squares}
-          onClick={i => this.handleClick(i)}
           winner={winner && winner.line}
           send={send}
         />
