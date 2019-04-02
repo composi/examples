@@ -9,7 +9,7 @@ function id() {
 }
 
 // Default state:
-const state = {
+const initialState = {
   newKey: 104,
   items: [
     { active: true, value: 'Take a nap', id: id(), hidden: false },
@@ -49,7 +49,16 @@ function Footer({ state, setButtonState, send}) {
 }
 
 // List Item Component:
-function ListItem({ item, animateIn, animateOut, send }) {
+function ListItem({ item, send }) {
+  function animateIn(el) {
+    el.classList.add('add-item')
+  }
+  function animateOut(done, el) {
+    el.classList.add('delete-item')
+    setTimeout(() => {
+      done()
+    }, 1000)
+  }
   return (
     <li key={item.id} class={item.active ? 'active' : ''} hidden={item.hidden} onmount={animateIn} onunmount={animateOut}>
       <button class='set-state' onclick={() => send(Msg.SetActiveState(item.id))}>
@@ -69,19 +78,6 @@ function TodoList({ state, send }) {
   function focusInput(input) {
     input.focus()
   }
-  function updateValue(e) {
-    value = e.target.value
-    e.target.focus()
-  }
-  function animateIn(el) {
-    el.classList.add('add-item')
-  }
-  function animateOut(done, el) {
-    el.classList.add('delete-item')
-    setTimeout(() => {
-      done()
-    }, 1000)
-  }
   return (
     <div class="parent-view">
       <p class="add-todo">
@@ -91,7 +87,7 @@ function TodoList({ state, send }) {
       <ul class='todo-list'>
         {
           state.items.map(item => (
-            <ListItem {...{ item, animateIn, animateOut, send}} />
+            <ListItem {...{ item, send}} />
           ))
         }
       </ul>
@@ -101,16 +97,16 @@ function TodoList({ state, send }) {
 }
 
 // Create a tagged union.
-const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll'])
+const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll', 'RenderLocalState'])
 
 // Actions for program's update method:
 function actions(prevState, msg) {
   return Msg.match(msg, {
-    'UpdateInputValue': value => {
+    UpdateInputValue: value => {
       prevState.inputValue = value
       return [prevState]
     },
-    'AddItem': () => {
+    AddItem: () => {
       if (prevState.inputValue) {
         prevState.items.push({
           active: true,
@@ -125,12 +121,12 @@ function actions(prevState, msg) {
         alert('Please provide a value before submitting.')
       }
     },
-    'DeleteItem': id => {
+    DeleteItem: id => {
       prevState.items = prevState.items.filter(item => item.id != id)
       idb.set('todos', prevState)
       return [prevState]
     },
-    'SetActiveState': id => {
+    SetActiveState: id => {
       const index = prevState.items.findIndex(item => {
         return item.id == id
       })
@@ -138,7 +134,7 @@ function actions(prevState, msg) {
       idb.set('todos', prevState)
       return [prevState]
     },
-    'ShowActive': () => {
+    ShowActive: () => {
       prevState.items.map(item => {
         if (!item.active) item.hidden = true
         else item.hidden = false
@@ -146,7 +142,7 @@ function actions(prevState, msg) {
       prevState.selectedButton = setButtonState(1)
       return [prevState]
     },
-    'ShowCompleted': () => {
+    ShowCompleted: () => {
       prevState.items.map(item => {
         if (item.active) item.hidden = true
         else item.hidden = false
@@ -154,10 +150,13 @@ function actions(prevState, msg) {
       prevState.selectedButton = setButtonState(2)
       return [prevState]
     },
-    'ShowAll': () => {
+    ShowAll: () => {
       prevState.items.map(item => item.hidden = false)
       prevState.selectedButton = setButtonState(0)
       return [prevState]
+    },
+    RenderLocalState: state => {
+      return [state]
     }
   }, (msg) => {
     console.log(`There was no match. We received: ${msg}`)
@@ -167,33 +166,35 @@ function actions(prevState, msg) {
 // Set up program.
 const program = {
   init() {
-    return [state]
+    return [null]
   },
   view(state, send) {
-    render(<TodoList {...{state, send}} />, 'section')
+    state && render(<TodoList {...{state, send}} />, 'section')
   },
   update(state, msg) {
     const prevState = mergeObjects(state)
     return actions(prevState, msg)
   },
   subscriptions(state, send) {
-    return () => document.addEventListener('keypress', e => {
-      if (e.keyCode === 13) {
-        send(Msg.AddItem())
+    return () => {
+      document.addEventListener('keypress', e => {
+        if (e.keyCode === 13) {
+          send(Msg.AddItem())
+        }
+      })
+      // Use async function to query IndexedDB:
+      async function getLocalData() {
+        const todos = await idb.get('todos')
+        if (todos) {
+          send(Msg.RenderLocalState(todos))
+        } else {
+          send(Msg.RenderLocalState(initialState))
+        }
       }
-    })
+      getLocalData()
+    }
   }
 }
 
-// Before running program,
-// check to see if there are any todos stored in IndexedDB.
-// If there are, use them as state for program.init.
-async function getTodos() {
-  const todos = await idb.get('todos')
-  if (todos) {
-    program.init = () => [todos]
-  }
-  run(program)
-}
-
-getTodos()
+// Run the program:
+run(program)

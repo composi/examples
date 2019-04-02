@@ -10,7 +10,7 @@ export default function HeroDetail({state, send}) {
         <div><label>id:</label> {hero.id}</div>
         <div>
           <label for='update-name'>name: </label>
-          <input id='update-name' placeholder={hero.name} oninput={e => send(Msg.ChangeHeroName(e.target.value))} />
+          <input value={hero.name } id='update-name' placeholder={hero.name} oninput={e => send(Msg.ChangeHeroName(e.target.value))} />
         </div>
         <p class='hero-detail--buttons'>
           <button onclick={() => send(Msg.ResetName())}>Reset</button>
