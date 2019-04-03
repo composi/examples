@@ -71,3 +71,44 @@ input {
   color: green;
   background-color: white;
 }
+li.new-item {
+ animation: animate-in;
+ animation-duration: 1s;
+ animation-timing-function: ease-out;
+ animation-fill-mode: forwards;
+}
+li.new-item.remove-item {
+  animation: animate-out;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes animate-in {
+  0% {
+    opacity: 0;
+    height: 0;
+    transform: translateX(1000px);
+    background-color: #000;
+    color: white;
+ }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    background-color: white;
+    color: #333;
+ }
+}
+@keyframes animate-out {
+  0% {
+    transform: translateX(0);
+    height: 22px;
+    opacity: 1;
+    padding: 10px 2rem;
+ }
+ 100% {
+    transform: translateX(-1000px);
+    height: 0;
+    opacity: 0;
+    padding: 0 2rem;
+ }
+}

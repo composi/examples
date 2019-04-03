@@ -24,6 +24,15 @@ function List({ state, send }) {
   function setFocus(input) {
     input.focus()
   }
+  function animateIn(li) {
+    li.classList.add('new-item')
+  }
+  function animateOut(done, li) {
+    li.classList.add('remove-item')
+    setTimeout(() => {
+      done()
+    }, 1000)
+  }
   return html`
     <div class='container'>
       <p>
@@ -32,7 +41,11 @@ function List({ state, send }) {
       </p>
       <ul class='list'>
         ${
-    state.fruits.map(fruit => html`<li key=${fruit.key}>
+    state.fruits.map(fruit => html`<li
+          key=${fruit.key}
+          onmount=${animateIn}
+          onunmount=${animateOut}
+          >
             <span>${fruit.value}</span>
             <button class='delete-item' onclick=${() => send(Msg.DeleteItem(fruit.key))}>X</button>
           </li>`)
