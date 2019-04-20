@@ -1,5 +1,5 @@
 import { h, render, run, union } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import { idb } from '@composi/idb'
 
 
@@ -172,7 +172,7 @@ const program = {
     state && render(<TodoList {...{state, send}} />, 'section')
   },
   update(state, msg) {
-    const prevState = mergeObjects(state)
+    const prevState = clone(state)
     return actions(prevState, msg)
   },
   subscriptions(state, send) {
