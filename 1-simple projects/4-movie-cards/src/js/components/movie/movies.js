@@ -3,7 +3,6 @@ import MovieList from './movieList';
 import movieService from '../../services/movieService';
 
 function Movies({ state, send }) {
-  console.log(state)
   return (
     <div class="container-fluid" style={{ marginLeft: '-15px' }}>
       <div class="d-flex flex-row">
