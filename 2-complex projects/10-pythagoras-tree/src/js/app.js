@@ -1,4 +1,5 @@
 import { h, render, run, union } from '@composi/core'
+import { clone } from '@composi/merge-objects'
 import { interpolateWarm, scaleLinear } from 'd3'
 
 
@@ -129,7 +130,7 @@ function effect(state, send) {
   const move = ({ heightFactor, lean }) => {
     send({ type: 'update-tree', data: { heightFactor, lean } })
   }
-  
+
   // Listeners to track cursor and finger movement.
   document.body.addEventListener('mousemove', onMouseMove)
   document.body.addEventListener('touchmove', onMouseMove)
@@ -183,10 +184,11 @@ const program = {
     }
   },
   update(state, msg) {
+    const prevState = clone(state)
     if (msg.type === 'update-tree') {
-      state.heightFactor = msg.data.heightFactor
-      state.lean = msg.data.lean
-      return [state]
+      prevState.heightFactor = msg.data.heightFactor
+      prevState.lean = msg.data.lean
+      return [prevState]
     }
   },
   subscriptions(state, send) {
@@ -196,4 +198,3 @@ const program = {
 }
 
 run(program)
-

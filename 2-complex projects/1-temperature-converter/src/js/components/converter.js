@@ -1,5 +1,5 @@
 import { h, render } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 
 // Use for printing out which scale is being used:
 const scaleNames = {
@@ -92,7 +92,7 @@ export const program = {
   },
   update(state, msg) {
     // Clone state:
-    let prevState = mergeObjects(state)
+    let prevState = clone(state)
     return actions(prevState, msg)
   }
 }

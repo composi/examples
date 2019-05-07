@@ -1,5 +1,5 @@
 import { h, render } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 
 // Date/Time utility for clock:
 class DateTime {
@@ -142,7 +142,7 @@ export const program = {
     render(<Clock {...{ state, send }} />, 'section')
   },
   update(state, msg) {
-    const prevState = mergeObjects(state)
+    const prevState = clone(state)
     return actions(prevState, msg)
   },
   subscriptions(state, send) {

@@ -97,7 +97,7 @@ function TodoList({ state, send }) {
 }
 
 // Create a tagged union.
-const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll', 'RenderLocalState'])
+const Msg = union('UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll', 'RenderLocalState')
 
 // Actions for program's update method:
 function actions(prevState, msg) {
@@ -171,7 +171,7 @@ const program = {
   view(state, send) {
     state && render(<TodoList {...{state, send}} />, 'section')
   },
-  update(state, msg) {
+  update(state, msg, send) {
     const prevState = clone(state)
     return actions(prevState, msg)
   },

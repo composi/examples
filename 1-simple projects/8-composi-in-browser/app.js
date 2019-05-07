@@ -3,7 +3,7 @@ import { h, render, run, union } from 'https://unpkg.com/@composi/core/dist/comp
 // @ts-ignore
 import htm from 'https://unpkg.com/htm/dist/htm.mjs?module'
 // @ts-ignore
-import { mergeObjects } from 'https://unpkg.com/@composi/merge-objects/src/index.js?module'
+import { clone } from 'https://unpkg.com/@composi/merge-objects/src/index.js?module'
 
 const html = htm.bind(h)
 
@@ -17,7 +17,7 @@ function Title({msg}) {
 render(html`<${Title} msg='In the Browser'/>`, 'header')
 
 // Tagged union for program actions:
-const Msg = union(['UpdateInputValue', 'AddItem', 'DeleteItem'])
+const Msg = union('UpdateInputValue', 'AddItem', 'DeleteItem')
 
 // Functional list component for view:
 function List({ state, send }) {
@@ -77,7 +77,7 @@ const state = {
 
 // Define actions for program update method:
 function actions(state, msg) {
-  const prevState = mergeObjects(state)
+  const prevState = clone(state)
   return Msg.match(msg, {
     // Update value as user types.
     'UpdateInputValue': value => {

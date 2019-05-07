@@ -1,5 +1,5 @@
 import { h, render, union } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 
 // Function to handle tile selection:
 function handleSquareSelection(state, idx) {
@@ -143,7 +143,7 @@ function Game({ state, send }) {
 }
 
 // Define union:
-const Msg = union(['SelectTile', 'JumpTo'])
+const Msg = union('SelectTile', 'JumpTo')
 
 // Define actions:
 function actions(prevState, msg) {
@@ -169,7 +169,7 @@ export const program = {
     return render(<Game {...{ state, send }} />, 'section')
   },
   update(state, msg) {
-    let prevState = mergeObjects(state)
+    let prevState = clone(state)
     return actions(prevState, msg)
   }
 }

@@ -1,5 +1,5 @@
 import { h, render, run } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import Navigation from './components/navigation'
 import Item from './components/item'
 
@@ -89,7 +89,7 @@ const program = {
   // 'reload' will reload data after sort.
   // 'reload will also cause lastUpdate to update.
   update(state, msg) {
-    const prevState = mergeObjects(state)
+    const prevState = clone(state)
     return actions(prevState, msg)
   },
   subscriptions() {

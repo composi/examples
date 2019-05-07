@@ -1,5 +1,5 @@
 import { h, render, run, union } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import { Title } from './components/title'
 
 render(<Title message='Tab Example' />, 'header')
@@ -63,9 +63,9 @@ function TabContainer({ state, send }) {
 
 const section = document.querySelector('section')
 
-function action(state, msg) {
-  state.activeId = msg
-  return [state]
+function action(prevState, msg) {
+  prevState.activeId = msg
+  return [prevState]
 }
 
 const program = {
@@ -76,7 +76,8 @@ const program = {
     return render(<TabContainer {...{ state, send }} />, section)
   },
   update(state, msg) {
-    return action(state, msg)
+    const prevState = clone(state)
+    return action(prevState, msg)
   },
   subscriptions(state, send) {
 

@@ -1,5 +1,5 @@
 import { h, render, run } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import { DifficultyLevel, GuessEngine } from '../lib/GuessEngine';
 
 const guessEngine = new GuessEngine();
@@ -120,7 +120,7 @@ export const program = {
     render(<Game {...{state, send}}/>, 'section')
   },
   update(state, msg) {
-    const prevState = mergeObjects(state)
+    const prevState = clone(state)
     switch (msg.type) {
       case 'EASY':
         startGame(DifficultyLevel.EASY)

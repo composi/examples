@@ -1,5 +1,5 @@
 import { h, render, union } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import { fruitData } from '../data'
 
 // Get sum of all items:
@@ -116,12 +116,12 @@ const state = {
 }
 
 // Tagged union for spreadsheet actions:
-const Msg = union(['AddItem', 'DeleteItem', 'UpdateItemPrice', 'UpdateItemQuantity'])
+const Msg = union('AddItem', 'DeleteItem', 'UpdateItemPrice', 'UpdateItemQuantity')
 
 
 // Actions for spreadsheet:
 function actions(state, msg) {
-  const prevState = mergeObjects(state)
+  const prevState = clone(state)
   return Msg.match(msg, {
     'AddItem': item => {
       if (!item.product) return

@@ -40,7 +40,7 @@ function Counter({state, send}) {
 }
 
 // Create tagged union for actions:
-const Msg = union(['AddCounter', 'Increase', 'Decrease', 'Delete'])
+const Msg = union('AddCounter', 'Increase', 'Decrease', 'Delete')
 
 // Define actions for update method:
 function actions(state, msg) {
@@ -100,4 +100,3 @@ const program = {
 
 // Run program:
 run(program)
-

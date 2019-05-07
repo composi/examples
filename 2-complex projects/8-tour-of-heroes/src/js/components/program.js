@@ -1,5 +1,5 @@
 import { h, render, union } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import HeroDashboard from './hero-dashboard'
 import { HeroList } from './hero-list'
 import HeroDetail from './hero-detail'
@@ -57,7 +57,7 @@ export const program = {
     return render(<App {...{ state, send }} />, 'section')
   },
   update(state, msg) {
-    let prevState = mergeObjects(state)
+    let prevState = clone(state)
     switch (msg.type) {
       case 'use-fetched-heroes':
         prevState.heroes = msg.data

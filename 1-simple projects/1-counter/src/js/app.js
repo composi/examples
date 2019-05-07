@@ -1,5 +1,5 @@
 import { h, render, run } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import { Title } from './components/title'
 
 // Render title component:
@@ -53,7 +53,7 @@ const program = {
     return render(<Clicker {...{state, send}}/>, 'section')
   },
   update(state, msg) {
-    const prevState = mergeObjects(state)
+    const prevState = clone(state)
     return actions(prevState, msg)
   }
 }

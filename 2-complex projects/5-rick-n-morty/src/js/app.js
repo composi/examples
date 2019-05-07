@@ -1,5 +1,5 @@
 import { h, render, run } from '@composi/core'
-import { mergeObjects } from '@composi/merge-objects'
+import { clone } from '@composi/merge-objects'
 import { TopBar } from './components/topbar'
 import { InfoBox } from './components/infobox'
 import { DetailBox } from './components/detailbox'
@@ -95,7 +95,7 @@ const program = {
   },
   update(state, msg) {
     // Clone state:
-    let prevState = mergeObjects(state)
+    let prevState = clone(state)
     return actions(prevState, msg)
   },
   subscriptions(state, send) {
