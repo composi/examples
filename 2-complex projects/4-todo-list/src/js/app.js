@@ -53,8 +53,8 @@ function ListItem({ item, send }) {
   function animateIn(el) {
     el.classList.add('add-item')
   }
-  function animateOut(done, el) {
-    el.classList.add('delete-item')
+  function animateOut(li, done) {
+    li.classList.add('delete-item')
     setTimeout(() => {
       done()
     }, 1000)

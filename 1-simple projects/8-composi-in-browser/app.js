@@ -27,7 +27,7 @@ function List({ state, send }) {
   function animateIn(li) {
     li.classList.add('new-item')
   }
-  function animateOut(done, li) {
+  function animateOut(li, done) {
     li.classList.add('remove-item')
     setTimeout(() => {
       done()
