@@ -17,7 +17,8 @@ function Title({msg}) {
 render(html`<${Title} msg='In the Browser'/>`, 'header')
 
 // Tagged union for program actions:
-const Msg = union('UpdateInputValue', 'AddItem', 'DeleteItem')
+const Msg = union('updateInputValue', 'addItem', 'deleteItem')
+const { updateInputValue, addItem, deleteItem } = Msg
 
 // Functional list component for view:
 function List({ state, send }) {
@@ -36,8 +37,8 @@ function List({ state, send }) {
   return html`
     <div class='container'>
       <p>
-        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(Msg.UpdateInputValue(e.target.value))} />
-        <button onclick=${() => send(Msg.AddItem())} class='add-item'>Add</button>
+        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(updateInputValue(e.target.value))} />
+        <button onclick=${() => send(addItem())} class='add-item'>Add</button>
       </p>
       <ul class='list'>
         ${
@@ -47,7 +48,7 @@ function List({ state, send }) {
           onunmount=${animateOut}
           >
             <span>${fruit.value}</span>
-            <button class='delete-item' onclick=${() => send(Msg.DeleteItem(fruit.key))}>X</button>
+            <button class='delete-item' onclick=${() => send(deleteItem(fruit.key))}>X</button>
           </li>`)
     }
       </ul>
@@ -80,12 +81,12 @@ function actions(state, msg) {
   const prevState = clone(state)
   return Msg.match(msg, {
     // Update value as user types.
-    'UpdateInputValue': value => {
+    'updateInputValue': value => {
       prevState.inputValue = value
       return [prevState]
     },
     // Add new item to list:
-    'AddItem': () => {
+    'addItem': () => {
       if (!prevState.inputValue) {
         alert('Please provide a value before submitting.')
         return
@@ -98,7 +99,7 @@ function actions(state, msg) {
       return [prevState]
     },
     // Delete item based on its key:
-    'DeleteItem': key => {
+    'deleteItem': key => {
       const filteredFruits = prevState.fruits.filter(fruit => fruit.key != key)
       prevState.fruits = filteredFruits
       return [prevState]
@@ -122,7 +123,7 @@ const program = {
       document.addEventListener('keypress', e => {
         // Handle Enter key press:
         if (e.keyCode == 13) {
-          send(Msg.AddItem())
+          send(addItem())
         }
       })
     }
