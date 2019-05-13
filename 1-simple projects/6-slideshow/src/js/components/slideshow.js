@@ -1,5 +1,4 @@
-import { h, render } from '@composi/core'
-import { clone } from '@composi/merge-objects'
+import { h } from '@composi/core'
 
 function Slide({img, idx, count}) {
   return (
@@ -7,16 +6,9 @@ function Slide({img, idx, count}) {
   )
 }
 
-// Function to create state for program:
-function setupPics() {
-  const pics = []
-  for (let i = 17; i != 0; i--) {
-    pics.push(`/dist/images/pics/IMG_${i}.jpg`)
-  }
-  return pics
-}
 
-function SlideShow({state}) {
+
+export function SlideShow({state}) {
   return (
     <main>
       <header>
@@ -36,36 +28,11 @@ function SlideShow({state}) {
 }
 
 // Define subscription to run during program startup:
-function startShow() {
+function startShow(state, send) {
   let count = 1
   setInterval(() => {
     count += 1
     if (count > 17) count = 1
-    program.send({type: 'update-slide', data: count})
+    send({type: 'update-slide', data: count})
   }, 2000)
-}
-
-
-// Define program:
-export const program = {
-  init() {
-    const state = {
-      count: 1,
-      pics: setupPics()
-    }
-    return [state]
-  },
-  view(state, send) {
-    return render(<SlideShow {...{state}}/>, document.body)
-  },
-  update(state, msg) {
-    const prevState = clone(state)
-    if (msg.type === 'update-slide') {
-      prevState.count = msg.data
-    }
-    return [prevState]
-  },
-  subscriptions() {
-    return startShow
-  }
 }

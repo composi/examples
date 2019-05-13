@@ -1,12 +1,42 @@
 import { h, render, run } from '@composi/core'
+import { clone } from '@composi/merge-objects'
 import { Router } from '@composi/router'
 import { Title } from './components/title'
 import { Menu } from './components/menu'
-import { program } from './components/program'
+import { getHeroes } from './effects/subscriptions'
+import { App } from './components/app'
+import { actions } from './effects/actions'
 
 
 render(<Title message='Tour of Heroes' />, 'header')
 render(<Menu />, 'menu')
+
+
+const state = {
+  activeComponent: 'dashboard',
+  heroes: [],
+  selectedHero: '',
+  searchResults: [],
+  newId: 21,
+  newHero: '',
+  inputValue: ''
+}
+
+export const program = {
+  init() {
+    return [state]
+  },
+  view(state, send) {
+    return render(<App {...{ state, send }} />, 'section')
+  },
+  update(state, msg, send) {
+    let prevState = clone(state)
+    return actions(prevState, msg, send)
+  },
+  subscriptions() {
+    return getHeroes
+  }
+}
 
 run(program)
 

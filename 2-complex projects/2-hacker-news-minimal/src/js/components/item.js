@@ -2,7 +2,7 @@ import { h } from '@composi/core'
 
 let getDomain = url => url && (url.split('/')[ ~url.indexOf('://') ? 2 : 0 ]).replace(/^www\./,'') || null
 
-export default function Item({item}) {
+export function Item({item}) {
 	return (
     <li class="item">
       <div class="vitals">

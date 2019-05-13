@@ -1,8 +1,6 @@
-import { h, render, run } from '@composi/core'
-import { clone } from '@composi/merge-objects'
 import { DifficultyLevel, GuessEngine } from '../lib/GuessEngine';
 
-const guessEngine = new GuessEngine();
+export const guessEngine = new GuessEngine();
 
 function outcomeClass(state) {
   const indicator = state.indicator;
@@ -34,11 +32,8 @@ function outcomeClass(state) {
   return 'indicator--blue fa fa-thermometer-0 fa-2x';
 }
 
-function startGame(difficulty) {
-  guessEngine.startNewGame(difficulty)
-}
 
-function Game({state, send}) {
+export function Game({state, send}) {
   function activeLinkClass(difficultyLevel) {
     return guessEngine.difficultyLevel === difficultyLevel ? 'active' : '';
   }
@@ -98,69 +93,4 @@ function Game({state, send}) {
       </div>
     </div>
   );
-}
-
-// Effect for startup:
-function initGame() {
-  guessEngine.startNewGame('EASY')
-}
-
-// Initial state for program
-const state = {
-  guess: null,
-  difficulty: 'EASY'
-}
-
-// Define program:
-export const program = {
-  init() {
-    return [state]
-  },
-  view(state, send) {
-    render(<Game {...{state, send}}/>, 'section')
-  },
-  update(state, msg) {
-    const prevState = clone(state)
-    switch (msg.type) {
-      case 'EASY':
-        startGame(DifficultyLevel.EASY)
-        prevState.outcome = ''
-        prevState.guess = 0
-        return [prevState]
-      case 'MEDIUM':
-        startGame(DifficultyLevel.MEDIUM)
-        prevState.outcome = ''
-        prevState.guess = 0
-        return [prevState]
-      case 'HARD':
-        startGame(DifficultyLevel.HARD)
-        prevState.outcome = ''
-        prevState.guess = 0
-        return [prevState]
-      case 'number-change':
-        const guess = msg.data.target.value;
-        if (!isNaN(guess)) {
-          prevState.guess = parseInt(guess)
-        }
-        return [prevState]
-      case 'guess-number':
-        const guessOutcome = guessEngine.guess(state.guess);
-
-        if (guessOutcome.accuracy === 0) {
-          prevState.outcome = 'you win'
-        } else {
-          const outcome = `${guessOutcome.getIndicator()} : ${guessOutcome.getSuggestion()}`;
-          const indicator = guessOutcome.getIndicator();
-          prevState.outcome = outcome
-          prevState.indicator= indicator
-        }
-        return [prevState]
-      case 'play-again':
-        startGame('EASY')
-        return [prevState]
-    }
-  },
-  subscriptions(state, send) {
-    return initGame()
-  }
 }

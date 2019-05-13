@@ -1,6 +1,8 @@
 import { h, render, run, union } from '@composi/core'
 import { clone } from '@composi/merge-objects'
 import { Title } from './components/title'
+import { TabContainer } from './components/tab-container'
+import { action } from './action'
 
 render(<Title message='Tab Example' />, 'header')
 
@@ -24,58 +26,17 @@ const state = {
   ]
 }
 
-const Tab = (props) => (
-  <div class="tab-content">
-    <p>You chose tab: <strong>{props.activeId}</strong></p>
-    <p>{props.description}</p>
-  </div>
-)
 
-const TabHeader = ({ state, send }) => {
-  return (
-    <div class="tab-headers">
-      {state.tabs.map(tab => (
-        <button class={`tab ${state.activeId == tab.id ? 'selected' : ''}`} onclick={() => send(tab.id)}>
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  )
-}
 
-const TabPanel = (props) => (
-  <div class="tab-panels">
-    <Tab activeId={props.activeId} description={props.description} />
-  </div>
-)
-
-function TabContainer({ state, send }) {
-  const result = state.tabs.find(item => state.activeId == item.id)
-  return (
-    <div class="tab-list">
-      <TabHeader
-        {...{ state, send }}
-      ></TabHeader>
-      <TabPanel activeId={state.activeId} description={result.description} />
-    </div>
-  )
-}
-
-const section = document.querySelector('section')
-
-function action(prevState, msg) {
-  prevState.activeId = msg
-  return [prevState]
-}
 
 const program = {
   init() {
     return [state]
   },
   view(state, send) {
-    return render(<TabContainer {...{ state, send }} />, section)
+    return render(<TabContainer {...{ state, send }} />, "section")
   },
-  update(state, msg) {
+  update(state, msg, send) {
     const prevState = clone(state)
     return action(prevState, msg)
   },

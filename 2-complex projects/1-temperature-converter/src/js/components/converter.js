@@ -1,5 +1,4 @@
-import { h, render } from '@composi/core'
-import { clone } from '@composi/merge-objects'
+import { h } from '@composi/core'
 
 // Use for printing out which scale is being used:
 const scaleNames = {
@@ -7,16 +6,6 @@ const scaleNames = {
   f: 'Fahrenheit'
 }
 
-// Convert between Celsius and Fahrenheit:
-function tryToConvert(temperature, convert) {
-  const input = parseFloat(temperature);
-  if (Number.isNaN(input)) {
-    return '';
-  }
-  const output = convert(input);
-  const rounded = Math.round(output * 1000) / 1000;
-  return rounded.toString();
-}
 
 // Determine if the boiling point was reached:
 function BoilingVerdict({ celsius }) {
@@ -37,15 +26,9 @@ const TemperatureInput = (props) => {
   )
 }
 
-// Initial state for program:
-const state = {
-  celsius: 0,
-  fahrenheit: 32,
-  temperature: ''
-}
 
 // Component to render:
-function Converter({ state, send }) {
+export function Converter({ state, send }) {
   return (
     <div class='converter'>
       <TemperatureInput {...{ send, temperature: state.celsius, scale: 'c' }} />
@@ -53,46 +36,4 @@ function Converter({ state, send }) {
       <BoilingVerdict celsius={state.celsius} />
     </div>
   )
-}
-
-// Convert Fahrenheit to Celsius:
-function toCelsius(fahrenheit) {
-  return (fahrenheit - 32) * 5 / 9;
-}
-
-// Convert Celsius to Fahrenheit:
-function toFahrenheit(celsius) {
-  return (celsius * 9 / 5) + 32;
-}
-
-function actions(prevState, msg) {
-  let temperature = prevState.temperature
-  switch (msg.type) {
-    case 'f':
-      temperature = msg.data.target.value
-      const celsius = tryToConvert(temperature, toCelsius) || temperature
-      prevState.celsius = celsius
-      prevState.fahrenheit = temperature
-      return [prevState]
-    case 'c':
-      temperature = msg.data.target.value
-      const fahrenheit = tryToConvert(temperature, toFahrenheit) || temperature
-      prevState.fahrenheit = fahrenheit
-      prevState.celsius = temperature
-      return [prevState]
-  }
-}
-// Define program:
-export const program = {
-  init() {
-    return [state]
-  },
-  view(state, send) {
-    return render(<Converter {...{ state, send }} />, 'section')
-  },
-  update(state, msg) {
-    // Clone state:
-    let prevState = clone(state)
-    return actions(prevState, msg)
-  }
 }
