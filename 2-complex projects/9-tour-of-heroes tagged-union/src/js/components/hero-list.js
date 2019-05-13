@@ -1,16 +1,17 @@
 import { h } from '@composi/core'
-import { Msg } from '../utils/tagged-union'
+import { Msg } from '../effects/messages'
+const { newHero, addHero, deleteHero } = Msg
 
-export function HeroList({state, send}) {
-  if (!state || !state.heroes.length) {
+export function HeroList({ state, send }) {
+  if (!state || !state.heroes || !state.heroes.length) {
     return ''
   } else {
     return (
       <div>
         <p class='form--add-hero'>
           <label htmlFor="add-hero">Hero name: </label>
-          <input id='add-hero' type="text" oninput={e => send(Msg.NewHero(e.target.value))} value={state.newHero}/>
-          <button onclick={() => send(Msg.AddHero())}>Add</button>
+          <input id='add-hero' type="text" oninput={e => send(newHero(e.target.value))} value={state.newHero} />
+          <button onclick={() => send(addHero())}>Add</button>
         </p>
         <ul class="heroes">
           {
@@ -20,7 +21,7 @@ export function HeroList({state, send}) {
                   <span class="badge">{hero.id}</span>
                   <span class='hero-link'>{hero.name}</span>
                 </a>
-                <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send(Msg.DeleteItem(hero.id))}>x</button>
+                <button data-id={hero.id} class="delete" title="delete hero" onclick={(e) => send(deleteHero(hero.id))}>x</button>
               </li>
             ))
           }

@@ -1,10 +1,11 @@
 import { h } from '@composi/core'
 
-export default function HeroDashboard({state, send}) {
+export default function HeroDashboard({ state, send }) {
   if (!state) {
     return ''
   } else {
-    const selectHeroes = state.heroes.slice(1, 5)
+    const selectHeroes = state && state.heroes && state.heroes.length && state.heroes.slice(1, 5)
+    if (!selectHeroes) return ''
     return (
       <div class='dashboard'>
         <h3>Top Heroes</h3>
@@ -20,7 +21,7 @@ export default function HeroDashboard({state, send}) {
           }
         </div>
       </div>
-      )
+    )
 
   }
 }

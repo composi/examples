@@ -1,11 +1,11 @@
 import { h } from '@composi/core'
 
-export default function HeroSearch({search, searchResults, blurSearchInput}) {
+export default function HeroSearch({ search, searchResults, blurSearchInput }) {
   return (
     <div id="search-component">
       <h4>Hero Search</h4>
 
-      <input id="search-box" onkeyup={(e)=> search(e)} onblur={() => blurSearchInput()} />
+      <input id="search-box" onkeyup={(e) => search(e)} onblur={() => blurSearchInput()} />
 
       {
         searchResults.length > 0 && (

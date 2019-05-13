@@ -1,7 +1,8 @@
 import { h } from '@composi/core'
-import { Msg } from '../utils/tagged-union'
+import { Msg } from '../effects/messages'
+const { changeHeroName, resetName, saveName } = Msg
 
-export default function HeroDetail({state, send}) {
+export default function HeroDetail({ state, send }) {
   if (state.selectedHero) {
     let hero = state.selectedHero
     return (
@@ -10,11 +11,11 @@ export default function HeroDetail({state, send}) {
         <div><label>id:</label> {hero.id}</div>
         <div>
           <label for='update-name'>name: </label>
-          <input value={hero.name } id='update-name' placeholder={hero.name} oninput={e => send(Msg.ChangeHeroName(e.target.value))} />
+          <input value={hero.name} id='update-name' placeholder={hero.name} oninput={e => send(changeHeroName(e.target.value))} />
         </div>
         <p class='hero-detail--buttons'>
-          <button onclick={() => send(Msg.ResetName())}>Reset</button>
-          <button onclick={() => send(Msg.SaveName())}>Save</button>
+          <button onclick={() => send(resetName())}>Reset</button>
+          <button onclick={() => send(saveName())}>Save</button>
         </p>
       </div>
     )
