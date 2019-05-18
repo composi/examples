@@ -35,7 +35,7 @@ const program = {
 run(program)
 
 const router = Router()
-const send = program.send
+const { send } = program
 
 router([
   {
@@ -52,5 +52,5 @@ router([
   },
   {
     path: '/detail/:id',
-    action: (id) => send(showDetail(parseInt(id)))
+    action: id => send(showDetail(parseInt(id)))
   }])

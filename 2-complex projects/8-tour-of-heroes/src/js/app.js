@@ -44,7 +44,7 @@ const router = Router()
 
 // Capture the program's send function so we can
 // dispatch messages to it from the routes:
-const send = program.send
+const { send } = program
 
 router([
   {
@@ -62,5 +62,5 @@ router([
   ,
   {
     path: '/detail/:id',
-    action: (id) => send({ type: 'show-detail', data: parseInt(id) })
+    action: id => send({ type: 'show-detail', data: parseInt(id) })
   }])
