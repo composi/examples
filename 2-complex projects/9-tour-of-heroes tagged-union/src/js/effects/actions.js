@@ -15,10 +15,7 @@ export function actions(prevState, msg, send) {
 
       return [newState]
     },
-    activeComponent: component => {
-      prevState.activeComponent = component
-      return [prevState]
-    },
+    activeComponent: activeComponent => [{ ...prevState, activeComponent }],
     showDetail: person => {
       const position = prevState.heroes.findIndex(person => person.id == msg.data)
       const hero = prevState.heroes[position]
@@ -45,17 +42,20 @@ export function actions(prevState, msg, send) {
       window.location.hash = '#/heroes'
       return [prevState]
     },
-    newHero: () => {
-      prevState.newHero = msg.data
+    newHero: name => {
+      prevState.newHero = name
       return [prevState]
     },
     addHero: () => {
-      if (prevState.newHero)
+      if (prevState.newHero) {
         prevState.heroes.push({
           id: prevState.newId++,
           name: prevState.newHero
         })
-      prevState.newHero = ''
+        prevState.newHero = ''
+      } else {
+        alert('Please provide a name for the new hero before submitting.')
+      }
       return [prevState]
     }
   })

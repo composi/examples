@@ -35,6 +35,8 @@ const program = {
 run(program)
 
 const router = Router()
+// Use destructuring to access the program's send function.
+// This will let us send messages to the program when routes change.
 const { send } = program
 
 router([
