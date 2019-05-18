@@ -5,15 +5,15 @@ import HeroDetail from './hero-detail'
 
 
 export function App({ state, send }) {
-  const { activeComponent } = state
+  const { activeComponent: ac } = state
   return (
     <div class="app-root">
       {
-        activeComponent === 'dashboard' ?
+        ac === 'dashboard' ?
           <HeroDashboard {...{ state, send }} /> :
-        activeComponent === 'heroes' ?
+        ac === 'heroes' ?
           <HeroList {...{ state, send }} /> :
-        activeComponent === 'detail' ?
+        ac === 'detail' ?
           <HeroDetail {...{ state, send }} /> :
           ''
       }
