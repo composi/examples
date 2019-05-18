@@ -21,7 +21,7 @@ export function HeroList({ state, send }) {
                   <span class="badge">{hero.id}</span>
                   <span class='hero-link'>{hero.name}</span>
                 </a>
-                <button data-id={hero.id} class="delete" title="delete hero" onclick={(e) => send(deleteHero(hero.id))}>x</button>
+                <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send(deleteHero(hero.id))}>x</button>
               </li>
             ))
           }

@@ -5,7 +5,7 @@ export default function HeroSearch({ search, searchResults, blurSearchInput }) {
     <div id="search-component">
       <h4>Hero Search</h4>
 
-      <input id="search-box" onkeyup={(e) => search(e)} onblur={() => blurSearchInput()} />
+      <input id="search-box" onkeyup={e => search(e)} onblur={() => blurSearchInput()} />
 
       {
         searchResults.length > 0 && (
