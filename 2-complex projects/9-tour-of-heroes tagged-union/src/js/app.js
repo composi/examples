@@ -35,29 +35,22 @@ const program = {
 run(program)
 
 const router = Router()
+const send = program.send
 
 router([
   {
     path: "/",
-    action: () => {
-      program.send(activeComponent('dashboard'))
-    }
+    action: () => send(activeComponent('dashboard'))
   },
   {
     path: '/dashboard',
-    action: () => {
-      program.send(activeComponent('dashboard'))
-    }
+    action: () => send(activeComponent('dashboard'))
   },
   {
     path: '/heroes',
-    action: () => {
-      program.send(activeComponent('heroes'))
-    }
+    action: () => send(activeComponent('heroes'))
   },
   {
     path: '/detail/:id',
-    action: (id) => {
-      program.send(showDetail(parseInt(id)))
-    }
+    action: (id) => send(showDetail(parseInt(id)))
   }])

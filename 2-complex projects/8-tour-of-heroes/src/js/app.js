@@ -42,29 +42,25 @@ run(program)
 
 const router = Router()
 
+// Capture the program's send function so we can
+// dispatch messages to it from the routes:
+const send = program.send
+
 router([
   {
     path: "/",
-    action: () => {
-      program.send({ type: 'active-component', data: 'dashboard' })
-    }
+    action: () => send({ type: 'active-component', data: 'dashboard' })
   },
   {
     path: '/dashboard',
-    action: () => {
-      program.send({ type: 'active-component', data: 'dashboard' })
-    }
+    action: () => send({ type: 'active-component', data: 'dashboard' })
   },
   {
     path: '/heroes',
-    action: () => {
-      program.send({ type: 'active-component', data: 'heroes' })
-    }
+    action: () => send({ type: 'active-component', data: 'heroes' })
   }
   ,
   {
     path: '/detail/:id',
-    action: (id) => {
-      program.send({ type: 'show-detail', data: parseInt(id) })
-    }
+    action: (id) => send({ type: 'show-detail', data: parseInt(id) })
   }])

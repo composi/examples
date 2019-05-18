@@ -5,26 +5,28 @@ import HeroDetail from './hero-detail'
 
 
 export function App({ state, send }) {
-  if (state.activeComponent === 'dashboard') {
-    return (
-      <div class="app-root">
-        <HeroDashboard
-          {...{ state, send }} />
-      </div>
-    )
-  } else if (state.activeComponent === 'heroes') {
-    return (
-      <div class="app-root">
-        <HeroList
-          {...{ state, send }} />
-      </div>
-    )
-  } else if (state.activeComponent === 'detail') {
-    return (
-      <div class="app-root">
-        <HeroDetail
-          {...{ state, send }} />
-      </div>
-    )
-  }
+  return (
+    state.activeComponent === 'dashboard' ?
+      (
+        <div class="app-root">
+          <HeroDashboard
+            {...{ state, send }} />
+        </div>
+      ) :
+    state.activeComponent === 'heroes' ?
+      (
+        <div class="app-root">
+          <HeroList
+            {...{ state, send }} />
+        </div>
+      ) :
+    state.activeComponent === 'detail' ?
+      (
+        <div class="app-root">
+          <HeroDetail
+            {...{ state, send }} />
+        </div>
+      ) :
+      ''
+  )
 }
