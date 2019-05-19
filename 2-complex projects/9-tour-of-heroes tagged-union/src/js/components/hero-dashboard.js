@@ -3,7 +3,7 @@ import { h } from '@composi/core'
 export default function HeroDashboard({ state, send }) {
   if (!state) {
     return ''
-  } else {
+  } else if (state.activeComponent === 'dashboard') {
     const selectHeroes = state && state.heroes && state.heroes.length && state.heroes.slice(1, 5)
     if (!selectHeroes) return ''
     return (
@@ -22,6 +22,7 @@ export default function HeroDashboard({ state, send }) {
         </div>
       </div>
     )
-
+  } else {
+    return ''
   }
 }

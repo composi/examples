@@ -1,7 +1,7 @@
 import { h } from '@composi/core'
 
 export default function HeroDetail({state, send}) {
-  if (state.selectedHero) {
+  if (state.selectedHero && state.activeComponent === 'detail') {
     let hero = state.selectedHero
     return (
       <div id='hero-detail'>

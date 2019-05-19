@@ -63,4 +63,5 @@ router([
   {
     path: '/detail/:id',
     action: id => send({ type: 'show-detail', data: id })
-  }])
+  }
+])

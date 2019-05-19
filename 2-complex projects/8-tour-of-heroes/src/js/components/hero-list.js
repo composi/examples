@@ -3,7 +3,7 @@ import { h } from '@composi/core'
 export function HeroList({state, send}) {
   if (!state || !state.heroes.length) {
     return ''
-  } else {
+  } else if (state.activeComponent === 'heroes') {
     return (
       <div>
         <p class='form--add-hero'>

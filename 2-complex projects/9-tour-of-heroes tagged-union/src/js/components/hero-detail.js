@@ -3,7 +3,7 @@ import { Msg } from '../effects/messages'
 const { changeHeroName, resetName, saveName } = Msg
 
 export default function HeroDetail({ state, send }) {
-  if (state.selectedHero) {
+  if (state.selectedHero && state.activeComponent === 'detail') {
     let hero = state.selectedHero
     return (
       <div id='hero-detail'>

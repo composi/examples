@@ -16,6 +16,7 @@ export function actions(prevState, msg, send) {
     },
     activeComponent: activeComponent => [{ ...prevState, activeComponent }],
     showDetail: person => {
+      if (!prevState.heroes) return
       const position = prevState.heroes.findIndex(person => person.id == msg.data)
       const hero = prevState.heroes[position]
       try {

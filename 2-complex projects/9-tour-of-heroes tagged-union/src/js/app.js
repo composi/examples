@@ -14,8 +14,6 @@ render(<Title message='Tour of Heroes' />, 'header')
 render(<Menu />, 'menu')
 
 
-
-
 const program = {
   init() {
     return [null]
@@ -34,6 +32,7 @@ const program = {
 
 run(program)
 
+// Setup router to track routes and send messages to update program:
 const router = Router()
 // Use destructuring to access the program's send function.
 // This will let us send messages to the program when routes change.
@@ -57,4 +56,5 @@ router([
   {
     path: '/detail/:id',
     action: id => showHeroDetail(id)
-  }])
+  }
+])

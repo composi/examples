@@ -4,7 +4,7 @@ import HeroSearch from './hero-search'
 export default function HeroDashboard({state, send}) {
   if (!state) {
     return ''
-  } else {
+  } else if (state.activeComponent === 'dashboard') {
     const selectHeroes = state.heroes.slice(1, 5)
     return (
       <div class='dashboard'>
