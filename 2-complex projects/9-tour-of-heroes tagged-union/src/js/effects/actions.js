@@ -1,16 +1,18 @@
 import { Msg } from './messages'
 
+
+const { showDetail, activeComponent } = Msg
+
 export function actions(prevState, msg, send) {
   return Msg.match(msg, {
     useFetchedHeroes: data => {
-      const newState = {
-        activeComponent: 'dashboard',
-        heroes: data,
-        selectedHero: '',
-        searchResults: [],
-        newId: 21,
-        newHero: '',
-        inputValue: ''
+      const newState = data.json
+      newState.activeComponent = data.url
+      newState.detail = data.detail
+      if (data.detail) {
+        setTimeout(() => send(showDetail(data.detail)))
+      } else {
+        setTimeout(() => send(activeComponent(newState.activeComponent)))
       }
       return [newState]
     },
