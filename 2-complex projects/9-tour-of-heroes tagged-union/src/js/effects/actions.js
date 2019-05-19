@@ -6,7 +6,11 @@ const { showDetail, activeComponent } = Msg
 export function actions(prevState, msg, send) {
   return Msg.match(msg, {
     useFetchedHeroes: data => {
-      const newState = { ...data.json, activeComponent: data.url, detail: data.detail}
+      const newState = {
+        ...data.json,
+        activeComponent: data.url,
+        detail: data.detail
+      }
       if (data.detail) {
         setTimeout(() => send(showDetail(data.detail)))
       } else {
