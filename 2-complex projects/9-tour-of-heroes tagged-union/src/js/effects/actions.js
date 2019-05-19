@@ -12,7 +12,6 @@ export function actions(prevState, msg, send) {
         newHero: '',
         inputValue: ''
       }
-
       return [newState]
     },
     activeComponent: activeComponent => [{ ...prevState, activeComponent }],

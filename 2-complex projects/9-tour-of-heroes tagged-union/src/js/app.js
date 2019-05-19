@@ -38,21 +38,23 @@ const router = Router()
 // Use destructuring to access the program's send function.
 // This will let us send messages to the program when routes change.
 const { send } = program
+const showComponent = param => send(activeComponent(param))
+const showHeroDetail = id => send(showDetail(id))
 
 router([
   {
     path: "/",
-    action: () => send(activeComponent('dashboard'))
+    action: () => showComponent('dashboard')
   },
   {
     path: '/dashboard',
-    action: () => send(activeComponent('dashboard'))
+    action: () => showComponent('dashboard')
   },
   {
     path: '/heroes',
-    action: () => send(activeComponent('heroes'))
+    action: () => showComponent('heroes')
   },
   {
     path: '/detail/:id',
-    action: id => send(showDetail(parseInt(id)))
+    action: id => showHeroDetail(id)
   }])
