@@ -42,19 +42,15 @@ const showHeroDetail = id => send(showDetail(id))
 
 router([
   {
-    path: "/",
-    action: () => showComponent('dashboard')
-  },
-  {
-    path: '/dashboard',
-    action: () => showComponent('dashboard')
-  },
-  {
     path: '/heroes',
     action: () => showComponent('heroes')
   },
   {
     path: '/detail/:id',
     action: id => showHeroDetail(id)
+  },
+  {
+    path: '*',
+    action: () => showComponent('dashboard')
   }
 ])
