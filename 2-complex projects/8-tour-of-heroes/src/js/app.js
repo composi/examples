@@ -46,7 +46,7 @@ const router = Router()
 // dispatch messages to it from the routes:
 const { send } = program
 
-router([
+router(
   {
     path: "/",
     action: () => send({ type: 'active-component', data: 'dashboard' })
@@ -64,4 +64,4 @@ router([
     path: '/detail/:id',
     action: id => send({ type: 'show-detail', data: id })
   }
-])
+)

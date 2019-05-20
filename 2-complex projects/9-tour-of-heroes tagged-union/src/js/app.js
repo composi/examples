@@ -40,7 +40,7 @@ const { send } = program
 const showComponent = param => send(activeComponent(param))
 const showHeroDetail = id => send(showDetail(id))
 
-router([
+router(
   {
     path: '/heroes',
     action: () => showComponent('heroes')
@@ -53,4 +53,4 @@ router([
     path: '*',
     action: () => showComponent('dashboard')
   }
-])
+)
