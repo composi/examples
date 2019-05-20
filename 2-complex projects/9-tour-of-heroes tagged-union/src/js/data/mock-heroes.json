@@ -1,6 +1,11 @@
 
 {
   "activeComponent": "dashboard",
+  "selectedHero": "",
+  "searchResults": [],
+  "newId": 21,
+  "newHero": "",
+  "detail": "",
   "heroes": [
     {
       "id": "11",
@@ -42,11 +47,5 @@
       "id": "20",
       "name": "Tornado"
     }
-  ],
-  "selectedHero": "",
-  "searchResults": [],
-  "newId": 21,
-  "newHero": "",
-  "inputValue": "",
-  "detail": ""
+  ]
 }
