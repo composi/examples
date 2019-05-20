@@ -15,7 +15,7 @@ export function actions(prevState, msg, send) {
       }
       return [newState]
     },
-    activeComponent: activeComponent => [{ ...prevState, activeComponent }],
+    activeComponent: activeComponent => [{ ...prevState, activeComponent, searchResults: [] }],
     showDetail: person => {
       if (!prevState.heroes) return
       const position = prevState.heroes.findIndex(person => person.id == msg.data)
@@ -70,6 +70,13 @@ export function actions(prevState, msg, send) {
     saveLocally: data => {
       idb.set('tof-state', data)
       return
+    },
+    search: value => {
+      const searchResults = prevState.heroes.filter(hero => {
+        const name = hero.name.toLowerCase()
+        return name.match(value.toLowerCase())
+      })
+      return [{ ...prevState, searchResults}]
     }
   })
 }

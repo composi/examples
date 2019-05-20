@@ -1,4 +1,5 @@
 import { h } from '@composi/core'
+import { HeroSearch } from './hero-search'
 
 export default function HeroDashboard({ state, send }) {
   if (!state) {
@@ -20,6 +21,7 @@ export default function HeroDashboard({ state, send }) {
             ))
           }
         </div>
+        <HeroSearch {...{ state, send }}/>
       </div>
     )
   } else {

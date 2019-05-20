@@ -1,25 +1,22 @@
 import { h } from '@composi/core'
+import { Msg } from '../effects/messages'
+const { search, searchBlur } = Msg
 
-export default function HeroSearch({ search, searchResults, blurSearchInput }) {
+export function HeroSearch({ state, send }) {
   return (
     <div id="search-component">
       <h4>Hero Search</h4>
 
-      <input id="search-box" onkeyup={e => search(e)} onblur={() => blurSearchInput()} />
-
-      {
-        searchResults.length > 0 && (
-          <ul class="search-result">
-            {
-              searchResults.map(hero => (
-                <li>
-                  <a href={`#/detail/${hero.id}`}>{hero.name}</a>
-                </li>
-              ))
-            }
-          </ul>
-        )
-      }
+      <input id="search-box" oninput={e => send(search(e.target.value))} />
+        <ul class="search-result">
+          {
+            state && state.searchResults.map(hero => (
+              <li>
+                <a href={`#/detail/${hero.id}`}>{hero.name}</a>
+              </li>
+            ))
+          }
+      </ul>
     </div>
   )
 }
