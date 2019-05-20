@@ -19,12 +19,17 @@ export function actions(prevState, msg, send) {
     showDetail: person => {
       if (!prevState.heroes) return
       const position = prevState.heroes.findIndex(person => person.id == msg.data)
-      const hero = prevState.heroes[position]
-      try {
-        hero.originalName = hero.name
-        prevState.activeComponent = 'detail'
-        prevState.selectedHero = hero
-      } catch (err) { }
+      if (position === -1) {
+        prevState.activeComponent = 'heroes'
+      } else {
+        const hero = prevState.heroes[position]
+        try {
+          hero.originalName = hero.name
+          prevState.activeComponent = 'detail'
+          prevState.selectedHero = hero
+        } catch (err) {
+        }
+      }
       return [prevState]
     },
     deleteHero: id => {
