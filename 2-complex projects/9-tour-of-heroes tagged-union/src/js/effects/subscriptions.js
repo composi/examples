@@ -2,7 +2,7 @@ import { idb } from '@composi/idb'
 import { Msg } from './messages'
 const { useFetchedHeroes } = Msg
 const path = window.location.hash.split('/')
-const url = path[1] || 'dashboard'
+const activeComponent = path[1] || 'dashboard'
 const detail = path[2]
 
 export function getHeroes(state, send) {
@@ -13,7 +13,7 @@ export function getHeroes(state, send) {
     } else {
       const data = await fetch('/src/js/data/mock-heroes.json')
       const json = await data.json()
-      send(useFetchedHeroes({ ...json, activeComponent: url, detail }))
+      send(useFetchedHeroes({ ...json, activeComponent, detail }))
     }
   })()
 }
