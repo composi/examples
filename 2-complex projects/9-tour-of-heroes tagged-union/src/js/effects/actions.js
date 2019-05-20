@@ -1,7 +1,8 @@
+import { idb } from '@composi/idb'
 import { Msg } from './messages'
 
 
-const { showDetail, activeComponent } = Msg
+const { showDetail, activeComponent, saveLocally } = Msg
 
 export function actions(prevState, msg, send) {
   return Msg.match(msg, {
@@ -28,6 +29,7 @@ export function actions(prevState, msg, send) {
     },
     deleteHero: id => {
       prevState.heroes = prevState.heroes.filter(hero => hero.id !== id)
+      send(saveLocally(prevState))
       return [prevState]
     },
     changeHeroName: name => {
@@ -40,6 +42,7 @@ export function actions(prevState, msg, send) {
     },
     saveName: () => {
       window.location.hash = '#/heroes'
+      send(saveLocally(prevState))
       return [prevState]
     },
     newHero: name => {
@@ -53,10 +56,15 @@ export function actions(prevState, msg, send) {
           name: prevState.newHero
         })
         prevState.newHero = ''
+        send(saveLocally(prevState))
       } else {
         alert('Please provide a name for the new hero before submitting.')
       }
       return [prevState]
+    },
+    saveLocally: data => {
+      idb.set('tof-state', data)
+      return
     }
   })
 }
