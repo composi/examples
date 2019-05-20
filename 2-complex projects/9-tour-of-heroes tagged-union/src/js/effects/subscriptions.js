@@ -1,6 +1,8 @@
 import { idb } from '@composi/idb'
 import { Msg } from './messages'
+
 const { useFetchedHeroes } = Msg
+// Check window location for any user interaction.
 const path = window.location.hash.split('/')
 const activeComponent = path[1] || 'dashboard'
 const detail = path[2]
