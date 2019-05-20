@@ -9,7 +9,7 @@ export function getHeroes(state, send) {
   (async () => {
     const savedState = await idb.get('tof-state')
     if (savedState) {
-      send(useFetchedHeroes(savedState))
+      send(useFetchedHeroes({ ...savedState, activeComponent, detail}))
     } else {
       const data = await fetch('/src/js/data/mock-heroes.json')
       const json = await data.json()
