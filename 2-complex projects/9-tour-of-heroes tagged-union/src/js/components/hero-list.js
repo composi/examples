@@ -1,4 +1,5 @@
 import { h } from '@composi/core'
+import { ListItem } from './hero-list-item'
 import { Msg } from '../effects/messages'
 const { newHero, addHero, deleteHero } = Msg
 
@@ -16,13 +17,7 @@ export function HeroList({ state, send }) {
         <ul class="heroes">
           {
             state.heroes.map(hero => (
-              <li key={hero.id}>
-                <a href={`#/detail/${hero.id}`}>
-                  <span class="badge">{hero.id}</span>
-                  <span class='hero-link'>{hero.name}</span>
-                </a>
-                <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send(deleteHero(hero.id))}>x</button>
-              </li>
+              <ListItem {...{hero, send}}/>
             ))
           }
         </ul>
