@@ -1,3 +1,4 @@
+import { h } from '@composi/core'
 import { DifficultyLevel, GuessEngine } from '../lib/GuessEngine';
 
 export const guessEngine = new GuessEngine();

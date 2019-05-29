@@ -25,7 +25,7 @@ const program = {
     let prevState = clone(state)
     return actions(prevState, msg, send)
   },
-  subscriptions() {
+  subscriptions(getState, send) {
     return getHeroes
   }
 }

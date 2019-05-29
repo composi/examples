@@ -118,7 +118,7 @@ const program = {
   update(state, msg) {
     return actions(state, msg)
   },
-  subscriptions(state, send) {
+  subscriptions(getState, send) {
     return () => {
       document.addEventListener('keypress', e => {
         // Handle Enter key press:

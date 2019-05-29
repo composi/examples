@@ -37,9 +37,9 @@ const program = {
       return [prevState]
     }
   },
-  subscriptions(state, send) {
+  subscriptions(getState, send) {
     // Run subscription to track cursor movement:
-    return handleMoueMove(state, send)
+    return handleMoueMove(getState, send)
   }
 }
 

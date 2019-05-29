@@ -7,7 +7,7 @@ const path = window.location.hash.split('/')
 const activeComponent = path[1] || 'dashboard'
 const detail = path[2]
 
-export function getHeroes(state, send) {
+export function getHeroes(getState, send) {
   (async () => {
     const savedState = await idb.get('tof-state')
     if (savedState) {

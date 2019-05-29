@@ -22,7 +22,7 @@ const program = {
     const prevState = clone(state)
     return actions(prevState, msg, send)
   },
-  subscriptions() {
+  subscriptions(getState, send) {
     return loadItems
   }
 }

@@ -8,7 +8,7 @@ const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
 // Effect to track cursor and redraw tree:
-export function handleMoueMove(state, send) {
+export function handleMoueMove(getState, send) {
   const onMouseMove = e => {
     e.preventDefault()
     let x = e.clientX

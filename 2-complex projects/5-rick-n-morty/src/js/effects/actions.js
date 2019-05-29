@@ -13,7 +13,7 @@ export function actions(prevState, msg) {
       prevState.dashboard = false
       return [prevState]
     case 'show-dashboard':
-      prevState.dashboard = 'true'
+      prevState.dashboard = true
       return [prevState]
     case 'find-character':
       if (msg.data.keyCode == 13) {

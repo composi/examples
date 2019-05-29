@@ -26,7 +26,7 @@ const program = {
     let prevState = clone(state)
     return actions(prevState, msg)
   },
-  subscriptions() {
+  subscriptions(getState, send) {
     return createPopup
   }
 }

@@ -40,7 +40,7 @@ const program = {
     const prevState = clone(state)
     return action(prevState, msg)
   },
-  subscriptions(state, send) {
+  subscriptions(getState, send) {
 
   }
 }

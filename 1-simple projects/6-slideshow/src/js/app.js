@@ -23,7 +23,7 @@ const program = {
     }
     return [prevState]
   },
-  subscriptions() {
+  subscriptions(getState, send) {
     return startShow
   }
 }

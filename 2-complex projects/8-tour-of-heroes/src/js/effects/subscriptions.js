@@ -1,4 +1,4 @@
-export function getHeroes(state, send) {
+export function getHeroes(getState, send) {
 
   (async () => {
     const data = await fetch('/src/js/data/mock-heroes.json')

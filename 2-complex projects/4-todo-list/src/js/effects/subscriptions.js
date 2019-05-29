@@ -6,7 +6,7 @@ import { id } from './id'
 const { AddItem, RenderLocalState } = Msg
 
 
-function handleEnterKey(state, send) {
+function handleEnterKey(getState, send) {
   document.addEventListener('keypress', e => {
     if (e.keyCode === 13) {
       send(AddItem())
@@ -27,7 +27,7 @@ const initialState = {
   inputValue: ''
 }
 
-function getData(state, send) {
+function getData(getState, send) {
   (async () => {
     const todos = await idb.get('todos')
     if (todos) {

@@ -21,8 +21,8 @@ const program = {
         return [msg.value]
     }
   },
-  subscriptions(state, send) {
-    return movieService(state, send)
+  subscriptions(getState, send) {
+    return movieService(getState, send)
   }
 }
 

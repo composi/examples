@@ -1,7 +1,7 @@
 
 
 // Define subscription to run during program startup:
-export function startShow(state, send) {
+export function startShow(getState, send) {
   let count = 1
   setInterval(() => {
     count += 1
