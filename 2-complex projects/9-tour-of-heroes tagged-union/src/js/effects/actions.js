@@ -1,10 +1,13 @@
 import { idb } from '@composi/idb'
 import { Msg } from './messages'
+import { clone } from '@composi/merge-objects'
 
 
 const { showDetail, activeComponent, saveLocally } = Msg
 
-export function actions(prevState, msg, send) {
+export function actions(state, msg, send) {
+  const prevState = clone(state)
+
   return Msg.match(msg, {
     useFetchedHeroes: data => {
       const newState = { ...data }

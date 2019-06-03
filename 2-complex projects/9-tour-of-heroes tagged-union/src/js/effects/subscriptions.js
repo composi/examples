@@ -13,9 +13,9 @@ export function getHeroes(getState, send) {
     if (savedState) {
       send(useFetchedHeroes({ ...savedState, activeComponent, detail}))
     } else {
-      const data = await fetch('/src/js/data/mock-heroes.json')
-      const json = await data.json()
-      send(useFetchedHeroes({ ...json, activeComponent, detail }))
+      const response = await fetch('/src/js/data/mock-heroes.json')
+      const data = await response.json()
+      send(useFetchedHeroes({ ...data, activeComponent, detail }))
     }
   })()
 }

@@ -1,5 +1,4 @@
 import { h, render, run } from '@composi/core'
-import { clone } from '@composi/merge-objects'
 import { Router } from '@composi/router'
 import { Title } from './components/title'
 import { Menu } from './components/menu'
@@ -22,8 +21,7 @@ const program = {
     return state && render(<App {...{ state, send }} />, 'section')
   },
   update(state, msg, send) {
-    let prevState = clone(state)
-    return actions(prevState, msg, send)
+    return actions(state, msg, send)
   },
   subscriptions(getState, send) {
     return getHeroes
