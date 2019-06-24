@@ -29,11 +29,12 @@ const TemperatureInput = (props) => {
 
 // Component to render:
 export function Converter({ state, send }) {
+  const { celsius, fahrenheit } = state
   return (
     <div class='converter'>
-      <TemperatureInput {...{ send, temperature: state.celsius, scale: 'c' }} />
-      <TemperatureInput {...{ send, temperature: state.fahrenheit, scale: 'f' }} />
-      <BoilingVerdict celsius={state.celsius} />
+      <TemperatureInput {...{ send, temperature: celsius, scale: 'c' }} />
+      <TemperatureInput {...{ send, temperature: fahrenheit, scale: 'f' }} />
+      <BoilingVerdict {...{ celsius }} />
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { h } from '@composi/core'
 import Title from './title'
-import SortButton from './sort-button'
-import ResetButton from './reset-button'
+import Button from './button'
 
 export default function Navigation({lastUpdate, send}) {
   return (
@@ -10,8 +9,8 @@ export default function Navigation({lastUpdate, send}) {
       <h4 class='last-update'>Last updated at {lastUpdate ? lastUpdate.toString() : 'never'}</h4>
       <p class='sort-button--paragraph'>
         <div class="top-items">
-          <SortButton {...{ send }}/> 
-          <ResetButton {...{ send }}/>
+          <Button title='Sort!' onClick={() => send({ type: 'sort' })} />
+          <Button title='Reload!' onClick={() => send({ type: 'reload' })}/>
         </div>
       </p>
     </div>

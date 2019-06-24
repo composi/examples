@@ -1,7 +1,7 @@
 import { h, render, run, union } from '@composi/core'
 import { clone } from '@composi/merge-objects'
 import { Tree } from './components/tree'
-import { handleMoueMove } from './effects/subscription'
+import { handleMouseMove } from './effects/subscription'
 
 
 // Set up initial state for program.
@@ -39,7 +39,7 @@ const program = {
   },
   subscriptions(getState, send) {
     // Run subscription to track cursor movement:
-    return handleMoueMove(getState, send)
+    return handleMouseMove(getState, send)
   }
 }
 
