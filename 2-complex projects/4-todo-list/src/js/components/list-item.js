@@ -1,5 +1,5 @@
 import { h } from '@composi/core'
-import { animateIn, animateOut } from '../effects/animations'
+import { animateIn, animateOut } from '../effects/visual-effecs'
 import { Msg } from '../effects/messages'
 const { SetActiveState, DeleteItem } = Msg
 
