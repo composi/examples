@@ -42,7 +42,7 @@ function List({ state, send }) {
       </p>
       <ul class='list'>
         ${
-    state.fruits.map(fruit => html`<li
+    state.items.map(fruit => html`<li
           key=${fruit.key}
           onmount=${animateIn}
           onunmount=${animateOut}
@@ -60,7 +60,7 @@ function List({ state, send }) {
 const state = {
   newKey: 104,
   inputValue: '',
-  fruits: [
+  items: [
     {
       key: 101,
       value: 'Apples'
@@ -81,27 +81,26 @@ function actions(state, msg) {
   const prevState = clone(state)
   return Msg.match(msg, {
     // Update value as user types.
-    'updateInputValue': value => {
+    updateInputValue: value => {
       prevState.inputValue = value
       return [prevState]
     },
     // Add new item to list:
-    'addItem': () => {
-      if (!prevState.inputValue) {
+    addItem: () => {
+      if (prevState.inputValue) {
+        prevState.items.push({
+          key: prevState.newKey++,
+          value: prevState.inputValue
+        })
+        prevState.inputValue = ''
+      } else {
         alert('Please provide a value before submitting.')
-        return
       }
-      prevState.fruits.push({
-        key: prevState.newKey++,
-        value: prevState.inputValue
-      })
-      prevState.inputValue = ''
       return [prevState]
     },
     // Delete item based on its key:
-    'deleteItem': key => {
-      const filteredFruits = prevState.fruits.filter(fruit => fruit.key != key)
-      prevState.fruits = filteredFruits
+    deleteItem: key => {
+      prevState.items =  prevState.items.filter(fruit => fruit.key != key)
       return [prevState]
     }
   })
