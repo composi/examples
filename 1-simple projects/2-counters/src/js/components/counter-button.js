@@ -1,5 +1,4 @@
-import { h } from '@composi/core'
-import { Fragment } from '@composi/fragment'
+import { h, Fragment } from '@composi/core'
 import { Msg } from '../effects/messages'
 const { Decrease, Increase, Delete } = Msg
 
