@@ -22,12 +22,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    if (state.firstRender === false) {
-      state.firstRender = true
-      return render(<Tree SVG_HEIGHT={0} {...{state, send}} />, section, 'img')
-    } else {
-      return render(<Tree SVG_HEIGHT={0} {...{ state, send }} />, section)
-    }
+    return render(<Tree SVG_HEIGHT={0} {...{state, send}} />, section, 'img')
   },
   update(state, msg) {
     const prevState = clone(state)
