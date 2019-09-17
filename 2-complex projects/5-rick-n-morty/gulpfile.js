@@ -1,3 +1,4 @@
+// @ts-nocheck
 const gulp = require('gulp')
 const browserSync = require('browser-sync')
 const rollup = require('rollup')
@@ -22,10 +23,10 @@ gulp.task('build:js', function (done) {
         browser: true
       }),
       commonjs(),
-      // minify({
-      //   mangle: { topLevel: true },
-      //   comments: false
-      // })
+      minify({
+        mangle: { topLevel: true },
+        comments: false
+      })
     ]
   })
     .then((bundle) => {

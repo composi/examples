@@ -1,11 +1,11 @@
-import { h, render, run, union } from '@composi/core'
+import { h, render, run, union, batchEffects } from '@composi/core'
 import { clone } from '@composi/merge-objects'
-import { Title } from './components/title'
-import { TabContainer } from './components/tab-container'
-import { action } from './action'
+import {Title} from './components/title'
+import {TabContainer} from './components/tab-container'
+import {actions} from './action'
 
+// Render title component:
 render(<Title message='Tab Example' />, 'header')
-
 
 
 const state = {
@@ -34,11 +34,10 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<TabContainer {...{ state, send }} />, "section")
+    return render(<TabContainer {...{state, send}} />, "section")
   },
   update(state, msg, send) {
-    const prevState = clone(state)
-    return action(prevState, msg)
+    return actions(state, msg)
   },
   subscriptions(getState, send) {
 

@@ -1,8 +1,7 @@
-import { h, render, run } from '@composi/core'
-import { clone } from '@composi/merge-objects'
-import { App } from './components/app'
-import { actions } from './effects/actions'
-import { getCharacters } from './effects/subscriptions'
+import {h, render, run} from '@composi/core'
+import {App} from './components/app'
+import {actions} from './effects/actions'
+import {getCharacters} from './effects/subscriptions'
 
 
 
@@ -18,12 +17,10 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<App {...{ state, send }} />, 'section')
+    return render(<App {...{state, send}} />, 'section')
   },
   update(state, msg) {
-    // Clone state:
-    let prevState = clone(state)
-    return actions(prevState, msg)
+    return actions(state, msg)
   },
   subscriptions(getState, send) {
     return getCharacters

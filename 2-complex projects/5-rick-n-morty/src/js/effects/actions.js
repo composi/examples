@@ -1,8 +1,11 @@
+import { clone } from '@composi/merge-objects'
 import { findCharacter } from './find-character'
 
 
 // Define actions for program:
-export function actions(prevState, msg) {
+export function actions(state, msg) {
+  // Clone state:
+  let prevState = clone(state)
   switch (msg.type) {
     case 'show-character':
       const target = msg.data.target.closest('.infobox')
