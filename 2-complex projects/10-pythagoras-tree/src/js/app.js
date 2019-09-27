@@ -24,7 +24,7 @@ const program = {
   view(state, send) {
     return render(<Tree SVG_HEIGHT={0} {...{state, send}} />, section, 'img')
   },
-  update(state, msg) {
+  update(state, msg, send) {
     const prevState = clone(state)
     if (msg.type === 'update-tree') {
       prevState.heightFactor = msg.data.heightFactor

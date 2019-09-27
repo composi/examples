@@ -23,7 +23,7 @@ const program = {
     return actions(prevState, msg, send)
   },
   subscriptions(getState, send) {
-    return loadItems
+    return loadItems(getState, send)
   }
 }
 

@@ -22,7 +22,7 @@ const program = {
     return actions(state, msg, send)
   },
   subscriptions(getState, send) {
-    return getHeroes
+    return getHeroes(getState, send)
   }
 }
 

@@ -27,7 +27,7 @@ const program = {
     return actions(prevState, msg)
   },
   subscriptions(getState, send) {
-    return createPopup
+    return createPopup(getState, send)
   }
 }
 

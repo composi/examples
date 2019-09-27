@@ -6,7 +6,7 @@ export let popup = undefined
 export let popupImage = undefined
 
 // Define effect to run when program starts:
-export function createPopup(state, send) {
+export function createPopup(getState, send) {
   function Mask() {
     return (
       <div id="mask" onclick={() => send({ type: 'close-popup' })}>

@@ -20,7 +20,7 @@ const program = {
     return actions(prevState, msg)
   },
   subscriptions(getState, send) {
-    return batchedSubscriptions
+    return batchedSubscriptions(getState, send)
   }
 }
 

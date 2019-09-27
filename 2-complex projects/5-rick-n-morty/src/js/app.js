@@ -19,11 +19,11 @@ const program = {
   view(state, send) {
     return render(<App {...{state, send}} />, 'section')
   },
-  update(state, msg) {
-    return actions(state, msg)
+  update(state, msg, send) {
+    return actions(state, msg, send)
   },
   subscriptions(getState, send) {
-    return getCharacters
+    return getCharacters(getState, send)
   }
 }
 

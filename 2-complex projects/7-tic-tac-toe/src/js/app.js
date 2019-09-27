@@ -20,7 +20,7 @@ const program = {
     return actions(state, msg, send)
   },
   subscriptions(getState, send) {
-    return fetchJsonData
+    return fetchJsonData(getState, send)
   }
 }
 

@@ -3,7 +3,7 @@ import { findCharacter } from './find-character'
 
 
 // Define actions for program:
-export function actions(state, msg) {
+export function actions(state, msg, send) {
   // Clone state:
   let prevState = clone(state)
   switch (msg.type) {

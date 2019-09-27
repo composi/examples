@@ -34,7 +34,7 @@ export const program = {
     return actions(prevState, msg, send)
   },
   subscriptions(getState, send) {
-    return getHeroes
+    return getHeroes(getState, send)
   }
 }
 
