@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "checkJs": true,
     "target": "es6",
     "jsx": "react"
   },
-  "exclude": [
-    "node_modules"
+  "include": [
+    "node_modules/@composi/**/src/*"
   ]
 }

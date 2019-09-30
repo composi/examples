@@ -45,6 +45,9 @@ function actions(state, msg) {
 }
 
 // Define program to run:
+/**
+ * @type {import('@composi/core').Program}
+ */
 const program = {
   init() {
     return [{count: 0}]

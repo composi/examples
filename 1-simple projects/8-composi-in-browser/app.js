@@ -106,26 +106,28 @@ function actions(state, msg) {
   })
 }
 
+function handleEnterKey(getState, send) {
+  document.addEventListener('keypress', e => {
+    // Handle Enter key press:
+    if (e.keyCode === 13) {
+      send(addItem())
+    }
+  })
+}
+
 // Define runtime program
 const program = {
   init() {
     return [state]
   },
   view(state, send) {
-    render(html`<${List} ...${{state, send}} />`, 'section')
+    return render(html`<${List} ...${{state, send}} />`, 'section')
   },
   update(state, msg) {
     return actions(state, msg)
   },
   subscriptions(getState, send) {
-    return () => {
-      document.addEventListener('keypress', e => {
-        // Handle Enter key press:
-        if (e.keyCode == 13) {
-          send(addItem())
-        }
-      })
-    }
+    return handleEnterKey(getState, send)
   }
 }
 
