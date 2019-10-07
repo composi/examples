@@ -4,7 +4,7 @@ import { handleSquareSelection } from './handleSquareSelection'
 
 
 // Define actions:
-export function actions(state, msg) {
+export function actions(state, msg, send) {
   const prevState = clone(state)
   return Msg.match(msg, {
     selectTile: tile => {

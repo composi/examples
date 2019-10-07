@@ -35,7 +35,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    render(<Clock {...{ state, send }} />, 'section')
+    render(<Clock {...{ state, send }} />, '.container-fluid')
   },
   update(state, msg) {
     const prevState = clone(state)

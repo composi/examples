@@ -7,19 +7,26 @@ import { actions } from './effects/actions'
 import { popup, popupImage } from './components/create-popup'
 
 
-
+function List2({ state, send }) {
+  console.log(state)
+  return (
+    <div id="app">
+      <ul class='list'>
+        <li>One</li>
+        <li>Two</li>
+      </ul>
+    </div>
+  )
+}
 
 
 // Create initial state for program:
-// const state = buildData(10)
-
-
 const program = {
   init() {
     return [buildData(10)]
   },
   view(state, send) {
-    return render(<List {...{state, send}} />, "section")
+    return render(<List {...{state, send}} />, "#app")
   },
   update(state, msg) {
     // Clone state:

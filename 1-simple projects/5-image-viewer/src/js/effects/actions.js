@@ -13,8 +13,8 @@ export function actions(prevState, msg) {
       return [newState]
     // Show chosen image in popup:
     case 'show-image':
-      popup.style.display = 'flex'
-      popupImage.style.backgroundImage = `url(${msg.data})`
+      /** @type{HTMLElement} */(popup).style.display = 'flex';
+      /** @type{HTMLElement} */(popupImage).style.backgroundImage = `url(${msg.data})`
       setTimeout(() => {
         popup.classList.add('opened')
         popupImage.classList.add('opened')
@@ -25,7 +25,7 @@ export function actions(prevState, msg) {
       popup && popup.classList.remove('opened')
       popupImage.classList.remove('opened')
       setTimeout(() => {
-        popup.style.display = 'none';
+        /** @type{HTMLElement} */(popup).style.display = 'none';
       }, 500)
       return [prevState]
   }

@@ -34,7 +34,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<TabContainer {...{state, send}} />, "section")
+    return render(<TabContainer {...{ state, send }} />, ".tab-list")
   },
   update(state, msg, send) {
     return actions(state, msg)

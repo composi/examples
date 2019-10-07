@@ -12,7 +12,7 @@ export function TodoList({ state, send }) {
   return (
     <div class="parent-view">
       <p class="add-todo">
-        <input value={state.inputValue} type="text" onupdate={setFocus} oninput={e => send(UpdateInputValue(e.target.value))} value={state.inputValue} />
+        <input value={state.inputValue} type="text" onupdate={setFocus} oninput={e => send(UpdateInputValue(e.target.value))}/>
         <button class='addItem' onclick={() => send(AddItem(value))}>Add Item</button>
       </p>
       <ul class='todo-list'>

@@ -22,7 +22,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<Converter {...{ state, send }} />, 'section')
+    return render(<Converter {...{ state, send }} />, '.converter')
   },
   update(state, msg) {
     // Clone state:

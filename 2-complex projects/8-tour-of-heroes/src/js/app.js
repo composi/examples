@@ -27,7 +27,7 @@ export const program = {
     return [state]
   },
   view(state, send) {
-    return render(<App {...{ state, send }} />, 'section')
+    return render(<App {...{ state, send }} />, '.app-root')
   },
   update(state, msg, send) {
     let prevState = clone(state)

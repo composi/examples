@@ -16,7 +16,7 @@ const program = {
     return [null]
   },
   view(state, send) {
-    return state && render(<App {...{ state, send }} />, 'section')
+    return state && render(<App {...{ state, send }} />, '.app-root')
   },
   update(state, msg, send) {
     return actions(state, msg, send)

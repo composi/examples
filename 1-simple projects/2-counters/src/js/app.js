@@ -27,7 +27,7 @@ const program = {
     return actions(state, msg)
   },
   view(state, send) {
-    return render(<Counter {...{state, send}} />, 'section')
+    return render(<Counter {...{ state, send }} />, '.counters-container')
   }
 }
 

@@ -21,7 +21,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    render(<Game {...{ state, send }} />, 'section')
+    render(<Game {...{ state, send }} />, '.container')
   },
   update(state, msg, send) {
     return actions(state, msg, send)

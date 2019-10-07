@@ -2,6 +2,16 @@ import { h } from '@composi/core'
 
 
 // Define list component for images:
+export function List2({ state, send }) {
+  return (
+    <div id="app">
+      <ul class='list'>
+        <li>One</li>
+        <li>Two</li>
+      </ul>
+    </div>
+  )
+}
 export function List({ state, send }) {
   return (
     <div id="app">

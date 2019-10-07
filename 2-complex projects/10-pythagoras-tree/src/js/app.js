@@ -22,7 +22,8 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<Tree SVG_HEIGHT={0} {...{state, send}} />, section, 'img')
+    let SVG_HEIGHT = 0
+    return render(<Tree {...{ state, send, SVG_HEIGHT }} />, '#svg-base')
   },
   update(state, msg, send) {
     const prevState = clone(state)

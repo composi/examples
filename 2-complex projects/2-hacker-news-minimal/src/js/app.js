@@ -16,7 +16,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<HackerNews {...{ state, send }} />, 'section')
+    return render(<HackerNews {...{ state, send }} />, '#app')
   },
   update(state, msg, send) {
     const prevState = clone(state)

@@ -1,5 +1,5 @@
 // @ts-ignore
-import { h, render, run, union } from 'https://unpkg.com/@composi/core/dist/composi-core.mjs?module'
+import { h, render, run, union } from './composi/dist/composi-core.mjs?module'
 // @ts-ignore
 import htm from 'https://unpkg.com/htm/dist/htm.mjs?module'
 // @ts-ignore
@@ -9,9 +9,11 @@ const html = htm.bind(h)
 
 function Title({msg}) {
   return html`
-    <nav>
-      <h1>@composi/core: ${msg}!</h1>
-    </nav>
+    <header>
+      <nav>
+        <h1>@composi/core: ${msg}!</h1>
+      </nav>
+    </header>
   `
 }
 render(html`<${Title} msg='In the Browser'/>`, 'header')
@@ -121,7 +123,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(html`<${List} ...${{state, send}} />`, 'section')
+    return render(html`<${List} ...${{ state, send }} />`, '.container')
   },
   update(state, msg) {
     return actions(state, msg)

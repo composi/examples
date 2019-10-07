@@ -19,7 +19,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<SpreadSheet {...{ state, send }} />, 'section')
+    return render(<SpreadSheet {...{ state, send }} />, '.list--spreadsheet')
   },
   update(state, msg) {
     return actions(state, msg)

@@ -53,7 +53,7 @@ const program = {
     return [{count: 0}]
   },
   view(state, send) {
-    return render(<Clicker {...{state, send}}/>, 'section')
+    return render(<Clicker {...{state, send}}/>, '.container')
   },
   update(state, msg) {
     const prevState = clone(state)

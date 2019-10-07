@@ -13,7 +13,7 @@ const program = {
     return [null]
   },
   view(state, send) {
-    state && render(<TodoList {...{state, send}} />, 'section')
+    state && render(<TodoList {...{ state, send }} />, '.parent-view')
   },
   update(state, msg, send) {
     const prevState = clone(state)

@@ -13,7 +13,7 @@ const program = {
   },
   view(state, send) {
     if (!state || !state.length) return
-    return render(<Movies {...{ state, send }} />, 'section')
+    return render(<Movies {...{ state, send }} />, '.container-fluid')
   },
   update(state, msg) {
     switch (msg.type) {

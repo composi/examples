@@ -14,7 +14,7 @@ const program = {
     return [state]
   },
   view(state, send) {
-    return render(<SlideShow {...{ state }} />, document.body)
+    return render(<SlideShow {...{ state }} />, 'main')
   },
   update(state, msg) {
     const prevState = clone(state)

@@ -14,5 +14,5 @@ export function createPopup(getState, send) {
       </div>
     )
   }
-  render(<Mask />, 'body')
+  render(<Mask />, '#mask')
 }
