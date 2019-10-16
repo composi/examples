@@ -1,5 +1,5 @@
 // @ts-ignore
-import { h, render, run, union } from './composi/dist/composi-core.mjs?module'
+import { h, render, run, union } from 'https://unpkg.com/@composi/core/dist/composi-core.mjs?module'
 // @ts-ignore
 import htm from 'https://unpkg.com/htm/dist/htm.mjs?module'
 // @ts-ignore
