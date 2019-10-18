@@ -18,7 +18,7 @@ const state = {
 // Define program:
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     render(<Game {...{ state, send }} />, '.container')

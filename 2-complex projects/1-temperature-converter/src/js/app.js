@@ -19,7 +19,7 @@ const state = {
 // Define program:
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     return render(<Converter {...{ state, send }} />, '.converter')

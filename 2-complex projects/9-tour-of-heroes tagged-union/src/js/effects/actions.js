@@ -16,9 +16,9 @@ export function actions(state, msg, send) {
       } else {
         setTimeout(() => send(activeComponent(newState.activeComponent)))
       }
-      return [newState]
+      return newState
     },
-    activeComponent: activeComponent => [{ ...prevState, activeComponent, searchResults: [] }],
+    activeComponent: activeComponent => ({ ...prevState, activeComponent, searchResults: [] }),
     showDetail: person => {
       if (!prevState.heroes) return
       const position = prevState.heroes.findIndex(person => person.id == msg.data)
@@ -33,29 +33,29 @@ export function actions(state, msg, send) {
         } catch (err) {
         }
       }
-      return [prevState]
+      return prevState
     },
     deleteHero: id => {
       prevState.heroes = prevState.heroes.filter(hero => hero.id !== id)
       send(saveLocally(prevState))
-      return [prevState]
+      return prevState
     },
     changeHeroName: name => {
       prevState.selectedHero.name = name
-      return [prevState]
+      return prevState
     },
     resetName: () => {
       prevState.selectedHero.name = prevState.selectedHero.originalName
-      return [prevState]
+      return prevState
     },
     saveName: () => {
       window.location.hash = '#/heroes'
       send(saveLocally(prevState))
-      return [prevState]
+      return prevState
     },
     newHero: name => {
       prevState.newHero = name
-      return [prevState]
+      return prevState
     },
     addHero: () => {
       if (prevState.newHero) {
@@ -68,18 +68,18 @@ export function actions(state, msg, send) {
       } else {
         alert('Please provide a name for the new hero before submitting.')
       }
-      return [prevState]
+      return prevState
     },
     saveLocally: data => {
       idb.set('tof-state', data)
-      return
+      return prevState
     },
     search: value => {
       const searchResults = prevState.heroes.filter(hero => {
         const name = hero.name.toLowerCase()
         return name.match(value.toLowerCase())
       })
-      return [{ ...prevState, searchResults}]
+      return { ...prevState, searchResults}
     }
   })
 }

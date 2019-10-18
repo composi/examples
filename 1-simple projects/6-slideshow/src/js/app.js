@@ -7,21 +7,20 @@ import { setupPics } from './utils'
 // Define program:
 const program = {
   init() {
-    const state = {
+    return {
       count: 1,
       pics: setupPics()
     }
-    return [state]
   },
   view(state, send) {
     return render(<SlideShow {...{ state }} />, 'main')
   },
-  update(state, msg) {
+  update(state, msg, send) {
     const prevState = clone(state)
     if (msg.type === 'update-slide') {
       prevState.count = msg.data
     }
-    return [prevState]
+    return prevState
   },
   subscriptions(getState, send) {
     return startShow(getState, send)

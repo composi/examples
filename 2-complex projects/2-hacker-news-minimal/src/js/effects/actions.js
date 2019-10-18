@@ -9,14 +9,14 @@ export function actions(prevState, msg, send) {
   switch (msg.type) {
     case 'load':
       prevState.items = msg.data
-      return [prevState]
+      return prevState
     case 'sort':
       const sorted = sortByScore(prevState)
       prevState.items = sorted
-      return [prevState]
+      return prevState
     case 'reload':
       loadItems(prevState, send)
       prevState.lastUpdate = new Date()
-      return [prevState]
+      return prevState
   }
 }

@@ -13,19 +13,19 @@ export function actions(state, msg) {
         quantity: parseInt(item.quantity) || 0
       })
       prevState.inputValue = ''
-      return [prevState]
+      return prevState
     },
     'DeleteItem': product => {
       prevState.fruits = prevState.fruits.filter(fruit => fruit.product != product)
-      return [prevState]
+      return prevState
     },
     'UpdateItemPrice': item => {
       prevState.fruits[item.idx].price = parseInt(item.price)
-      return [prevState]
+      return prevState
     },
     'UpdateItemQuantity': item => {
       prevState.fruits[item.idx].quantity = parseInt(item.quantity)
-      return [prevState]
+      return prevState
     }
   })
 }

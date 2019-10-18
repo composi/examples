@@ -1,5 +1,5 @@
 // @ts-ignore
-import { h, render, run, union } from 'https://unpkg.com/@composi/core/dist/composi-core.mjs?module'
+import { h, render, run, union } from 'https://unpkg.com/@composi/core@latest/dist/composi-core.mjs?module'
 // @ts-ignore
 import htm from 'https://unpkg.com/htm/dist/htm.mjs?module'
 // @ts-ignore
@@ -85,7 +85,7 @@ function actions(state, msg) {
     // Update value as user types.
     updateInputValue: value => {
       prevState.inputValue = value
-      return [prevState]
+      return prevState
     },
     // Add new item to list:
     addItem: () => {
@@ -98,12 +98,12 @@ function actions(state, msg) {
       } else {
         alert('Please provide a value before submitting.')
       }
-      return [prevState]
+      return prevState
     },
     // Delete item based on its key:
     deleteItem: key => {
       prevState.items =  prevState.items.filter(fruit => fruit.key != key)
-      return [prevState]
+      return prevState
     }
   })
 }
@@ -120,7 +120,7 @@ function handleEnterKey(getState, send) {
 // Define runtime program
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     return render(html`<${List} ...${{ state, send }} />`, '.container')

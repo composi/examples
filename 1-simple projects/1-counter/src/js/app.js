@@ -34,13 +34,13 @@ function actions(state, msg) {
   switch (msg.type) {
     case 'increment':
       state.count++
-      return [state]
+      return state
     case 'reset':
       state.count = 0
-      return [state]
+      return state
     case 'decrement':
       state.count--
-      return [state]
+      return state
   }
 }
 
@@ -50,7 +50,7 @@ function actions(state, msg) {
  */
 const program = {
   init() {
-    return [{count: 0}]
+    return {count: 0}
   },
   view(state, send) {
     return render(<Clicker {...{state, send}}/>, '.container')

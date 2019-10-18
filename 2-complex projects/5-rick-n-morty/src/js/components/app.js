@@ -10,7 +10,6 @@ export function App({ state, send }) {
   // If no characters yet, return.
   // Characters are fetched from json file.
   if (!state.characters) return
-  const char = state.characters[0]
   if (dashboard) {
     return (
       <section>

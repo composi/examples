@@ -16,7 +16,7 @@ const state = {
 // Define program to setup and run spreadsheet.
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     return render(<SpreadSheet {...{ state, send }} />, '.list--spreadsheet')

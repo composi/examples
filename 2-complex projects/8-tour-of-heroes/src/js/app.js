@@ -24,7 +24,7 @@ const state = {
 
 export const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     return render(<App {...{ state, send }} />, '.app-root')

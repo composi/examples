@@ -13,7 +13,7 @@ const state = {
 // Init will run effect "loadItems" to fetch data from HackerNews.
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     return render(<HackerNews {...{ state, send }} />, '#app')

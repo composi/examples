@@ -19,7 +19,7 @@ const section = document.querySelector('section')
 // Define program to run animated fractal.
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     let SVG_HEIGHT = 0
@@ -30,7 +30,7 @@ const program = {
     if (msg.type === 'update-tree') {
       prevState.heightFactor = msg.data.heightFactor
       prevState.lean = msg.data.lean
-      return [prevState]
+      return prevState
     }
   },
   subscriptions(getState, send) {

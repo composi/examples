@@ -23,7 +23,7 @@ function List2({ state, send }) {
 // Create initial state for program:
 const program = {
   init() {
-    return [buildData(10)]
+    return buildData(10)
   },
   view(state, send) {
     return render(<List {...{state, send}} />, "#app")

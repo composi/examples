@@ -10,7 +10,7 @@ import { actions } from './effects/actions'
 // Set up program.
 const program = {
   init() {
-    return [null]
+    return null
   },
   view(state, send) {
     state && render(<TodoList {...{ state, send }} />, '.parent-view')

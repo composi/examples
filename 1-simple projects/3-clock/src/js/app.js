@@ -22,17 +22,17 @@ function actions(prevState, msg) {
   switch (msg.type) {
     case 'toggle-date':
       prevState.isDateVisible = !prevState.isDateVisible
-      return [prevState]
+      return prevState
     case 'update-time':
       prevState.date = new Date()
-      return [prevState]
+      return prevState
   }
 }
 
 // Define program to run:
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     render(<Clock {...{ state, send }} />, '.container-fluid')

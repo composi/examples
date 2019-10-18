@@ -31,7 +31,7 @@ const state = {
 
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
     return render(<TabContainer {...{ state, send }} />, ".tab-list")

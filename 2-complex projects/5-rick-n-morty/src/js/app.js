@@ -14,10 +14,10 @@ const state = {
 // Define program to run:
 const program = {
   init() {
-    return [state]
+    return state
   },
   view(state, send) {
-    return render(<App {...{state, send}} />, 'section')
+    return state.characters && render(<App {...{state, send}} />, 'section')
   },
   update(state, msg, send) {
     return actions(state, msg, send)

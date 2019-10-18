@@ -21,7 +21,7 @@ const state = {
 // Define program:
 const program = {
   init() {
-    return [state]
+    return state
   },
   update(state, msg) {
     return actions(state, msg)

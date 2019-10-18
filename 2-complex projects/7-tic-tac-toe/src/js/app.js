@@ -11,7 +11,7 @@ render(<Title message='Tic-tac-toe' />, 'header')
 // Define program to run:
 const program = {
   init() {
-    return [null]
+    return null
   },
   view(state, send) {
     return state && render(<Game {...{ state, send }} />, '.game')

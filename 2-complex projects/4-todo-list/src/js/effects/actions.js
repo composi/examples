@@ -14,7 +14,7 @@ export function actions(prevState, msg) {
   return Msg.match(msg, {
     UpdateInputValue: value => {
       prevState.inputValue = value
-      return [prevState]
+      return prevState
     },
     AddItem: () => {
       if (prevState.inputValue) {
@@ -26,7 +26,7 @@ export function actions(prevState, msg) {
         })
         prevState.inputValue = ''
         idb.set('todos', prevState)
-        return [prevState]
+        return prevState
       } else {
         alert('Please provide a value before submitting.')
       }
@@ -34,7 +34,7 @@ export function actions(prevState, msg) {
     DeleteItem: id => {
       prevState.items = prevState.items.filter(item => item.id != id)
       idb.set('todos', prevState)
-      return [prevState]
+      return prevState
     },
     SetActiveState: id => {
       const index = prevState.items.findIndex(item => {
@@ -42,7 +42,7 @@ export function actions(prevState, msg) {
       })
       prevState.items[index].active = !prevState.items[index].active
       idb.set('todos', prevState)
-      return [prevState]
+      return prevState
     },
     ShowActive: () => {
       prevState.items.map(item => {
@@ -50,7 +50,7 @@ export function actions(prevState, msg) {
         else item.hidden = false
       })
       prevState.selectedButton = setButtonState(1)
-      return [prevState]
+      return prevState
     },
     ShowCompleted: () => {
       prevState.items.map(item => {
@@ -58,15 +58,15 @@ export function actions(prevState, msg) {
         else item.hidden = false
       })
       prevState.selectedButton = setButtonState(2)
-      return [prevState]
+      return prevState
     },
     ShowAll: () => {
       prevState.items.map(item => item.hidden = false)
       prevState.selectedButton = setButtonState(0)
-      return [prevState]
+      return prevState
     },
     RenderLocalState: state => {
-      return [state]
+      return state
     }
   }, (msg) => {
     console.log(`There was no match. We received: ${msg}`)

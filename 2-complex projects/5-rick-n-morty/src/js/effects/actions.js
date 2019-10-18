@@ -14,16 +14,16 @@ export function actions(state, msg, send) {
       const character = characters.filter(char => id === char.id)[0]
       prevState.character = character
       prevState.dashboard = false
-      return [prevState]
+      return prevState
     case 'show-dashboard':
       prevState.dashboard = true
-      return [prevState]
+      return prevState
     case 'find-character':
       if (msg.data.keyCode == 13) {
         prevState = findCharacter(msg.data, prevState)
       }
-      return [prevState]
+      return prevState
     case 'use-fetched-data':
-      return [msg.value]
+      return msg.value
   }
 }

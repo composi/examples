@@ -13,7 +13,7 @@ export const fruitData = [
     product: 'Banana',
     price: .90,
     quantity: 3
-  }, 
+  },
   {
     product: 'Peach',
     price: 1.10,

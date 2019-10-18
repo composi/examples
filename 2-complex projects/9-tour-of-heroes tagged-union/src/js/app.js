@@ -13,7 +13,7 @@ render(<Menu />, 'menu')
 
 const program = {
   init() {
-    return [null]
+    return null
   },
   view(state, send) {
     return state && render(<App {...{ state, send }} />, '.app-root')

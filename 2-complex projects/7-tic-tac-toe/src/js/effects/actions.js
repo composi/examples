@@ -9,13 +9,13 @@ export function actions(state, msg, send) {
   return Msg.match(msg, {
     selectTile: tile => {
       const newState = handleSquareSelection(prevState, tile)
-      return [newState]
+      return newState
     },
     jumpTo: jump => {
       prevState.stepNumber = jump
       prevState.xIsNext = (jump % 2) === 0
-      return [prevState]
+      return prevState
     },
-    useFetchedData: data => [data]
+    useFetchedData: data => data
   })
 }

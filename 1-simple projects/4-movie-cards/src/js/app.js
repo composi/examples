@@ -9,7 +9,7 @@ render(<Title message='Movie Cards'/>, 'header')
 
 const program = {
   init() {
-    return [{ movies: [] }]
+    return { movies: [] }
   },
   view(state, send) {
     if (!state || !state.length) return
@@ -18,7 +18,7 @@ const program = {
   update(state, msg) {
     switch (msg.type) {
       case 'load-movies':
-        return [msg.value]
+        return msg.value
     }
   },
   subscriptions(getState, send) {

@@ -10,7 +10,7 @@ export function actions(prevState, msg) {
     case 'add-10-more':
       const data = buildData(10)
       const newState = prevState.concat(data)
-      return [newState]
+      return newState
     // Show chosen image in popup:
     case 'show-image':
       /** @type{HTMLElement} */(popup).style.display = 'flex';
@@ -19,7 +19,7 @@ export function actions(prevState, msg) {
         popup.classList.add('opened')
         popupImage.classList.add('opened')
       }, 200)
-      return [prevState]
+      return prevState
     // Close the popup
     case 'close-popup':
       popup && popup.classList.remove('opened')
@@ -27,6 +27,6 @@ export function actions(prevState, msg) {
       setTimeout(() => {
         /** @type{HTMLElement} */(popup).style.display = 'none';
       }, 500)
-      return [prevState]
+      return prevState
   }
 }
