@@ -1,6 +1,12 @@
 import { h } from '@composi/core'
 import HeroSearch from './hero-search'
 
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ * @param {{state: State, send: Send}} props
+ * @returns {import('@composi/core').VNode | string} VNode
+ */
 export default function HeroDashboard({state, send}) {
   if (!state) {
     return ''

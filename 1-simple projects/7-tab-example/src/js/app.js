@@ -1,13 +1,21 @@
-import { h, render, run, union, batchEffects } from '@composi/core'
-import { clone } from '@composi/merge-objects'
+import { h, render, run } from '@composi/core'
 import {Title} from './components/title'
 import {TabContainer} from './components/tab-container'
 import {actions} from './action'
 
+
+/**
+ * @typedef {import('./types').State} State
+ * @typedef {import('./types').Send} Send
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').GetState} GetState
+ * @typedef {import('./types').Program} Program
+ */
+
 // Render title component:
 render(<Title message='Tab Example' />, 'header')
 
-
+/** @type {State} */
 const state = {
   activeId: "one",
   tabs: [
@@ -27,20 +35,25 @@ const state = {
 }
 
 
-
-
+/** @type {Program} */
 const program = {
   init() {
     return state
   },
+  /**
+   * @param {State} state
+   * @param {Send} send
+   */
   view(state, send) {
     return render(<TabContainer {...{ state, send }} />, ".tab-list")
   },
+  /**
+   * @param {State} state
+   * @param {Message} msg
+   * @param {Send} send
+   */
   update(state, msg, send) {
-    return actions(state, msg)
-  },
-  subscriptions(getState, send) {
-
+    return actions(state, msg, send)
   }
 }
 

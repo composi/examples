@@ -1,5 +1,8 @@
 import { h } from '@composi/core'
 
+/**
+ * @param {{message: string}} param0
+ */
 export function Title({message}) {
   return (
     <header>

@@ -1,7 +1,10 @@
 import { h } from '@composi/core';
 import MovieCard from './movieCard';
 
-// Functional component to display movies:
+/**
+ * Functional component to display movies.
+ * @param {import('../../types').State} movies
+ */
 const showMovies = (movies) => {
   if (!movies) return
   return (

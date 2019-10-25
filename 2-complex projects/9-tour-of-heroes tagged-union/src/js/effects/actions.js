@@ -1,13 +1,18 @@
 import { idb } from '@composi/idb'
 import { Msg } from './messages'
-import { clone } from '@composi/merge-objects'
 
 
 const { showDetail, activeComponent, saveLocally } = Msg
 
+/**
+ * @param {import('../types').State} state
+ * @param {import('../types').Message} msg
+ * @param {import('../types').Send} send
+ */
 export function actions(state, msg, send) {
-  const prevState = clone(state)
+  const prevState = {...state}
 
+  /** @type {import('../types').MessageUnion} */
   return Msg.match(msg, {
     useFetchedHeroes: data => {
       const newState = { ...data }
@@ -18,7 +23,7 @@ export function actions(state, msg, send) {
       }
       return newState
     },
-    activeComponent: activeComponent => ({ ...prevState, activeComponent, searchResults: [] }),
+    activeComponent: activeComponent => ({ ...prevState, activeComponent, searchResults: /** @type {any} */([]) }),
     showDetail: person => {
       if (!prevState.heroes) return
       const position = prevState.heroes.findIndex(person => person.id == msg.data)

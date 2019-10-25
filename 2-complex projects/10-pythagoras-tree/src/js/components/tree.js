@@ -8,6 +8,13 @@ const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
 // View for tree component
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ * @typedef {import('@composi/core').VNode} VNode
+ * @param {{state: State, send: Send}} props
+ * @returns {VNode} VNode
+ */
 export function Tree({ state, send }) {
   return (
     <svg

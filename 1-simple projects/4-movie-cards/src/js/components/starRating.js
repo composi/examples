@@ -18,11 +18,17 @@ const styles = {
   }
 };
 
+/**
+ * @param {number} rating
+ */
 const cropWidth = (rating) => {
   return Math.floor(rating * width / 5);
 };
 
 // Functional component to display ratings for a movie.
+/**
+ * @param {{rating: number}} props
+ */
 const StarRating = (props) => {
 
   const containerStyle = { width: `${cropWidth(props.rating)}px` };

@@ -2,7 +2,12 @@ import { h } from '@composi/core'
 import { Msg } from '../effects/messages'
 const { deleteHero } = Msg
 
-
+/**
+ * @typedef {import('../types').Hero} Hero
+ * @typedef {import('../types').Send} Send
+ * @param {{hero: Hero, send: Send}} props
+ * @returns {import('@composi/core').VNode} VNode
+ */
 export function ListItem({ hero, send }) {
   return (
     <li key={hero.id}>

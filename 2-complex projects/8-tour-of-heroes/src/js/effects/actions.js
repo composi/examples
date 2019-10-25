@@ -1,6 +1,11 @@
 
-
-export function actions(prevState, msg, send) {
+/**
+ * @param {import('../types').State} state
+ * @param {import('../types').Message} msg
+ * @param {import('../types').Send} send
+ */
+export function actions(state, msg, send) {
+  const prevState = {...state}
   switch (msg.type) {
     case 'use-fetched-heroes':
       prevState.heroes = msg.data

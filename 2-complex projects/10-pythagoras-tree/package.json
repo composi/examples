@@ -14,7 +14,7 @@
     "format": "prettier --no-semi --single-quote --write ./src/js/*",
     "lint": "eslint --config ./.eslintrc.json src/js",
     "start": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc --allowJs --checkJs --noEmit --moduleResolution node --target ES6 --jsx react --jsxFactory h src/js/*.js"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -22,10 +22,10 @@
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.6.0",
     "@composi/are-equal": "^1.0.4",
-    "@composi/core": "^2.5.2",
+    "@composi/core": "^2.5.4",
     "@composi/gestures": "^1.0.6",
     "@composi/get-type": "^1.0.5",
-    "@composi/idb": "^1.0.7",
+    "@composi/idb": "^1.0.8",
     "@composi/merge-objects": "^1.3.1",
     "@composi/router": "^0.7.5",
     "@composi/styler": "^1.0.5",
@@ -47,6 +47,7 @@
     "rollup-plugin-babel-minify": "^9.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-resolve": "0.0.1-predev.1"
+    "rollup-plugin-resolve": "0.0.1-predev.1",
+    "typescript": "^3.6.4"
   }
 }

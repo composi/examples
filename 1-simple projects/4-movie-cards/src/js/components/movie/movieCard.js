@@ -2,6 +2,12 @@ import { h } from '@composi/core';
 import StarRating from '../starRating';
 
 // Define movie card component:
+/**
+ * @typedef {import('../../types').Movie} Movie
+ */
+/**
+ * @param {{movie: Movie, key: number}} props
+ */
 const MovieCard = (props) => (
   <div class="movie-card">
     <div class="movie-card card">

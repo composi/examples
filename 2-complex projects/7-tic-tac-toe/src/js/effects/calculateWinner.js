@@ -1,4 +1,8 @@
-// Calculate the winner:
+/**
+ * Calculate the winner.
+ * @typedef {import('../types').Square} Square
+ * @param {Square[]} squares
+ */
 export function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],

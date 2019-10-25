@@ -1,4 +1,5 @@
 
+// @ts-ignore
 import { scaleLinear } from 'd3'
 
 
@@ -7,7 +8,11 @@ import { scaleLinear } from 'd3'
 const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
-// Effect to track cursor and redraw tree:
+/**
+ * ffect to track cursor and redraw tree.
+ * @param {import('../types').GetState} getState
+ * @param {import('../types').Send} send
+ */
 export function handleMouseMove(getState, send) {
   const onMouseMove = e => {
     e.preventDefault()

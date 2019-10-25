@@ -1,7 +1,7 @@
 {
   "history": [
     {
-      "squares": [null, null, null,null, null, null,null, null, null]
+      "squares": ["", "", "","", "", "","", "", ""]
     }
   ],
   "stepNumber": 0,

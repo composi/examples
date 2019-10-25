@@ -1,9 +1,18 @@
 import { h } from '@composi/core'
-import { CounterButtons } from './counter-button'
+import { CounterButtons } from './counter-buttons'
 import { Msg } from '../effects/messages'
 const { AddCounter } = Msg
 
-// Counter component:
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Message} Message
+ * @typedef {import('../types').Send} Send
+ */
+
+/**
+ * ounter component.
+ * @param {{state: State, send: Send}} props
+ */
 export function Counter({ state, send }) {
   return (
     <div class='counters-container'>

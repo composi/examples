@@ -1,6 +1,12 @@
 import { tryToConvert, toCelsius, toFahrenheit} from './utils'
 
-export function actions(prevState, msg) {
+/**
+ * @param {import('./types').State} state
+ * @param {import('./types').Message} msg
+ * @param {import('./types').Send} send
+ */
+export function actions(state, msg, send) {
+  const prevState = {...state}
   let temperature = prevState.temperature
   switch (msg.type) {
     case 'f':

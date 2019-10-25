@@ -1,4 +1,11 @@
-// Function to create random data for images:
+/**
+ * @typedef {import('../types').State} State
+ */
+/**
+ * Function to create random data for images.
+ * @param {number} count
+ * @returns {State} State
+ */
 export function buildData(count = 10) {
 
   function random(max) {

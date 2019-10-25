@@ -63,7 +63,15 @@ class DateTime {
   }
 }
 
-// Display functional component:
+/**
+ * @typedef {import('../app').State} State
+ * @typedef {import('@composi/core').Send} Send
+ */
+
+/**
+ * Display functional component.
+ * @param {{state: State, send: Send}} props
+ */
 function Display({ state, send }) {
   return (
     <div class="container-fluid">
@@ -79,7 +87,10 @@ function Display({ state, send }) {
   )
 }
 
-// Panel functional component:
+/**
+ * anel functional component.
+ * @param {{state: State, send: Send}} props
+ */
 function Panel({ state, send }) {
   return (
     <div class="container">
@@ -100,7 +111,10 @@ function Panel({ state, send }) {
   )
 }
 
-// Clock component:
+/**
+ * lock component.
+ * @param {{state: State, send: Send}} props
+ */
 export function Clock({ state, send }) {
   return (
     <div>

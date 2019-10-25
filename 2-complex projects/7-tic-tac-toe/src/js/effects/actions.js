@@ -1,11 +1,21 @@
-import { clone } from '@composi/merge-objects'
 import { Msg } from './message'
 import { handleSquareSelection } from './handleSquareSelection'
 
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Message} Message
+ * @typedef {import('../types').Send} Send
+ */
 
-// Define actions:
+/**
+ * Define actions.
+ * @param {State} state
+ * @param {Message} msg
+ * @param {Send} send
+ */
 export function actions(state, msg, send) {
-  const prevState = clone(state)
+  const prevState = {...state}
+  /** @type {import('../types').MessageUnion} */
   return Msg.match(msg, {
     selectTile: tile => {
       const newState = handleSquareSelection(prevState, tile)

@@ -1,12 +1,20 @@
 import { h, render, run } from '@composi/core'
-import { clone } from '@composi/merge-objects'
 import { List } from './components/list'
 import { createPopup } from './components/create-popup'
 import { buildData } from './utils/build-data'
 import { actions } from './effects/actions'
-import { popup, popupImage } from './components/create-popup'
 
-
+/**
+ * @typedef {import('./types').State} State
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').Send} Send
+ * @typedef {import('./types').GetState} GetState
+ * @typedef {import('./types').Program} Program
+ */
+/**
+ *
+ * @param {{state: State, send: Send}} props
+ */
 function List2({ state, send }) {
   console.log(state)
   return (
@@ -20,7 +28,10 @@ function List2({ state, send }) {
 }
 
 
-// Create initial state for program:
+/**
+ * Create initial state for program.
+ * @type {Program}
+ */
 const program = {
   init() {
     return buildData(10)
@@ -28,11 +39,13 @@ const program = {
   view(state, send) {
     return render(<List {...{state, send}} />, "#app")
   },
-  update(state, msg) {
-    // Clone state:
-    let prevState = clone(state)
-    return actions(prevState, msg)
+  update(state, msg, send) {
+    return actions(state, msg, send)
   },
+  /**
+   * @param {GetState} getState
+   * @param {Send} send
+   */
   subscriptions(getState, send) {
     return createPopup(getState, send)
   }

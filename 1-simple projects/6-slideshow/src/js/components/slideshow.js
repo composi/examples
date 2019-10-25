@@ -1,13 +1,22 @@
 import { h } from '@composi/core'
 
+/**
+ * @typedef {import('../types').State} State
+ */
+
+/**
+ * Define subscription to run during program startup.
+ * @param {{img: string, idx: number, count: number}} props
+ */
 function Slide({img, idx, count}) {
   return (
     <div  class={`slide ${count == idx + 1 ? 'active' : ''}`} style={{backgroundImage: `url(${img})`}}></div>
   )
 }
 
-
-
+/**
+ * @param {{state: State}} props
+ */
 export function SlideShow({state}) {
   return (
     <main>

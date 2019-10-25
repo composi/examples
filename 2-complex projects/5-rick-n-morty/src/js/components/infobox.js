@@ -1,8 +1,12 @@
 import {h} from '@composi/core'
 
 /**
+ * @typedef {import('../types').Character} Character
+ * @typedef {import('../types').Send} Send
+ */
+/**
  * Function to create a card (info box) for each character.
- * @param {Object<string, any>} object
+ * @param {{character: Character, send: Send}} props
  */
 export function InfoBox({ character, send }) {
   return (

@@ -5,8 +5,16 @@ import { actions } from './effects/actions'
 
 render(<Title message='Counters' />, 'header')
 
+/**
+ * @typedef {import('./types').State} State
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').Send} Send
+ */
 
-// Define initial state for program:
+/**
+ * Define initial state for program.
+ * @type {State}
+ */
 const state = {
   key: 102,
   sum: 1,
@@ -19,15 +27,25 @@ const state = {
 }
 
 // Define program:
+/** @type {import('./types').Program} */
 const program = {
   init() {
     return state
   },
-  update(state, msg) {
-    return actions(state, msg)
-  },
+  /**
+   * @param {State} state
+   * @param {Send} send
+   */
   view(state, send) {
     return render(<Counter {...{ state, send }} />, '.counters-container')
+  },
+  /**
+   * @param {State} state
+   * @param {Message} msg
+   * @param {Send} send
+   */
+  update(state, msg, send) {
+    return actions(state, msg, send)
   }
 }
 

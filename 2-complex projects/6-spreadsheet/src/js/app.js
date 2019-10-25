@@ -10,7 +10,7 @@ render(<Title message='@composi/core Spreadsheet'/>, 'header')
 // Inital state for program:
 const state = {
   inputValue: '',
-  fruits: fruitData
+  items: fruitData
 }
 
 // Define program to setup and run spreadsheet.

@@ -1,9 +1,13 @@
 import { Msg } from './messages'
-import { clone } from '@composi/merge-objects'
 
-// Define actions for update method:
-export function actions(state, msg) {
-  const prevState = clone(state)
+/**
+ * Define actions for update method:
+ * @param {import('../types').State} state
+ * @param {import('@composi/core').Message} msg
+ * @param {import('@composi/core').Send} send
+ */
+export function actions(state, msg, send) {
+  const prevState = {...state}
   return Msg.match(msg, {
     AddCounter: () => {
       prevState.counters.push({

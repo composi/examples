@@ -3,7 +3,12 @@ import { InfoBox } from './infobox'
 import { DetailBox } from './detailbox'
 import { TopBar } from './topbar'
 
-// Main component for app where we assemble the pieces together:
+/**
+ * Main component for app where we assemble the pieces together.
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ * @param {{state: State, send: Send}} props
+ */
 export function App({ state, send }) {
   const dashboard = state.dashboard
 

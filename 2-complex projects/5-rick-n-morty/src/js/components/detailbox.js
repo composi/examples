@@ -2,7 +2,7 @@ import {h} from '@composi/core'
 
 /**
  * function to show detail of character.
- * @param {Object<string, any>} object 
+ * @param {{character: import('../types').Character}} props
  */
 export function DetailBox({ character }) {
   return (

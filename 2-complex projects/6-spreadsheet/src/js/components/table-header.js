@@ -1,6 +1,9 @@
 import { h } from '@composi/core'
 
-// Create header for spreadsheet:
+/**
+ * Create header for spreadsheet.
+ * @returns {import('@composi/core').VNode}
+ */
 export function TableHeader() {
   return (
     <tr>

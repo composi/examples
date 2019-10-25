@@ -1,12 +1,19 @@
-import { clone } from '@composi/merge-objects'
 import { findCharacter } from './find-character'
 
 
-// Define actions for program:
+/**
+ * Define actions for program.
+ * @param {import('../types').State} state
+ * @param {import('../types').Message} msg
+ * @param {import('../types').Send} send
+ */
 export function actions(state, msg, send) {
   // Clone state:
-  let prevState = clone(state)
+  let prevState = {...state}
   switch (msg.type) {
+    case 'update-input-value':
+    prevState.inputValue = msg.data
+    return prevState
     case 'show-character':
       const target = msg.data.target.closest('.infobox')
       const characters = prevState.characters
@@ -19,11 +26,9 @@ export function actions(state, msg, send) {
       prevState.dashboard = true
       return prevState
     case 'find-character':
-      if (msg.data.keyCode == 13) {
-        prevState = findCharacter(msg.data, prevState)
-      }
+      prevState = findCharacter(prevState)
       return prevState
     case 'use-fetched-data':
-      return msg.value
+      return msg.data
   }
 }

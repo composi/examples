@@ -1,13 +1,16 @@
 import { Msg } from './messages'
-import { clone } from '@composi/merge-objects'
 
 // Actions for spreadsheet:
+/**
+ * @param {import('../types').State} state
+ * @param {import('../types').Message} msg
+ */
 export function actions(state, msg) {
-  const prevState = clone(state)
+  const prevState = {...state}
   return Msg.match(msg, {
-    'AddItem': item => {
+    addItem: item => {
       if (!item.product) return
-      prevState.fruits.push({
+      prevState.items.push({
         product: item.product,
         price: parseInt(item.price) || 0,
         quantity: parseInt(item.quantity) || 0
@@ -15,16 +18,16 @@ export function actions(state, msg) {
       prevState.inputValue = ''
       return prevState
     },
-    'DeleteItem': product => {
-      prevState.fruits = prevState.fruits.filter(fruit => fruit.product != product)
+    deleteItem: product => {
+      prevState.items = prevState.items.filter(item => item.product != product)
       return prevState
     },
-    'UpdateItemPrice': item => {
-      prevState.fruits[item.idx].price = parseInt(item.price)
+    updateItemPrice: item => {
+      prevState.items[item.idx].price = parseInt(item.price)
       return prevState
     },
-    'UpdateItemQuantity': item => {
-      prevState.fruits[item.idx].quantity = parseInt(item.quantity)
+    updateItemQuantity: item => {
+      prevState.items[item.idx].quantity = parseInt(item.quantity)
       return prevState
     }
   })

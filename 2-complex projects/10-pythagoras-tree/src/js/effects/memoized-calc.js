@@ -1,5 +1,5 @@
 
-Math.deg = radians => radians * (180 / Math.PI)
+Math['deg'] = radians => radians * (180 / Math.PI)
 
 // Memoize values to avoid unnecessary calculations.
 export const memoizedCalc = (function () {
@@ -20,8 +20,8 @@ export const memoizedCalc = (function () {
       const result = {
         nextRight: Math.sqrt(trigH ** 2 + (w * (0.5 + lean)) ** 2),
         nextLeft: Math.sqrt(trigH ** 2 + (w * (0.5 - lean)) ** 2),
-        A: Math.deg(Math.atan(trigH / ((0.5 - lean) * w))),
-        B: Math.deg(Math.atan(trigH / ((0.5 + lean) * w)))
+        A: Math['deg'](Math.atan(trigH / ((0.5 - lean) * w))),
+        B: Math['deg'](Math.atan(trigH / ((0.5 + lean) * w)))
       }
 
       memo[memoKey] = result

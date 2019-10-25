@@ -3,7 +3,22 @@ import { h } from '@composi/core'
 import { memoizedCalc } from '../effects/memoized-calc'
 import { interpolateWarm } from 'd3'
 
-// Function component to create tree segments.
+/**
+ * Function component to create tree segments.
+ * @typedef {import('@composi/core').VNode} VNode
+ * @typedef {Object} Props
+ * @prop {number} w
+ * @prop {number} x
+ * @prop {number} y
+ * @prop {number} heightFactor
+ * @prop {number} lean
+ * @prop {number} left
+ * @prop {number} right
+ * @prop {number} lvl
+ * @prop {number} maxlvl
+ * @param {Props} props
+ * @returns {VNode} VNode
+ */
 export const Pythagoras = ({
   w,
   x,

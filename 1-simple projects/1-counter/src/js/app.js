@@ -1,11 +1,19 @@
 import { h, render, run } from '@composi/core'
-import { clone } from '@composi/merge-objects'
 import { Title } from './components/title'
 
 // Render title component:
 render(<Title message='Counter' />, 'header')
 
-// Define clicker as functional component.
+/**
+ * @typedef {import('@composi/core').Message} Message
+ * @typedef {import('@composi/core').Send} Send
+ * @typedef {Object} State
+ * @prop {number} count
+ */
+ /**
+  * Define clicker as functional component.
+  * @param {{state: State, send: Send}} props
+  */
 function Clicker({state, send}) {
   return (
     <div class="container">
@@ -29,7 +37,11 @@ function Clicker({state, send}) {
   )
 }
 
-// Actions for program update method:
+/**
+ * Actions for program update method.
+ * @param {State} state
+ * @param {Message} msg
+ */
 function actions(state, msg) {
   switch (msg.type) {
     case 'increment':
@@ -56,7 +68,7 @@ const program = {
     return render(<Clicker {...{state, send}}/>, '.container')
   },
   update(state, msg) {
-    const prevState = clone(state)
+    const prevState = {...state}
     return actions(prevState, msg)
   }
 }

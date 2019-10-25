@@ -1,5 +1,10 @@
 import { h } from '@composi/core'
 
+/**
+ *
+ * @param {*} props
+ * @returns {import('@composi/core').VNode} VNode
+ */
 export default function HeroSearch({search, searchResults, blurSearchInput}) {
   return (
     <div id="search-component">

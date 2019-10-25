@@ -1,7 +1,13 @@
 import { h } from '@composi/core'
 
-
-// Define list component for images:
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ */
+/**
+ * Define list component for images.
+ * @param {{state: State, send: Send}} props
+ */
 export function List2({ state, send }) {
   return (
     <div id="app">
@@ -12,6 +18,9 @@ export function List2({ state, send }) {
     </div>
   )
 }
+/**
+ * @param {{state: State, send: Send}} props
+ */
 export function List({ state, send }) {
   return (
     <div id="app">

@@ -1,5 +1,11 @@
 import { h } from '@composi/core'
 
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ * @param {{state: State, send: Send}} props
+ * @returns {import('@composi/core').VNode | string} VNode
+ */
 export function HeroList({state, send}) {
   if (!state || !state.heroes.length) {
     return ''

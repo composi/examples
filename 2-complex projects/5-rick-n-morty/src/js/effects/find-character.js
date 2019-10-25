@@ -1,8 +1,9 @@
-// Function to find a character based on data intered in search box.
-export function findCharacter(e, state) {
-  const input = e.target
-  const value = input.value
-
+/**
+ * Function to find a character based on data intered in search box.
+ * @param {import('../types').State} state
+ */
+export function findCharacter(state) {
+  const value = state.inputValue
   const characters = state.characters
   if (value) {
     const character = characters.filter(char => {

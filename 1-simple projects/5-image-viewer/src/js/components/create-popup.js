@@ -5,7 +5,15 @@ import { h, render } from '@composi/core'
 export let popup = undefined
 export let popupImage = undefined
 
-// Define effect to run when program starts:
+/**
+ * @typedef {import('../types').GetState} GetState
+ * @typedef {import('../types').Send} Send
+ */
+/**
+ * Define effect to run when program starts.
+ * @param {GetState} getState
+ * @param {Send} send
+ */
 export function createPopup(getState, send) {
   function Mask() {
     return (

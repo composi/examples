@@ -56,8 +56,6 @@ function Board({ squares, winner, send}) {
 export function Game({ state, send }) {
   // Keep track of choice to enable time travel:
   const history = state.history
-  console.log('state.stepNumber:')
-  console.log(state)
   const current = state.history[state.stepNumber]
   const winner = calculateWinner(current.squares)
 

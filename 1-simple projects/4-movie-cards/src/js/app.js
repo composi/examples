@@ -6,21 +6,44 @@ import movieService from './services/movieService';
 // Render title for app:
 render(<Title message='Movie Cards'/>, 'header')
 
+/**
+ * @typedef {import('./types').State} State
+ * @typedef {import('./types').Send} Send
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').GetState} GetState
+ */
 
+/**
+ * @type {import('./types').Program}
+ */
 const program = {
   init() {
     return { movies: [] }
   },
+  /**
+   * @param {State} state
+   * @param {Send} send
+   */
   view(state, send) {
     if (!state || !state.length) return
     return render(<Movies {...{ state, send }} />, '.container-fluid')
   },
-  update(state, msg) {
+  /**
+   *
+   * @param {State} state
+   * @param {Message} msg
+   * @param {Send} send
+   */
+  update(state, msg, send) {
     switch (msg.type) {
       case 'load-movies':
-        return msg.value
+        return msg.data
     }
   },
+  /**
+   * @param {GetState} getState
+   * @param {Send} send
+   */
   subscriptions(getState, send) {
     return movieService(getState, send)
   }
