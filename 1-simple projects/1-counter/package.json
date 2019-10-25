@@ -14,7 +14,7 @@
     "format": "prettier --no-semi --single-quote --write ./src/js/*",
     "lint": "eslint --config ./.eslintrc.json src/js",
     "start": "npm run build",
-    "test": "tsc --allowJs --checkJs --noEmit --moduleResolution node --target ES6 --jsx react --jsxFactory h src/js/*.js"
+    "test": "tsc"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
