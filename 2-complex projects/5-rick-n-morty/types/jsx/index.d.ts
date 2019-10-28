@@ -62,7 +62,9 @@ declare global {
     // https://github.com/ryansolid/babel-plugin-jsx-dom-expressions#oneventname--model
     interface DOMAttributes<T> extends CustomAttributes<T> {
       children?: Children;
+      colspan?: number | string;
       innerHTML?: string;
+      rowspan?: number | string;
 
       // Clipboard Events
       oncopy?: EventHandler<T, ClipboardEvent>;
@@ -239,9 +241,7 @@ declare global {
       alt?: string;
       async?: boolean;
       autocomplete?: string;
-      autoFocus?: boolean;
       autofocus?: boolean;
-      autoPlay?: boolean;
       autoplay?: boolean;
       capture?: boolean;
       cellpadding?: number | string;
@@ -252,8 +252,7 @@ declare global {
       classID?: string;
       className?: string;
       class?: string;
-      cols?: number;
-      colSpan?: number;
+      cols?: number | string;
       content?: string;
       contenteditable?: boolean;
       contextmenu?: string;
@@ -280,7 +279,7 @@ declare global {
       headers?: string;
       height?: number | string;
       hidden?: boolean;
-      high?: number;
+      high?: number | string;
       href?: string;
       hreflang?: string;
       htmlFor?: string;
@@ -298,17 +297,17 @@ declare global {
       lang?: string;
       list?: string;
       loop?: boolean;
-      low?: number;
+      low?: number | string;
       manifest?: string;
-      marginheight?: number;
-      marginwidth?: number;
+      marginheight?: number | string;
+      marginwidth?: number | string;
       max?: number | string;
-      maxLength?: number;
+      maxLength?: number | string;
       media?: string;
       mediaGroup?: string;
       method?: string;
       min?: number | string;
-      minLength?: number;
+      minLength?: number | string;
       multiple?: boolean;
       muted?: boolean;
       name?: string;
@@ -327,8 +326,7 @@ declare global {
       required?: boolean;
       reversed?: boolean;
       role?: string;
-      rows?: number;
-      rowspan?: number;
+      rows?: number | string;
       sandbox?: string;
       scope?: string;
       scoped?: boolean;
@@ -336,20 +334,20 @@ declare global {
       seamless?: boolean;
       selected?: boolean;
       shape?: string;
-      size?: number;
+      size?: number | string;
       sizes?: string;
-      span?: number;
+      span?: number | string;
       spellCheck?: boolean;
       spellcheck?: boolean;
       src?: string;
       srcdoc?: string;
       srclang?: string;
       srcset?: string;
-      start?: number;
+      start?: number | string;
       step?: number | string;
       style?: Partial<CSSStyleDeclaration>;
       summary?: string;
-      tabindex?: number;
+      tabindex?: number | string;
       target?: string;
       title?: string;
       type?: string;
@@ -380,7 +378,7 @@ declare global {
       itemtype?: string;
       itemid?: string;
       itemref?: string;
-      results?: number;
+      results?: number | string;
       security?: string;
       unselectable?: boolean;
     }
