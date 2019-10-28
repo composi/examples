@@ -21,5 +21,7 @@ export function noop() {}
  * @prop {string} activeComponent
  * @prop {Hero} selectedHero
  * @prop {string} newHero
+ * @prop {string[]} searchResults
+ * @prop {string} inputValue
  */
 

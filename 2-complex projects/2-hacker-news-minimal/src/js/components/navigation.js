@@ -2,6 +2,9 @@ import { h } from '@composi/core'
 import Title from './title'
 import Button from './button'
 
+/**
+ * @param {{lastUpdate: Date, send: import('../types').Send}} props
+ */
 export default function Navigation({lastUpdate, send}) {
   return (
     <div class="navigation">

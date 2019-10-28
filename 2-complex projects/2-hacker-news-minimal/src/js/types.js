@@ -7,16 +7,22 @@ export function noop() {}
  * @typedef {import('@composi/core').Program} Program
  * @typedef {() => State} GetState
  */
+
 /**
- * @typedef {Object} Movie
+ * @typedef {Object} Item
+ * @prop {string} by
+ * @prop {number} descendants
  * @prop {number} id
+ * @prop {number[]} kids
+ * @prop {number} score
+ * @prop {number} time
  * @prop {string} title
- * @prop {string} subtitle
- * @prop {string} description
- * @prop {number} year
- * @prop {string} imageUrl
- * @prop {number} rating
+ * @prop {string} type
+ * @prop {string} url
  */
 /**
- * @typedef {Movie[]} State
+ * @typedef {Object} State
+ * @prop {Date} lastUpdate
+ * @prop {Item[]} items
  */
+

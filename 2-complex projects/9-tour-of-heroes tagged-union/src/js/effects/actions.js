@@ -12,7 +12,6 @@ const { showDetail, activeComponent, saveLocally } = Msg
 export function actions(state, msg, send) {
   const prevState = {...state}
 
-  /** @type {import('../types').MessageUnion} */
   return Msg.match(msg, {
     useFetchedHeroes: data => {
       const newState = { ...data }

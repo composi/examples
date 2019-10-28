@@ -5,6 +5,10 @@ import { guessEngine } from '../components/game';
 export function initGame() {
   guessEngine.startNewGame('EASY')
 }
+
+/**
+ * @param {string | Symbol} difficulty
+ */
 export function startGame(difficulty) {
   guessEngine.startNewGame(difficulty)
 }

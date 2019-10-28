@@ -26,7 +26,7 @@ export function noop() {}
  * @typedef {Object} ActionMethods
  * @prop {(item: {product: string, price: string, quantity: string}) => State} addItem
  * @prop {(product: string) => State} deleteItem
- * @prop {(item: {price: string, idx: number}) => State} updateItemPrice
+ * @prop {(item: {price: string, idx: string}) => State} updateItemPrice
  * @prop {(item: {quantity: string, idx: string}) => State} updateItemQuantity
 */
 
@@ -35,6 +35,6 @@ export function noop() {}
  * @prop {(msg: Message, Object: ActionMethods) => State} match
  * @prop {(item: {product: string, price: number, quantity: number}) => Message} addItem
  * @prop {(product: string) => Message} deleteItem
- * @prop {(item: {price: string, idx: number}) => Message} updateItemPrice
+ * @prop {(item: {price: string, idx: string}) => Message} updateItemPrice
  * @prop {(item: {quantity: string, idx: string}) => Message} updateItemQuantity
  */

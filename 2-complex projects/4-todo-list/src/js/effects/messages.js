@@ -1,4 +1,6 @@
 import { union } from '@composi/core'
 
-// Create a tagged union.
+/** Create a tagged union.
+ * @type {import('../types').MessageUnion}
+ */
 export const Msg = union('UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', 'ShowCompleted', 'ShowAll', 'RenderLocalState')

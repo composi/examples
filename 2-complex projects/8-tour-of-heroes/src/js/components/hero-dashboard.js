@@ -1,5 +1,4 @@
 import { h } from '@composi/core'
-import HeroSearch from './hero-search'
 
 /**
  * @typedef {import('../types').State} State

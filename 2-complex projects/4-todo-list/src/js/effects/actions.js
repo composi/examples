@@ -10,6 +10,10 @@ const setButtonState = index => {
 }
 
 // Actions for program's update method:
+/**
+ * @param {import('../types').State} prevState
+ * @param {import('../types').Message} msg
+ */
 export function actions(prevState, msg) {
   return Msg.match(msg, {
     UpdateInputValue: value => {
@@ -68,7 +72,5 @@ export function actions(prevState, msg) {
     RenderLocalState: state => {
       return state
     }
-  }, (msg) => {
-    console.log(`There was no match. We received: ${msg}`)
   })
 }

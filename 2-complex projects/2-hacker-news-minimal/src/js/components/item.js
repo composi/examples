@@ -2,6 +2,9 @@ import { h } from '@composi/core'
 
 let getDomain = url => url && (url.split('/')[ ~url.indexOf('://') ? 2 : 0 ]).replace(/^www\./,'') || null
 
+/**
+ * @param {{item: import('../types').Item}} props
+ */
 export function Item({item}) {
 	return (
     <li class="item">

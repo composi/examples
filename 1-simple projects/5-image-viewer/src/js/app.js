@@ -36,9 +36,18 @@ const program = {
   init() {
     return buildData(10)
   },
+  /**
+   * @param {State} state
+   * @param {Send} send
+   */
   view(state, send) {
     return render(<List {...{state, send}} />, "#app")
   },
+  /**
+   * @param {State} state
+   * @param {Message} msg
+   * @param {Send} send
+   */
   update(state, msg, send) {
     return actions(state, msg, send)
   },

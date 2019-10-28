@@ -10,7 +10,8 @@ export function noop() {}
 
 /**
  * @typedef {string} Square
- * @typedef {{squares: Square[]}} Squares
+ * @prop {Square[]} squares
+ * @typedef {{squares: string[]}} Squares
  */
 /**
  * @typedef {Object} State
@@ -18,6 +19,11 @@ export function noop() {}
  * @prop {boolean} xIsNext
  * @prop {Squares[]} history
  */
+
+ /**
+  * @typedef {Array} Winner
+  * @prop {number[]} line
+  */
 
 /**
  * @typedef {Object} ActionMethods

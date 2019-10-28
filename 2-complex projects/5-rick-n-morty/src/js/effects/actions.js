@@ -15,7 +15,7 @@ export function actions(state, msg, send) {
     prevState.inputValue = msg.data
     return prevState
     case 'show-character':
-      const target = msg.data.target.closest('.infobox')
+      const target = /** @type {HTMLElement} */(msg.data.target.closest('.infobox'))
       const characters = prevState.characters
       const id = target.dataset.id
       const character = characters.filter(char => id === char.id)[0]

@@ -1,11 +1,21 @@
 import { startGame } from './start-game'
-import { clone } from '@composi/merge-objects'
 import { guessEngine } from '../components/game';
 import { DifficultyLevel } from '../lib/GuessEngine';
 
+
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Message} Message
+ * @typedef {import('../types').Send} Send
+ */
+/**
+ * @param {State} state
+ * @param {Message} msg
+ * @param {Send} send
+ */
 export function actions(state, msg, send) {
 
-  const prevState = clone(state)
+  const prevState = {...state}
   switch (msg.type) {
     case 'EASY':
       startGame(DifficultyLevel.EASY)

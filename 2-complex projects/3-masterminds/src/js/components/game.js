@@ -1,8 +1,16 @@
 import { h } from '@composi/core'
 import { DifficultyLevel, GuessEngine } from '../lib/GuessEngine';
 
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ */
+
 export const guessEngine = new GuessEngine();
 
+/**
+ * @param {State} state
+ */
 function outcomeClass(state) {
   const indicator = state.indicator;
 
@@ -33,7 +41,9 @@ function outcomeClass(state) {
   return 'indicator--blue fa fa-thermometer-0 fa-2x';
 }
 
-
+/**
+ * @param {{state: State, send: Send}} props
+ */
 export function Game({state, send}) {
   function activeLinkClass(difficultyLevel) {
     return guessEngine.difficultyLevel === difficultyLevel ? 'active' : '';
@@ -86,7 +96,7 @@ export function Game({state, send}) {
               <div class="game-outcome">
                 <h3 class='win'>{state.outcome}</h3>
                 <button class="btn btn-lg btn-success btn-block"
-                  onClick={() => send({type:'EASY'})}>PLAY AGAIN</button>
+                  onclick={() => send({type:'EASY'})}>PLAY AGAIN</button>
               </div>
             </div>
           }

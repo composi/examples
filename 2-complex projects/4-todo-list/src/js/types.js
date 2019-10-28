@@ -8,15 +8,40 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 /**
- * @typedef {Object} Movie
+ * @typedef {Object} Item
  * @prop {number} id
- * @prop {string} title
- * @prop {string} subtitle
- * @prop {string} description
- * @prop {number} year
- * @prop {string} imageUrl
- * @prop {number} rating
- */
+ * @prop {string} value
+ * @prop {boolean} active
+ * @prop {boolean} hidden
 /**
- * @typedef {Movie[]} State
+ * @typedef {Object} State
+ * @prop {number} newKey
+ * @prop {string} inputValue
+ * @prop {boolean[]} selectedButton
+ * @prop {Item[]} items
  */
+
+//UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', '', 'ShowAll', 'RenderLocalState
+ /**
+  * @typedef {Object} ActionMethods
+  * @prop {(value: string) => State} UpdateInputValue
+  * @prop {() => State} AddItem
+  * @prop {(key: number) => State} DeleteItem
+  * @prop {(id: number) => State} SetActiveState
+  * @prop {() => State} ShowActive
+  * @prop {() => State} ShowCompleted
+  * @prop {() => State} ShowAll
+  * @prop {(state: State) => State} RenderLocalState
+  */
+ /**
+  * @typedef {Object} MessageUnion
+  * @prop {(msg: Message, Object: ActionMethods) => State} match
+  * @prop {(value: string) => Message} UpdateInputValue
+  * @prop {() => Message} AddItem
+  * @prop {(key: number) => Message} DeleteItem
+  * @prop {(id: number) => Message} SetActiveState
+  * @prop {() => Message} ShowActive
+  * @prop {() => Message} ShowCompleted
+  * @prop {() => Message} ShowAll
+  * @prop {(state: State) => Message} RenderLocalState
+  */

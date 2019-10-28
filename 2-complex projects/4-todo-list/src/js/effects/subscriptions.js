@@ -16,6 +16,7 @@ function handleEnterKey(getState, send) {
 
 
 // Default state:
+/** @type {import('../types').State} */
 const initialState = {
   newKey: 104,
   items: [
@@ -27,6 +28,10 @@ const initialState = {
   inputValue: ''
 }
 
+/**
+ * @param {import('../types').GetState} getState
+ * @param {import('../types').Send} send
+ */
 function getData(getState, send) {
   (async () => {
     const todos = await idb.get('todos')

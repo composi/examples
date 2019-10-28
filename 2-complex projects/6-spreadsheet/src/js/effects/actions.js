@@ -4,8 +4,9 @@ import { Msg } from './messages'
 /**
  * @param {import('../types').State} state
  * @param {import('../types').Message} msg
+ * @param {import('../types').Send} send
  */
-export function actions(state, msg) {
+export function actions(state, msg, send) {
   const prevState = {...state}
   return Msg.match(msg, {
     addItem: item => {

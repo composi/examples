@@ -16,6 +16,10 @@ const showMovies = (movies) => {
   );
 };
 
+/**
+ * @typedef {import('../../types').Movie} Movie
+ * @param {{movies: Movie[]}} props
+ */
 const MovieList = (props) => (
   <div>
     {showMovies(props.movies)}

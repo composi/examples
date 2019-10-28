@@ -2,7 +2,14 @@ import { h } from '@composi/core'
 import Navigation from './navigation'
 import { Item } from './item'
 
-// Main functional component.
+/**
+ * @typedef {import('../types').State} State
+ * @typedef {import('../types').Send} Send
+ */
+/**
+ * Main functional component.
+ * @param {{state: State, send: Send}} props
+ */
 export function HackerNews({ state, send }) {
   const lastUpdate = state.lastUpdate
 
