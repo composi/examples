@@ -62,9 +62,7 @@ declare global {
     // https://github.com/ryansolid/babel-plugin-jsx-dom-expressions#oneventname--model
     interface DOMAttributes<T> extends CustomAttributes<T> {
       children?: Children;
-      colspan?: number | string;
       innerHTML?: string;
-      rowspan?: number | string;
 
       // Clipboard Events
       oncopy?: EventHandler<T, ClipboardEvent>;
@@ -111,6 +109,18 @@ declare global {
       onkeypresscapture?: EventHandler<T, KeyboardEvent>;
       onkeyup?: EventHandler<T, KeyboardEvent>;
       onkeyupcapture?: EventHandler<T, KeyboardEvent>;
+
+      // Pointer Events
+      ongotpointercapture?: EventHandler<T, Event>;
+      onlostpointercapture?: EventHandler<T, Event>;
+      onpointercancel?: EventHandler<T, Event>;
+      onpointerdown?: EventHandler<T, Event>;
+      onpointerenter?: EventHandler<T, Event>;
+      onpointerleave?: EventHandler<T, Event>;
+      onpointermove?: EventHandler<T, Event>;
+      onpointerout?: EventHandler<T, Event>;
+      onpointerover?: EventHandler<T, Event>;
+      onpointerup?: EventHandler<T, Event>;
 
       // Media Events
       onabort?: EventHandler<T, Event>;
@@ -252,6 +262,7 @@ declare global {
       classID?: string;
       className?: string;
       class?: string;
+      colspan?: number | string;
       cols?: number | string;
       content?: string;
       contenteditable?: boolean;
@@ -260,7 +271,7 @@ declare global {
       coords?: string;
       crossorigin?: string;
       data?: string;
-      dataSet?: Object;
+      dataset?: string;
       dateTime?: string;
       default?: boolean;
       defer?: boolean;
@@ -282,7 +293,6 @@ declare global {
       high?: number | string;
       href?: string;
       hreflang?: string;
-      htmlFor?: string;
       for?: string;
       httpEquiv?: string;
       id?: string;
@@ -327,6 +337,7 @@ declare global {
       reversed?: boolean;
       role?: string;
       rows?: number | string;
+      rowspan?: number | string;
       sandbox?: string;
       scope?: string;
       scoped?: boolean;

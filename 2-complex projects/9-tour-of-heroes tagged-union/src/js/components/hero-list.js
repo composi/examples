@@ -16,7 +16,7 @@ export function HeroList({ state, send }) {
     return (
       <div>
         <p class='form--add-hero'>
-          <label htmlFor="add-hero">Hero name: </label>
+          <label for="add-hero">Hero name: </label>
           <input id='add-hero' type="text" oninput={e => send(newHero(e.target.value))} value={state.newHero} />
           <button onclick={() => send(addHero())}>Add</button>
         </p>
