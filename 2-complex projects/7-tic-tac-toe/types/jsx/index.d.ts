@@ -23,7 +23,6 @@ declare global {
     }
 
     // Let TS know the name of the `children` property in order for it to be able to type check them.
-    // https://github.com/Microsoft/TypeScript/issues/18357
     interface ElementChildrenAttribute {
       children: {};
     }
@@ -42,12 +41,10 @@ declare global {
 
     // Intrinsic attributes enable us to define certain keys as attributes on an element, while
     // at the same time hiding them from the element's `props`.
-    // https://github.com/Microsoft/TypeScript/issues/5478
     interface IntrinsicAttributes {
       props?: Props;
     }
 
-    // https://github.com/ryansolid/babel-plugin-jsx-dom-expressions#special-binding
     interface CustomAttributes<T> {
       classList?: { [k: string]: boolean | undefined };
       events?: { [key: string]: EventHandler<T, CustomEvent> };
@@ -59,7 +56,6 @@ declare global {
     }
 
     // Lowercase events are considered directly bound events.
-    // https://github.com/ryansolid/babel-plugin-jsx-dom-expressions#oneventname--model
     interface DOMAttributes<T> extends CustomAttributes<T> {
       children?: Children;
       innerHTML?: string;
@@ -379,7 +375,6 @@ declare global {
       vocab?: string;
 
       // Non-standard Attributes
-      autoCapitalize?: string;
       autocapitalize?: string;
       autocorrect?: string;
       autosave?: string;
@@ -650,7 +645,7 @@ declare global {
     }
 
     interface IntrinsicElements {
-      // HTML
+      // HTML Tags
       a: HTMLAttributes<HTMLAnchorElement>;
       abbr: HTMLAttributes<HTMLElement>;
       address: HTMLAttributes<HTMLElement>;
