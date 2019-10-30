@@ -5,6 +5,8 @@ const { deleteHero } = Msg
 /**
  * @typedef {import('../types').Hero} Hero
  * @typedef {import('../types').Send} Send
+ */
+/**
  * @param {{hero: Hero, send: Send}} props
  * @returns {import('@composi/core').VNode} VNode
  */

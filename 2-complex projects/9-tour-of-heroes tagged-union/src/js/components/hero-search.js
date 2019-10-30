@@ -9,7 +9,6 @@ const { search } = Msg
  * @returns {import('@composi/core').VNode} VNode
  */
 export function HeroSearch({ state, send }) {
-  console.log(state.searchResults)
   return (
     <div id="search-component">
       <h4>Hero Search</h4>

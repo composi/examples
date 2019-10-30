@@ -5,6 +5,7 @@ import { Menu } from './components/menu'
 import { getHeroes } from './effects/subscriptions'
 import { App } from './components/app'
 import { actions } from './effects/actions'
+import {setupRoutes} from './routes'
 
 
 render(<Title message='Tour of Heroes' />, 'header')
@@ -62,28 +63,4 @@ export const program = {
 
 run(program)
 
-const router = Router()
-
-// Capture the program's send function so we can
-// dispatch messages to it from the routes:
-const { send } = program
-
-router(
-  {
-    path: "/",
-    action: () => send({ type: 'active-component', data: 'dashboard' })
-  },
-  {
-    path: '/dashboard',
-    action: () => send({ type: 'active-component', data: 'dashboard' })
-  },
-  {
-    path: '/heroes',
-    action: () => send({ type: 'active-component', data: 'heroes' })
-  }
-  ,
-  {
-    path: '/detail/:id',
-    action: id => send({ type: 'show-detail', data: id })
-  }
-)
+setupRoutes(program)

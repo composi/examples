@@ -11,6 +11,6 @@
   "include": [
     "src/js/*",
     "node_modules/@composi/**/src/*",
-    "types/jsx/index.d.ts"
+    "types/**/*.ts"
   ]
 }

@@ -23,9 +23,9 @@ export function actions(state, msg, send) {
       return newState
     },
     activeComponent: activeComponent => ({ ...prevState, activeComponent, searchResults: /** @type {any} */([]) }),
-    showDetail: person => {
+    showDetail: id => {
       if (!prevState.heroes) return
-      const position = prevState.heroes.findIndex(person => person.id == msg.data)
+      const position = prevState.heroes.findIndex(person => person.id == id)
       if (position === -1) {
         prevState.activeComponent = 'heroes'
       } else {
