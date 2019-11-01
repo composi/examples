@@ -41,8 +41,9 @@ function Clicker({state, send}) {
  * Actions for program update method.
  * @param {State} state
  * @param {Message} msg
+ * @param {Send} send
  */
-function actions(state, msg) {
+function actions(state, msg, send) {
   switch (msg.type) {
     case 'increment':
       state.count++
@@ -64,12 +65,22 @@ const program = {
   init() {
     return {count: 0}
   },
+  /**
+   *
+   * @param {State} state
+   * @param {Send} send
+   */
   view(state, send) {
     return render(<Clicker {...{state, send}}/>, '.container')
   },
-  update(state, msg) {
+  /**
+   * @param {State} state
+   * @param {Message} msg
+   * @param {Send} send
+   */
+  update(state, msg, send) {
     const prevState = {...state}
-    return actions(prevState, msg)
+    return actions(prevState, msg, send)
   }
 }
 

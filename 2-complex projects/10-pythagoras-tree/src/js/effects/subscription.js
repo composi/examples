@@ -9,18 +9,22 @@ const SVG_WIDTH = () => window.innerWidth
 const SVG_HEIGHT = () => window.innerHeight
 
 /**
- * ffect to track cursor and redraw tree.
+ * @typedef {MouseEvent | Touch | TouchEvent} CustomEvent
+ */
+/**
+ * Effect to track cursor and redraw tree.
  * @param {import('../types').GetState} getState
  * @param {import('../types').Send} send
  */
 export function handleMouseMove(getState, send) {
-  const onMouseMove = e => {
-    e.preventDefault()
-    let x = e.clientX
-    let y = e.clientY
-    if (e.touches) {
-      x = e.pageX
-      y = e.pageY
+  /** @param {CustomEvent} e */
+  function onMouseMove(e) {
+    /** @type {MouseEvent} */(e).preventDefault()
+    let x = /** @type {MouseEvent} */(e).clientX
+    let y = /** @type {MouseEvent} */(e).clientY
+    if (/** @type {TouchEvent} */(e).touches) {
+      x = /** @type {Touch} */(e).pageX
+      y = /** @type {Touch} */(e).pageY
     }
     let scaleFactor = scaleLinear().domain([SVG_HEIGHT(), 0]).range([0, 0.8]);
     let scaleLean = scaleLinear().domain([0, SVG_WIDTH() / 2, SVG_WIDTH()]).range([0.5, 0, -0.5]);
@@ -39,5 +43,5 @@ export function handleMouseMove(getState, send) {
   // Listeners to track cursor and finger movement.
   document.body.addEventListener('mousemove', onMouseMove)
   document.body.addEventListener('touchmove', onMouseMove)
-  document.body.addEventListener('touchcancel', onMouseMove)
+  // document.body.addEventListener('touchcancel', onMouseMove)
 }
