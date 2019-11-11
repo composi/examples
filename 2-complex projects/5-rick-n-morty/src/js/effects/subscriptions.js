@@ -1,4 +1,4 @@
-import { batchEffects } from '@composi/core'
+import { batch } from '@composi/core'
 
 /**
  * @typedef {import('../types').GetState} GetState
@@ -30,4 +30,4 @@ function getCharacters(getState, send) {
   })()
 }
 
-export const subs = batchEffects(handleEnterKey, getCharacters)
+export const subs = batch(handleEnterKey, getCharacters)
