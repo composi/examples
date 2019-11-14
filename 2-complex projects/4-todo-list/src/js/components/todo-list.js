@@ -1,9 +1,8 @@
 import { h } from '@composi/core'
 import { ListItem } from './list-item'
 import { Footer } from './footer'
-import { Msg } from '../effects/messages'
+import { Msg, UpdateInputValue, AddItem } from '../effects/messages'
 import { setFocus } from '../effects/visual-effecs'
-const { UpdateInputValue, AddItem } = Msg
 
 /**
  * @typedef {import('../types').State} State

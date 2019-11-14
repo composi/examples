@@ -43,4 +43,4 @@ function getData(getState, send) {
   })()
 }
 
-export const batchedSubscriptions = batch(handleEnterKey, getData)
+export const batchedSubs = batch(handleEnterKey, getData)
