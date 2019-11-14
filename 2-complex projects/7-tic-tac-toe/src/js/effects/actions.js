@@ -17,15 +17,15 @@ export function actions(state, msg, send) {
   const prevState = {...state}
   /** @type {import('../types').MessageUnion} */
   return Msg.match(msg, {
-    selectTile: tile => {
+    SelectTile: tile => {
       const newState = handleSquareSelection(prevState, tile)
       return newState
     },
-    jumpTo: jump => {
+    JumpTo: jump => {
       prevState.stepNumber = jump
       prevState.xIsNext = (jump % 2) === 0
       return prevState
     },
-    useFetchedData: data => data
+    UseFetchedData: data => data
   })
 }

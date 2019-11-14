@@ -1,6 +1,5 @@
 import { h } from '@composi/core'
-import { Msg } from '../effects/messages'
-const { addItem } = Msg
+import { AddItem } from '../effects/messages'
 
 /**
  * Form to add new item to spreadsheet.
@@ -35,7 +34,7 @@ export function NewRowForm({ state, send }) {
         <input placeholder='0.00' oninput={e => setQuantity(e.target.value)} name='quantity' id='quantity' type="text" tabindex='3' />
       </p>
       <p>
-        <button onclick={() => send(addItem({ product, price, quantity }))} id='addRow'>Add Row</button>
+        <button onclick={() => send(AddItem({ product, price, quantity }))} id='addRow'>Add Row</button>
       </p>
     </div>
   )

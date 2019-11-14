@@ -27,15 +27,15 @@ export function noop() {}
 
 /**
  * @typedef {Object} ActionMethods
- * @prop {(tile: number) => State} selectTile
- * @prop {(jump: number) => State} jumpTo
- * @prop {(data: State) => State} useFetchedData
+ * @prop {(tile: number) => State} SelectTile
+ * @prop {(jump: number) => State} JumpTo
+ * @prop {(data: State) => State} UseFetchedData
 */
 
 /**
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
- * @prop {(tile: number) => Message} selectTile
- * @prop {(jump: number) => Message} jumpTo
- * @prop {(data: State) => Message} useFetchedData
+ * @prop {(tile: number) => Message} SelectTile
+ * @prop {(jump: number) => Message} JumpTo
+ * @prop {(data: State) => Message} UseFetchedData
  */

@@ -24,17 +24,17 @@ export function noop() {}
 
 /**
  * @typedef {Object} ActionMethods
- * @prop {(item: {product: string, price: string, quantity: string}) => State} addItem
- * @prop {(product: string) => State} deleteItem
- * @prop {(item: {price: string, idx: string}) => State} updateItemPrice
- * @prop {(item: {quantity: string, idx: string}) => State} updateItemQuantity
+ * @prop {(item: {product: string, price: string, quantity: string}) => State} AddItem
+ * @prop {(product: string) => State} DeleteItem
+ * @prop {(item: {price: string, idx: string}) => State} UpdateItemPrice
+ * @prop {(item: {quantity: string, idx: string}) => State} UpdateItemQuantity
 */
 
 /**
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
- * @prop {(item: {product: string, price: number, quantity: number}) => Message} addItem
- * @prop {(product: string) => Message} deleteItem
- * @prop {(item: {price: string, idx: string}) => Message} updateItemPrice
- * @prop {(item: {quantity: string, idx: string}) => Message} updateItemQuantity
+ * @prop {(item: {product: string, price: number, quantity: number}) => Message} AddItem
+ * @prop {(product: string) => Message} DeleteItem
+ * @prop {(item: {price: string, idx: string}) => Message} UpdateItemPrice
+ * @prop {(item: {quantity: string, idx: string}) => Message} UpdateItemQuantity
  */

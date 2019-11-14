@@ -22,8 +22,8 @@ render(html`<${Title} msg='In the Browser'/>`, 'header')
  * Tagged union for program actions.
  * @type {MessageUnion}
  */
-const Msg = union('updateInputValue', 'addItem', 'deleteItem')
-const { updateInputValue, addItem, deleteItem } = Msg
+const Msg = union('UpdateInputValue', 'AddItem', 'DeleteItem')
+const { UpdateInputValue, AddItem, DeleteItem } = Msg
 
 /**
  * Functional list component for view.
@@ -55,8 +55,8 @@ function List({ state, send }) {
   return html`
     <div class='container'>
       <p>
-        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(updateInputValue(e.target.value))} />
-        <button onclick=${() => send(addItem())} class='add-item'>Add</button>
+        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(UpdateInputValue(e.target.value))} />
+        <button onclick=${() => send(AddItem())} class='add-item'>Add</button>
       </p>
       <ul class='list'>
         ${state.items.map(fruit => html`
@@ -65,7 +65,7 @@ function List({ state, send }) {
             onmount=${animateIn}
             onunmount=${animateOut}>
             <span>${fruit.value}</span>
-            <button class='delete-item' onclick=${() => send(deleteItem(fruit.key))}>X</button>
+            <button class='delete-item' onclick=${() => send(DeleteItem(fruit.key))}>X</button>
           </li>`)
         }
       </ul>
@@ -107,12 +107,12 @@ function actions(state, msg, send) {
   const prevState = clone(state)
   return Msg.match(msg, {
     // Update value as user types.
-    updateInputValue: value => {
+    UpdateInputValue: value => {
       prevState.inputValue = value
       return prevState
     },
     // Add new item to list:
-    addItem: () => {
+    AddItem: () => {
       if (prevState.inputValue) {
         prevState.items.push({
           key: prevState.newKey++,
@@ -125,7 +125,7 @@ function actions(state, msg, send) {
       return prevState
     },
     // Delete item based on its key:
-    deleteItem: key => {
+    DeleteItem: key => {
       prevState.items =  prevState.items.filter(fruit => fruit.key != key)
       return prevState
     }
@@ -140,7 +140,7 @@ function handleEnterKey(getState, send) {
   document.addEventListener('keypress', e => {
     // Handle Enter key press:
     if (e.keyCode === 13) {
-      send(addItem())
+      send(AddItem())
     }
   })
 }
@@ -230,14 +230,14 @@ run(program)
  */
 /**
  * @typedef {Object} ActionMethods
-  * @prop {(value: string) => State} updateInputValue
-  * @prop {() => State} addItem
-  * @prop {(key: number) => State} deleteItem
+  * @prop {(value: string) => State} UpdateInputValue
+  * @prop {() => State} AddItem
+  * @prop {(key: number) => State} DeleteItem
  */
  /**
   * @typedef {Object} MessageUnion
   * @prop {(msg: Message, object: ActionMethods) => State} match
-  * @prop {(value: string) => Message} updateInputValue
-  * @prop {() => Message} addItem
-  * @prop {(key: number) => Message} deleteItem
+  * @prop {(value: string) => Message} UpdateInputValue
+  * @prop {() => Message} AddItem
+  * @prop {(key: number) => Message} DeleteItem
   */

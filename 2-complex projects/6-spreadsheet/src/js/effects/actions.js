@@ -9,7 +9,7 @@ import { Msg } from './messages'
 export function actions(state, msg, send) {
   const prevState = {...state}
   return Msg.match(msg, {
-    addItem: item => {
+    AddItem: item => {
       if (!item.product) return
       prevState.items.push({
         product: item.product,
@@ -19,15 +19,15 @@ export function actions(state, msg, send) {
       prevState.inputValue = ''
       return prevState
     },
-    deleteItem: product => {
+    DeleteItem: product => {
       prevState.items = prevState.items.filter(item => item.product != product)
       return prevState
     },
-    updateItemPrice: item => {
+    UpdateItemPrice: item => {
       prevState.items[item.idx].price = parseInt(item.price)
       return prevState
     },
-    updateItemQuantity: item => {
+    UpdateItemQuantity: item => {
       prevState.items[item.idx].quantity = parseInt(item.quantity)
       return prevState
     }

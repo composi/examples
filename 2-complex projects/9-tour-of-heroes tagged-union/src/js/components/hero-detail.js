@@ -1,6 +1,5 @@
 import { h } from '@composi/core'
-import { Msg } from '../effects/messages'
-const { changeHeroName, resetName, saveName } = Msg
+import { Msg, ChangeHeroName, ResetName, SaveName } from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State
@@ -17,11 +16,11 @@ export default function HeroDetail({ state, send }) {
         <div><label>id:</label> {hero.id}</div>
         <div>
           <label for='update-name'>name: </label>
-          <input value={hero.name} id='update-name' placeholder={hero.name} oninput={e => send(changeHeroName(e.target.value))} />
+          <input value={hero.name} id='update-name' placeholder={hero.name} oninput={e => send(ChangeHeroName(e.target.value))} />
         </div>
         <p class='hero-detail--buttons'>
-          <button onclick={() => send(resetName())}>Reset</button>
-          <button onclick={() => send(saveName())}>Save</button>
+          <button onclick={() => send(ResetName())}>Reset</button>
+          <button onclick={() => send(SaveName())}>Save</button>
         </p>
       </div>
     )

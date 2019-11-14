@@ -1,7 +1,6 @@
 import { h } from '@composi/core'
 import { calculateWinner } from '../effects/calculateWinner'
-import { Msg } from '../effects/message'
-const { selectTile, jumpTo } = Msg
+import { SelectTile, JumpTo } from '../effects/message'
 
 /**
  * @typedef {import('../types').State} State
@@ -15,7 +14,7 @@ const { selectTile, jumpTo } = Msg
  */
 function Square({won, idx, value, send}) {
   return (
-    <button class={`square ${won ? 'won' : ''}`} onclick={() => send(selectTile(idx))}>
+    <button class={`square ${won ? 'won' : ''}`} onclick={() => send(SelectTile(idx))}>
       {value}
     </button>
   )
@@ -80,7 +79,7 @@ export function Game({ state, send }) {
       'Go to game start'
     return (
       <li key={move}>
-        <button class='button-moves' onclick={() => send(jumpTo(move))}>{desc}</button>
+        <button class='button-moves' onclick={() => send(JumpTo(move))}>{desc}</button>
       </li>
     )
   })

@@ -1,7 +1,6 @@
 import { h } from '@composi/core'
 import { ListItem } from './hero-list-item'
-import { Msg } from '../effects/messages'
-const { newHero, addHero } = Msg
+import { Msg, NewHero, AddHero } from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State
@@ -19,8 +18,8 @@ export function HeroList({ state, send }) {
       <div>
         <p class='form--add-hero'>
           <label for="add-hero">Hero name: </label>
-          <input id='add-hero' type="text" oninput={e => send(newHero(e.target.value))} value={state.newHero} />
-          <button onclick={() => send(addHero())}>Add</button>
+          <input id='add-hero' type="text" oninput={e => send(NewHero(e.target.value))} value={state.NewHero} />
+          <button onclick={() => send(AddHero())}>Add</button>
         </p>
         <ul class="heroes">
           {

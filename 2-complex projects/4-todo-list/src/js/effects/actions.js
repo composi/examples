@@ -1,16 +1,18 @@
 import { idb } from '@composi/idb'
 import { Msg } from './messages'
-import { id } from './id'
 
-// Set state of footer bottons to show tasks.
+/**
+ * Set state of footer bottons to show tasks.
+ * @param {number} index
+ */
 const setButtonState = index => {
   const buttons = [false, false, false]
   buttons[index] = true
   return buttons
 }
 
-// Actions for program's update method:
 /**
+ * Actions for program's update method.
  * @param {import('../types').State} prevState
  * @param {import('../types').Message} msg
  */
@@ -25,7 +27,7 @@ export function actions(prevState, msg) {
         prevState.items.push({
           active: true,
           value: prevState.inputValue,
-          id: id(),
+          id: prevState.newKey++,
           hidden: false
         })
         prevState.inputValue = ''

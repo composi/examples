@@ -48,4 +48,4 @@ const program = {
 
 run(program)
 
-setupRoutes(program, Msg)
+setupRoutes(program)

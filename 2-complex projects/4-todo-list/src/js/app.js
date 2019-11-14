@@ -1,5 +1,5 @@
-import { h, render, run, union } from '@composi/core'
-import { batchedSubs } from './effects/subscriptions'
+import { h, render, run } from '@composi/core'
+import { subs } from './effects/subscriptions'
 import { TodoList } from './components/todo-list'
 import { actions } from './effects/actions'
 
@@ -42,7 +42,7 @@ const program = {
    * @param {Send} send
    */
   subscriptions(getState, send) {
-    return batchedSubs(getState, send)
+    return subs(getState, send)
   }
 }
 

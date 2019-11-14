@@ -1,7 +1,6 @@
 import { Msg } from './messages'
 import { idb } from '@composi/idb'
 import { batch } from '@composi/core'
-import { id } from './id'
 
 const { AddItem, RenderLocalState } = Msg
 
@@ -20,9 +19,9 @@ function handleEnterKey(getState, send) {
 const initialState = {
   newKey: 104,
   items: [
-    { active: true, value: 'Take a nap', id: id(), hidden: false },
-    { active: false, value: 'Eat a snack', id: id(), hidden: false },
-    { active: true, value: 'Talk with Mom', id: id(), hidden: false }
+    { active: true, value: 'Take a nap', id: 101, hidden: false },
+    { active: false, value: 'Eat a snack', id: 102, hidden: false },
+    { active: true, value: 'Talk with Mom', id: 103, hidden: false }
   ],
   selectedButton: [true, false, false],
   inputValue: ''
@@ -43,4 +42,4 @@ function getData(getState, send) {
   })()
 }
 
-export const batchedSubs = batch(handleEnterKey, getData)
+export const subs = batch(handleEnterKey, getData)

@@ -1,6 +1,5 @@
 import { h } from '@composi/core'
-import { Msg } from '../effects/messages'
-const { deleteHero } = Msg
+import { Msg, DeleteHero } from '../effects/messages'
 
 /**
  * @typedef {import('../types').Hero} Hero
@@ -17,7 +16,7 @@ export function ListItem({ hero, send }) {
         <span class="badge">{hero.id}</span>
         <span class='hero-link'>{hero.name}</span>
       </a>
-      <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send(deleteHero(hero.id))}>x</button>
+      <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send(DeleteHero(hero.id))}>x</button>
     </li>
   )
 }

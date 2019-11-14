@@ -1,7 +1,7 @@
 import { idb } from '@composi/idb'
 import { Msg } from './messages'
 
-const { useFetchedHeroes } = Msg
+const { UseFetchedHeroes } = Msg
 
 /**
  * @param {import('../types').GetState} getState
@@ -12,11 +12,11 @@ export function getHeroes(getState, send) {
     /** @type {import('../types').State} */
     const savedState = await idb.get('tof-state')
     if (savedState) {
-      send(useFetchedHeroes({ ...savedState}))
+      send(UseFetchedHeroes({ ...savedState}))
     } else {
       const response = await fetch('/src/js/data/mock-heroes.json')
       const data = await response.json()
-      send(useFetchedHeroes(data))
+      send(UseFetchedHeroes(data))
     }
   })()
 }

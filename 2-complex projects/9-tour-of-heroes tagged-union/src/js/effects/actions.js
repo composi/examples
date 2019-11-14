@@ -1,8 +1,6 @@
 import { idb } from '@composi/idb'
-import { Msg } from './messages'
+import { Msg, ShowDetail, ActiveComponent, SaveLocally  } from './messages'
 
-
-const { showDetail, activeComponent, saveLocally } = Msg
 
 /**
  * @param {import('../types').State} state
@@ -13,17 +11,17 @@ export function actions(state, msg, send) {
   const prevState = {...state}
 
   return Msg.match(msg, {
-    useFetchedHeroes: data => {
+    UseFetchedHeroes: data => {
       const newState = { ...data }
       if (data.detail) {
-        setTimeout(() => send(showDetail(data.detail)))
+        setTimeout(() => send(ShowDetail(data.detail)))
       } else {
-        setTimeout(() => send(activeComponent(newState.activeComponent)))
+        setTimeout(() => send(ActiveComponent(newState.activeComponent)))
       }
       return newState
     },
-    activeComponent: activeComponent => ({ ...prevState, activeComponent, searchResults: /** @type {any} */([]) }),
-    showDetail: id => {
+    ActiveComponent: activeComponent => ({ ...prevState, activeComponent, searchResults: /** @type {any} */([]) }),
+    ShowDetail: id => {
       if (!prevState.heroes) return
       const position = prevState.heroes.findIndex(person => person.id == id)
       if (position === -1) {
@@ -39,46 +37,46 @@ export function actions(state, msg, send) {
       }
       return prevState
     },
-    deleteHero: id => {
+    DeleteHero: id => {
       prevState.heroes = prevState.heroes.filter(hero => hero.id !== id)
-      send(saveLocally(prevState))
+      send(SaveLocally(prevState))
       return prevState
     },
-    changeHeroName: name => {
+    ChangeHeroName: name => {
       prevState.selectedHero.name = name
       return prevState
     },
-    resetName: () => {
+    ResetName: () => {
       prevState.selectedHero.name = prevState.selectedHero.originalName
       return prevState
     },
-    saveName: () => {
+    SaveName: () => {
       window.location.hash = '#/heroes'
-      send(saveLocally(prevState))
+      send(SaveLocally(prevState))
       return prevState
     },
-    newHero: name => {
-      prevState.newHero = name
+    NewHero: name => {
+      prevState.NewHero = name
       return prevState
     },
-    addHero: () => {
-      if (prevState.newHero) {
+    AddHero: () => {
+      if (prevState.NewHero) {
         prevState.heroes.push({
           id: prevState.newId++,
-          name: prevState.newHero
+          name: prevState.NewHero
         })
-        prevState.newHero = ''
-        send(saveLocally(prevState))
+        prevState.NewHero = ''
+        send(SaveLocally(prevState))
       } else {
         alert('Please provide a name for the new hero before submitting.')
       }
       return prevState
     },
-    saveLocally: data => {
+    SaveLocally: data => {
       idb.set('tof-state', data)
       return prevState
     },
-    search: value => {
+    Search: value => {
       const searchResults = prevState.heroes.filter(hero => {
         const name = hero.name.toLowerCase()
         return name.match(value.toLowerCase())

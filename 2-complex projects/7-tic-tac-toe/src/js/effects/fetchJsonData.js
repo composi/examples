@@ -1,5 +1,5 @@
 import { Msg } from './message'
-const { useFetchedData } = Msg
+import { UseFetchedData } from '../effects/message'
 
 /**
  * @param {import('../types').GetState} getState
@@ -9,6 +9,6 @@ export function fetchJsonData(getState, send) {
   (async () => {
     const data = await fetch('/src/js/data/state.json')
     const json = await data.json()
-    send(useFetchedData(json))
+    send(UseFetchedData(json))
   })()
 }
