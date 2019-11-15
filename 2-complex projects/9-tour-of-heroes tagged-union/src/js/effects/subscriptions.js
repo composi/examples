@@ -10,7 +10,7 @@ const { UseFetchedHeroes } = Msg
 export function getHeroes(getState, send) {
   (async () => {
     /** @type {import('../types').State} */
-    const savedState = await idb.get('tof-state')
+    const savedState = await idb.get('toh-state')
     if (savedState) {
       send(UseFetchedHeroes({ ...savedState}))
     } else {

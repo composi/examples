@@ -32,10 +32,10 @@ export function actions(prevState, msg) {
         })
         prevState.inputValue = ''
         idb.set('todos', prevState)
-        return prevState
       } else {
         alert('Please provide a value before submitting.')
       }
+      return prevState
     },
     DeleteItem: id => {
       prevState.items = prevState.items.filter(item => item.id != id)
