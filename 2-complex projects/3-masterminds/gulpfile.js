@@ -23,10 +23,12 @@ gulp.task('build:js', function (done) {
         browser: true
       }),
       commonjs(),
+      /*
       minify({
         mangle: { topLevel: true },
         comments: false
       })
+      */
     ]
   })
     .then((bundle) => {

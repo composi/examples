@@ -133,10 +133,9 @@ function actions(state, msg, send) {
 }
 
 /**
- * @param {GetState} getState
  * @param {Send} send
  */
-function handleEnterKey(getState, send) {
+function handleEnterKey(send) {
   document.addEventListener('keypress', e => {
     // Handle Enter key press:
     if (e.keyCode === 13) {
@@ -169,11 +168,10 @@ const program = {
     return actions(state, msg, send)
   },
   /**
-   * @param {State} state
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return handleEnterKey(getState, send)
+  subscriptions(send ) {
+    return handleEnterKey(send)
   }
 }
 
@@ -223,7 +221,7 @@ run(program)
  * @prop {() => InitResult} init Method to set up initial state.
  * @prop {(state: State, send?: Send) => void} view Method to present the current application state.
  * @prop {(state: State, msg?: Message, send?: Send) => any} update Method to capture messages sent from view or subscriptions. According to the message, an action will transform application state and pass it the the program view method.
- * @prop {(getState: GetState, send: Send) => void} [subscriptions] Method to run effects when the program starts. These run independently from the rest of the program.
+ * @prop {(send: Send) => void} [subscriptions] Method to run effects when the program starts. These run independently from the rest of the program.
  * @prop {(getState: () => State, send: Send) => void} [subs] Shortcut for subscriptions.
  * @prop {(state: State) => void} [done] Method to do clean up when shutting down a program.
  * @prop {Send} [send] A static send function for dispatching message to a program. Used with routers and in composition.

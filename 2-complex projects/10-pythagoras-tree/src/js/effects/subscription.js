@@ -13,10 +13,9 @@ const SVG_HEIGHT = () => window.innerHeight
  */
 /**
  * Effect to track cursor and redraw tree.
- * @param {import('../types').GetState} getState
  * @param {import('../types').Send} send
  */
-export function handleMouseMove(getState, send) {
+export function handleMouseMove(send) {
   /** @param {CustomEvent} e */
   function onMouseMove(e) {
     /** @type {MouseEvent} */(e).preventDefault()

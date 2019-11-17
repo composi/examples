@@ -41,11 +41,10 @@ const program = {
     return prevState
   },
   /**
-   * @param {GetState} getState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return startShow(getState, send)
+  subscriptions(send) {
+    return startShow(send)
   }
 }
 

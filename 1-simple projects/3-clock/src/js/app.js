@@ -27,10 +27,9 @@ const state = {
 
 /**
  * Effect to run as subscription to start clock ticking.
- * @param {GetState} getState
  * @param {Send} send
  */
-function startClock(getState, send) {
+function startClock(send) {
   setInterval(() => send({ type: 'update-time' }), 1000)
 }
 
@@ -73,11 +72,10 @@ const program = {
     return actions(state, msg, send)
   },
   /**
-   * @param {GetState} getState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return startClock(getState, send)
+  subscriptions(send) {
+    return startClock(send)
   }
 }
 

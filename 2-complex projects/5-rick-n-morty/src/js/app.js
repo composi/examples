@@ -48,8 +48,8 @@ const program = {
    * @param {GetState} getState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return subs(getState, send)
+  subscriptions(send, getState) {
+    return subs(send, getState)
   }
 }
 

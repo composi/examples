@@ -55,12 +55,11 @@ const program = {
     }
   },
   /**
-   * @param {GetState} getState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
+  subscriptions(send) {
     // Run subscription to track cursor movement:
-    return handleMouseMove(getState, send)
+    return handleMouseMove(send)
   }
 }
 

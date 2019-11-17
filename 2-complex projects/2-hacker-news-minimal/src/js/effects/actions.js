@@ -25,7 +25,7 @@ export function actions(prevState, msg, send) {
       prevState.items = sorted
       return prevState
     case 'reload':
-      loadItems(prevState, send)
+      loadItems(send)
       prevState.lastUpdate = new Date()
       return prevState
   }

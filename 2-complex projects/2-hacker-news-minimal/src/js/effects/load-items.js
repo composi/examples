@@ -4,10 +4,9 @@ const asJson = r => r.json()
 
 /**
  * Effect to fetch data during program init.
- * @param {import('../types').State} state
  * @param {import('../types').Send} send
  */
-export function loadItems(state, send) {
+export function loadItems(send) {
   fetch(`${API_ORIGIN}/v0/topstories.json`)
     .then(asJson)
     .then(items => Promise.all(items.slice(0, 19).map(

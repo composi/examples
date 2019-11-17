@@ -1,10 +1,9 @@
 
 /**
  * Define subscription to run during program startup.
- * @param {import('./types').GetState} getState
  * @param {import('./types').Send} send
  */
-export function startShow(getState, send) {
+export function startShow(send) {
   let count = 1
   setInterval(() => {
     count += 1

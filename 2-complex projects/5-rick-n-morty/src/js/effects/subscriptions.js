@@ -6,20 +6,19 @@ import { batch } from '@composi/core'
  */
 
 /**
- * @param {GetState} getState
  * @param {Send} send
  */
-function handleEnterKey(getState, send) {
+function handleEnterKey(send) {
   document.addEventListener('keypress', e => {
     if (e.keyCode === 13) send({ type: 'find-character'})
   })
 }
 
 /**
- * @param {GetState} getState
  * @param {Send} send
+ * @param {GetState} getState
  */
-function getCharacters(getState, send) {
+function getCharacters(send, getState) {
   (async () => {
     const state = {...getState()}
     let response = await fetch('/src/js/data/characters.json')

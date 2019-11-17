@@ -1,8 +1,7 @@
 /**
- * @param {import('../types').GetState} getState
  * @param {import('../types').Send} send
  */
-export function getHeroes(getState, send) {
+export function getHeroes(send) {
   (async () => {
     const data = await fetch('/src/js/data/mock-heroes.json')
     /** @type {import('../types').Hero[]} */

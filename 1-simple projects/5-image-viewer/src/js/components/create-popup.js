@@ -6,15 +6,10 @@ export let popup = undefined
 export let popupImage = undefined
 
 /**
- * @typedef {import('../types').GetState} GetState
- * @typedef {import('../types').Send} Send
- */
-/**
  * Define effect to run when program starts.
- * @param {GetState} getState
- * @param {Send} send
+ * @param {import('../types').Send} send
  */
-export function createPopup(getState, send) {
+export function createPopup(send) {
   function Mask() {
     return (
       <div id="mask" onclick={() => send({ type: 'close-popup' })}>

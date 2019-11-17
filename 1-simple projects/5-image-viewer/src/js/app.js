@@ -52,11 +52,10 @@ const program = {
     return actions(state, msg, send)
   },
   /**
-   * @param {GetState} getState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return createPopup(getState, send)
+  subscriptions(send) {
+    return createPopup(send)
   }
 }
 

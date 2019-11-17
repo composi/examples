@@ -1,9 +1,7 @@
 /**
- *
- * @param {import('../types').GetState} getState
  * @param {import('../types').Send} send
  */
-export default function movieService(getState, send) {
+export default function movieService(send) {
   (async() => {
     const response = await fetch('/src/js/data/movies.json')
     const movies = await response.json()

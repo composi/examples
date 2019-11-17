@@ -41,11 +41,10 @@ const program = {
     }
   },
   /**
-   * @param {GetState} getState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return movieService(getState, send)
+  subscriptions(send) {
+    return movieService(send)
   }
 }
 

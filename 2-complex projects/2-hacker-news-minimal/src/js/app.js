@@ -44,8 +44,8 @@ const program = {
    * @param {GetState} GetState
    * @param {Send} send
    */
-  subscriptions(getState, send) {
-    return loadItems(getState, send)
+  subscriptions(send) {
+    return loadItems(send)
   }
 }
 

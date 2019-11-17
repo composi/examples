@@ -4,10 +4,9 @@ import { Msg } from './messages'
 const { UseFetchedHeroes } = Msg
 
 /**
- * @param {import('../types').GetState} getState
  * @param {import('../types').Send} send
  */
-export function getHeroes(getState, send) {
+export function getHeroes(send) {
   (async () => {
     /** @type {import('../types').State} */
     const savedState = await idb.get('toh-state')

@@ -5,7 +5,14 @@ import { batch } from '@composi/core'
 const { AddItem, RenderLocalState } = Msg
 
 
-function handleEnterKey(getState, send) {
+/**
+ * @typedef {import('../types').Send} Send
+ */
+
+/**
+ * @param {Send} send
+ */
+function handleEnterKey(send) {
   document.addEventListener('keypress', e => {
     if (e.keyCode === 13) {
       send(AddItem())
@@ -28,10 +35,9 @@ const initialState = {
 }
 
 /**
- * @param {import('../types').GetState} getState
- * @param {import('../types').Send} send
+ * @param {Send} send
  */
-function getData(getState, send) {
+function getData(send) {
   (async () => {
     const todos = await idb.get('todos')
     if (todos) {

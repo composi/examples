@@ -49,10 +49,10 @@ const program = {
     return actions(state, msg, send)
   },
   /**
-   * @param {GetState} getState
    * @param {Send} send
+   * @param {GetState} getState
    */
-  subscriptions(getState, send) {
+  subscriptions(send, getState) {
     return initGame()
   }
 }
