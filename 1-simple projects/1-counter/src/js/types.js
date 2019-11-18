@@ -1,4 +1,4 @@
-export function noop() {}
+export function noop() { }
 
 
 /**
@@ -12,11 +12,7 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 
- /**
-  * @typedef {string} Url url of picture
-  */
- /**
-  * @typedef {Object} State
-  * @prop {number} count
-  * @prop {Url[]} pics
-  */
+/**
+ * @typedef {Object} State
+ * @prop {number} count
+ */

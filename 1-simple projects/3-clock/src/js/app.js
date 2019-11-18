@@ -18,7 +18,7 @@ render(<Title message='Clock'/>, 'header')
  */
 /**
  * Initial state for program.
- * @type{State}
+ * @type {State}
  * */
 const state = {
   date: new Date(),
