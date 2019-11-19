@@ -1,7 +1,7 @@
 import { h, render, run } from '@composi/core'
 import { Title } from './components/title'
 import { Menu } from './components/menu'
-import { subs } from './effects/subscriptions/batched-subscriptions'
+import { subs } from './effects/subscriptions'
 import { App } from './components/app'
 import { actions } from './effects/actions'
 

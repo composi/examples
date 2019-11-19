@@ -13,6 +13,7 @@ export function getHeroes(send) {
       send(UseFetchedHeroes({ ...savedState }))
     } else {
       const response = await fetch('/src/js/data/mock-heroes.json')
+      /** @type {import('../../types').State} */
       const data = await response.json()
       send(UseFetchedHeroes(data))
     }
