@@ -1,5 +1,5 @@
 import { h } from '@composi/core'
-import { Msg, ChangeHeroName, ResetName, SaveName } from '../effects/messages'
+import { ChangeHeroName, ResetName, SaveName } from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State

@@ -13,6 +13,7 @@ export function noop() {}
  */
 
 /**
+ * Item object.
  * @typedef {Object} Item
  * @prop {string} product
  * @prop {number} price
@@ -20,6 +21,7 @@ export function noop() {}
  * @prop {number} [idx]
  */
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {string} inputValue
  * @prop {Item[]} items
@@ -27,6 +29,7 @@ export function noop() {}
 
 
 /**
+ * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
  * @prop {(item: {product: string, price: string, quantity: string}) => State} AddItem
  * @prop {(product: string) => State} DeleteItem
@@ -35,6 +38,7 @@ export function noop() {}
 */
 
 /**
+ * Tagged union of messages.
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
  * @prop {(item: {product: string, price: number, quantity: number}) => Message} AddItem

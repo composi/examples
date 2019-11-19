@@ -10,13 +10,16 @@ export function noop() {}
  * @typedef {import('@composi/core').Props} Props
  * @typedef {() => State} GetState
  */
- /**
-  * @typedef {Object} Image
-  * @prop {number} id
-  * @prop {string} name
-  * @prop {string} description
-  * @prop {string} url
-  */
- /**
-  * @typedef {Image[]} State
-  */
+
+/**
+ * Types for image object.
+ * @typedef {Object} Image
+ * @prop {number} id
+ * @prop {string} name
+ * @prop {string} description
+ * @prop {string} url
+ */
+/**
+ * Application state.
+ * @typedef {Image[]} State
+ */

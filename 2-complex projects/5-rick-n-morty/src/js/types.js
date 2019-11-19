@@ -12,18 +12,20 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 
- /**
-  * @typedef {Object} Character
-  * @prop {string} name
-  * @prop {string} image
-  * @prop {string} description
-  * @prop {string} age
-  * @prop {string} status
-  * @prop {string[]} job
-  * @prop {string} placeOfOrigin
-  * @prop {string} id
-  */
 /**
+ * Character object.
+ * @typedef {Object} Character
+ * @prop {string} name
+ * @prop {string} image
+ * @prop {string} description
+ * @prop {string} age
+ * @prop {string} status
+ * @prop {string[]} job
+ * @prop {string} placeOfOrigin
+ * @prop {string} id
+ */
+/**
+ * Application state.
  * @typedef {Object} State
  * @prop {boolean} dashboard
  * @prop {string} inputValue

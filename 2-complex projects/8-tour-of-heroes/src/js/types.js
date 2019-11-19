@@ -13,12 +13,14 @@ export function noop() {}
  */
 
 /**
+ * Hero object.
  * @typedef {Object} Hero
  * @prop {number} id
  * @prop {string} name
  * @prop {string} [originalName]
  */
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {number} newId
  * @prop {Hero[]} heroes

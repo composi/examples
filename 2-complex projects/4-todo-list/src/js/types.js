@@ -12,12 +12,14 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 /**
+ * Item type.
  * @typedef {Object} Item
  * @prop {number} id
  * @prop {string} value
  * @prop {boolean} active
  * @prop {boolean} hidden
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {number} newKey
  * @prop {string} inputValue
@@ -25,27 +27,30 @@ export function noop() {}
  * @prop {Item[]} items
  */
 
-//UpdateInputValue', 'AddItem', 'DeleteItem', 'SetActiveState', 'ShowActive', '', 'ShowAll', 'RenderLocalState
- /**
-  * @typedef {Object} ActionMethods
-  * @prop {(value: string) => State} UpdateInputValue
-  * @prop {() => State} AddItem
-  * @prop {(key: number) => State} DeleteItem
-  * @prop {(id: number) => State} SetActiveState
-  * @prop {() => State} ShowActive
-  * @prop {() => State} ShowCompleted
-  * @prop {() => State} ShowAll
-  * @prop {(state: State) => State} RenderLocalState
-  */
- /**
-  * @typedef {Object} MessageUnion
-  * @prop {(msg: Message, Object: ActionMethods) => State} match
-  * @prop {(value: string) => Message} UpdateInputValue
-  * @prop {() => Message} AddItem
-  * @prop {(key: number) => Message} DeleteItem
-  * @prop {(id: number) => Message} SetActiveState
-  * @prop {() => Message} ShowActive
-  * @prop {() => Message} ShowCompleted
-  * @prop {() => Message} ShowAll
-  * @prop {(state: State) => Message} RenderLocalState
-  */
+
+/**
+ * Actions to match with tagged union.
+ * @typedef {Object} ActionMethods
+ * @prop {(value: string) => State} UpdateInputValue
+ * @prop {() => State} AddItem
+ * @prop {(key: number) => State} DeleteItem
+ * @prop {(id: number) => State} SetActiveState
+ * @prop {() => State} ShowActive
+ * @prop {() => State} ShowCompleted
+ * @prop {() => State} ShowAll
+ * @prop {(state: State) => State} RenderLocalState
+ */
+
+/**
+ * Tagged union of messages.
+ * @typedef {Object} MessageUnion
+ * @prop {(msg: Message, Object: ActionMethods) => State} match
+ * @prop {(value: string) => Message} UpdateInputValue
+ * @prop {() => Message} AddItem
+ * @prop {(key: number) => Message} DeleteItem
+ * @prop {(id: number) => Message} SetActiveState
+ * @prop {() => Message} ShowActive
+ * @prop {() => Message} ShowCompleted
+ * @prop {() => Message} ShowAll
+ * @prop {(state: State) => Message} RenderLocalState
+ */

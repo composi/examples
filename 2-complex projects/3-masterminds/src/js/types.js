@@ -13,6 +13,7 @@ export function noop() {}
  */
 
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {null | number} guess
  * @prop {string | Symbol} difficulty
@@ -20,9 +21,10 @@ export function noop() {}
  * @prop {string} [outcome]
  */
 
- /**
-  * @typedef {Object} DifficultyLevel
-  * @prop {Symbol} EASY
-  * @prop {Symbol} MEDIUM
-  * @prop {strSymboling} HARD
-  */
+/**
+ * Difficulty object type.
+ * @typedef {Object} DifficultyLevel
+ * @prop {Symbol} EASY
+ * @prop {Symbol} MEDIUM
+ * @prop {strSymboling} HARD
+ */

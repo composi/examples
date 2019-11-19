@@ -1,6 +1,6 @@
 import { h } from '@composi/core'
 import { ListItem } from './hero-list-item'
-import { Msg, NewHero, AddHero } from '../effects/messages'
+import { NewHero, AddHero } from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State

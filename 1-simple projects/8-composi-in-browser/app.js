@@ -227,15 +227,17 @@ run(program)
  * @prop {Send} [send] A static send function for dispatching message to a program. Used with routers and in composition.
  */
 /**
+ * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
-  * @prop {(value: string) => State} UpdateInputValue
-  * @prop {() => State} AddItem
-  * @prop {(key: number) => State} DeleteItem
+ * @prop {(value: string) => State} UpdateInputValue
+ * @prop {() => State} AddItem
+ * @prop {(key: number) => State} DeleteItem
  */
- /**
-  * @typedef {Object} MessageUnion
-  * @prop {(msg: Message, object: ActionMethods) => State} match
-  * @prop {(value: string) => Message} UpdateInputValue
-  * @prop {() => Message} AddItem
-  * @prop {(key: number) => Message} DeleteItem
-  */
+/**
+ * Tagged union of messages.
+ * @typedef {Object} MessageUnion
+ * @prop {(msg: Message, object: ActionMethods) => State} match
+ * @prop {(value: string) => Message} UpdateInputValue
+ * @prop {() => Message} AddItem
+ * @prop {(key: number) => Message} DeleteItem
+ */

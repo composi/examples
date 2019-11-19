@@ -12,6 +12,7 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {string} fahrenheit
  * @prop {string} celsius

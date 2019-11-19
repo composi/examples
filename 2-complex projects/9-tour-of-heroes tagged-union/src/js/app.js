@@ -4,7 +4,7 @@ import { Menu } from './components/menu'
 import { getHeroes } from './effects/subscriptions'
 import { App } from './components/app'
 import { actions } from './effects/actions'
-import {setupRoutes} from './routes'
+import { setupRoutes } from './routes'
 
 
 render(<Title message='Tour of Heroes' />, 'header')

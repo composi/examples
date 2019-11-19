@@ -13,6 +13,7 @@ export function noop() {}
  */
 
 /**
+ * Item type.
  * @typedef {Object} Item
  * @prop {string} by
  * @prop {number} descendants
@@ -25,6 +26,7 @@ export function noop() {}
  * @prop {string} url
  */
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {Date} lastUpdate
  * @prop {Item[]} items

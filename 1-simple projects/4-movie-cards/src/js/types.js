@@ -12,6 +12,7 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 /**
+ * Types for movie object.
  * @typedef {Object} Movie
  * @prop {number} id
  * @prop {string} title
@@ -22,5 +23,6 @@ export function noop() {}
  * @prop {number} rating
  */
 /**
+ * Application state.
  * @typedef {Movie[]} State
  */

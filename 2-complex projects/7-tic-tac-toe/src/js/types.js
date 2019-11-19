@@ -13,11 +13,13 @@ export function noop() {}
  */
 
 /**
+ * Board square.
  * @typedef {string} Square
  * @prop {Square[]} squares
  * @typedef {{squares: string[]}} Squares
  */
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {number} stepNumber
  * @prop {boolean} xIsNext
@@ -25,11 +27,13 @@ export function noop() {}
  */
 
  /**
+  * Winner type.
   * @typedef {Array} Winner
   * @prop {number[]} line
   */
 
 /**
+ * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
  * @prop {(tile: number) => State} SelectTile
  * @prop {(jump: number) => State} JumpTo
@@ -37,6 +41,7 @@ export function noop() {}
 */
 
 /**
+ * Tagged union of messages.
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
  * @prop {(tile: number) => Message} SelectTile

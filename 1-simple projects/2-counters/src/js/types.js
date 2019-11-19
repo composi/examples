@@ -13,11 +13,13 @@ export function noop() { }
  */
 
 /**
+ * Types for counter object.
  * @typedef {Object} Counter
  * @prop {number} number
  * @prop {number} key
  */
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {number} key
  * @prop {number} sum

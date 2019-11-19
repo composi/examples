@@ -12,14 +12,16 @@ export function noop() {}
  * @typedef {() => State} GetState
  */
 
+/**
+ * Types for tab object.
+ * @typedef {Object} Tab
+ * @prop {string} id
+ * @prop {string} label
+ * @prop {string} description
+ */
  /**
-  * @typedef {Object} Tab
-  * @prop {string} id
-  * @prop {string} label
-  * @prop {string} description
-  */
- /**
-  * @typedef {Object} State
-  * @prop {string} activeId
-  * @prop {Tab[]} tabs
-  */
+ * Application state.
+ * @typedef {Object} State
+ * @prop {string} activeId
+ * @prop {Tab[]} tabs
+ */

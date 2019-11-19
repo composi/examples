@@ -13,6 +13,7 @@ export function noop() { }
  */
 
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {number} count
  */

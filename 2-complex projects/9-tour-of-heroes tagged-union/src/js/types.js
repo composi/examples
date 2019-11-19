@@ -13,6 +13,7 @@ export function noop() {}
  */
 
 /**
+ * Hero object.
  * @typedef {Object} Hero
  * @prop {number} id
  * @prop {string} name
@@ -20,6 +21,7 @@ export function noop() {}
  */
 
 /**
+ * Application state.
  * @typedef {Object} State
  * @prop {number} newId
  * @prop {Hero[]} heroes
@@ -31,6 +33,7 @@ export function noop() {}
  */
 
 /**
+ * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
  * @prop {(data: State) => State} UseFetchedHeroes
  * @prop {(activeComponent: string) => State} ActiveComponent
@@ -46,6 +49,7 @@ export function noop() {}
  */
 
 /**
+ * Tagged union of messages.
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
  * @prop {(data: State) => Message} UseFetchedHeroes

@@ -1,5 +1,5 @@
 import { h } from '@composi/core'
-import { Msg, DeleteHero } from '../effects/messages'
+import { DeleteHero } from '../effects/messages'
 
 /**
  * @typedef {import('../types').Hero} Hero
