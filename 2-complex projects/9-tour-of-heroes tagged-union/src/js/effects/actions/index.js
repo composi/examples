@@ -19,6 +19,7 @@ import { resetSearchResults } from './reset-search-results'
  * @param {import('../../types').Send} send
  */
 export function actions(state, msg, send) {
+  /** @type {import('../../types').State} */
   const prevState = clone(state)
 
   return Msg.match(msg, {
