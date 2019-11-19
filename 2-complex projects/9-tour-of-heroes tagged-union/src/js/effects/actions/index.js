@@ -11,6 +11,7 @@ import { newHero } from './new-hero'
 import { addHero } from './add-hero'
 import { saveLocally } from './save-locally'
 import { search} from './search'
+import { resetSearchResults } from './reset-search-results'
 
 /**
  * @param {import('../../types').State} state
@@ -42,6 +43,8 @@ export function actions(state, msg, send) {
 
     SaveLocally: data => saveLocally(data, prevState),
 
-    Search: value => search(value, prevState)
+    Search: value => search(value, prevState),
+
+    ResetSearchResults: () => resetSearchResults(prevState)
   })
 }

@@ -46,6 +46,7 @@ export function noop() {}
  * @prop {() => State} AddHero
  * @prop {(data: State) => State} SaveLocally
  * @prop {(value: string) => State} Search
+ * @prop {() => State} ResetSearchResults
  */
 
 /**
@@ -63,4 +64,5 @@ export function noop() {}
  * @prop {() => Message} AddHero
  * @prop {(data: State) => Message} SaveLocally
  * @prop {(value: string) => Message} Search
+ * @prop {() => Message} ResetSearchResults
  */

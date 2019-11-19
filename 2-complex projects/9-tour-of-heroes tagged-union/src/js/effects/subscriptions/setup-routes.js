@@ -8,7 +8,7 @@ import { ActiveComponent, ShowDetail } from '../messages'
  * @param {import('../../types').Send} send
  * @returns {void} undefined
  */
-export function setupRoutes(send) {
+export const setupRoutes = send => {
   setTimeout(() => {
     // Setup router to track routes and send messages to update program:
     const router = Router()
@@ -28,5 +28,4 @@ export function setupRoutes(send) {
       }
     )
   })
-
 }
