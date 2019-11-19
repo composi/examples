@@ -9,14 +9,14 @@ import { ChangeHeroName, ResetName, SaveName } from '../effects/messages'
  */
 export default function HeroDetail({ state, send }) {
   if (state.selectedHero && state.activeComponent === 'detail') {
-    let hero = state.selectedHero
+    const {name, id} = state.selectedHero
     return (
       <div id='hero-detail'>
-        <h2>{hero.name} details!</h2>
-        <div><label>id:</label> {hero.id}</div>
+        <h2>{name} details!</h2>
+        <div><label>id:</label> {id}</div>
         <div>
           <label for='update-name'>name: </label>
-          <input value={hero.name} id='update-name' placeholder={hero.name} oninput={e => send(ChangeHeroName(e.target.value))} />
+          <input value={name} id='update-name' placeholder={name} oninput={e => send(ChangeHeroName(e.target.value))} />
         </div>
         <p class='hero-detail--buttons'>
           <button onclick={() => send(ResetName())}>Reset</button>

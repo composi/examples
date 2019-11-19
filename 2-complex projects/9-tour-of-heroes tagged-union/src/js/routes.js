@@ -28,5 +28,4 @@ export function setupRoutes(program) {
       action: () => send(ActiveComponent('dashboard'))
     }
   )
-
 }

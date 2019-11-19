@@ -1,10 +1,9 @@
 import { h, render, run } from '@composi/core'
 import { Title } from './components/title'
 import { Menu } from './components/menu'
-import { getHeroes } from './effects/subscriptions'
+import { subs } from './effects/subscriptions/batched-subscriptions'
 import { App } from './components/app'
 import { actions } from './effects/actions'
-import { setupRoutes } from './routes'
 
 
 render(<Title message='Tour of Heroes' />, 'header')
@@ -41,10 +40,8 @@ const program = {
    * @param {Send} send
    */
   subscriptions(send) {
-    return getHeroes(send)
+    return subs(send)
   }
 }
 
 run(program)
-
-setupRoutes(program)

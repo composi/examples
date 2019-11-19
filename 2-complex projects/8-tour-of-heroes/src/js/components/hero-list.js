@@ -19,15 +19,18 @@ export function HeroList({state, send}) {
         </p>
         <ul class="heroes">
           {
-            state.heroes.map(hero => (
-              <li key={hero.id}>
-                <a href={`#/detail/${hero.id}`}>
-                  <span class="badge">{hero.id}</span>
-                  <span class='hero-link'>{hero.name}</span>
-                </a>
-                <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send({ type: 'delete-item', data: hero.id })}>x</button>
-              </li>
-            ))
+            state.heroes.map(hero => {
+              const {name, id} = hero
+              return (
+                <li key={id}>
+                  <a href={`#/detail/${id}`}>
+                    <span class="badge">{id}</span>
+                    <span class='hero-link'>{name}</span>
+                  </a>
+                  <button data-id={id} class="delete" title="delete hero" onclick={e => send({ type: 'delete-item', data: id })}>x</button>
+                </li>
+              )
+            })
           }
         </ul>
       </div>

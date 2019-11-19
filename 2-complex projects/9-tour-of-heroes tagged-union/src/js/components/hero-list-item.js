@@ -10,13 +10,14 @@ import { DeleteHero } from '../effects/messages'
  * @returns {import('@composi/core').VNode} VNode
  */
 export function ListItem({ hero, send }) {
+  const {name, id} = hero
   return (
-    <li key={hero.id}>
-      <a href={`#/detail/${hero.id}`}>
-        <span class="badge">{hero.id}</span>
-        <span class='hero-link'>{hero.name}</span>
+    <li key={id}>
+      <a href={`#/detail/${id}`}>
+        <span class="badge">{id}</span>
+        <span class='hero-link'>{name}</span>
       </a>
-      <button data-id={hero.id} class="delete" title="delete hero" onclick={e => send(DeleteHero(hero.id))}>x</button>
+      <button data-id={id} class="delete" title="delete hero" onclick={e => send(DeleteHero(id))}>x</button>
     </li>
   )
 }
