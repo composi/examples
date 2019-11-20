@@ -24,28 +24,28 @@ export function actions(state, msg, send) {
 
   return Msg.match(msg, {
 
-    UseFetchedHeroes: data => useFetchedHeroes(data, send),
-
     ActiveComponent: activeComponent => setActiveComponent(activeComponent, prevState, send),
-
-    ShowDetail: id => showDetail(id, prevState, send),
-
-    DeleteHero: id => deleteHero(id, prevState, send),
-
-    ChangeHeroName: name => changeHeroName(name, prevState),
-
-    ResetName: () => resetName(prevState),
-
-    SaveName: () => saveName(prevState, send),
-
-    NewHero: name => newHero(name, prevState),
 
     AddHero: () => addHero(prevState, send),
 
+    ChangeHeroName: name => changeHeroName(name, prevState),
+
+    DeleteHero: id => deleteHero(id, prevState, send),
+
+    NewHero: name => newHero(name, prevState),
+
+    ResetName: () => resetName(prevState),
+
+    ResetSearchResults: () => resetSearchResults(prevState),
+
     SaveLocally: data => saveLocally(data, prevState),
+
+    SaveName: () => saveName(prevState, send),
 
     Search: value => search(value, prevState),
 
-    ResetSearchResults: () => resetSearchResults(prevState)
+    ShowDetail: id => showDetail(id, prevState, send),
+
+    UseFetchedHeroes: data => useFetchedHeroes(data, send)
   })
 }

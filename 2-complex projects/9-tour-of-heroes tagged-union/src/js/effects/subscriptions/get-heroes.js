@@ -10,7 +10,7 @@ export const getHeroes = send => {
     /** @type {import('../../types').State} */
     const savedState = await idb.get('toh-state')
     if (savedState) {
-      send(UseFetchedHeroes({ ...savedState }))
+      send(UseFetchedHeroes(savedState))
     } else {
       const response = await fetch('/src/js/data/mock-heroes.json')
       /** @type {import('../../types').State} */

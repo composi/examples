@@ -35,34 +35,34 @@ export function noop() {}
 /**
  * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
- * @prop {(data: State) => State} UseFetchedHeroes
  * @prop {(activeComponent: string) => State} ActiveComponent
- * @prop {(id: number) => State} ShowDetail
- * @prop {(id: number) => State} DeleteHero
- * @prop {(name: string) => State} ChangeHeroName
- * @prop {() => State} ResetName
- * @prop {() => State} SaveName
- * @prop {(name: string) => State} NewHero
  * @prop {() => State} AddHero
- * @prop {(data: State) => State} SaveLocally
- * @prop {(value: string) => State} Search
+ * @prop {(name: string) => State} ChangeHeroName
+ * @prop {(id: number) => State} DeleteHero
+ * @prop {(name: string) => State} NewHero
+ * @prop {() => State} ResetName
  * @prop {() => State} ResetSearchResults
+ * @prop {(data: State) => State} SaveLocally
+ * @prop {() => State} SaveName
+ * @prop {(value: string) => State} Search
+ * @prop {(id: number) => State} ShowDetail
+ * @prop {(data: State) => State} UseFetchedHeroes
  */
 
 /**
  * Tagged union of messages.
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
- * @prop {(data: State) => Message} UseFetchedHeroes
  * @prop {(activeComponent: string) => Message} ActiveComponent
- * @prop {(id: number) => Message} ShowDetail
- * @prop {(id: number) => Message} DeleteHero
- * @prop {(name: string) => Message} ChangeHeroName
- * @prop {() => Message} ResetName
- * @prop {() => Message} SaveName
- * @prop {(name: string) => Message} NewHero
  * @prop {() => Message} AddHero
- * @prop {(data: State) => Message} SaveLocally
- * @prop {(value: string) => Message} Search
+ * @prop {(name: string) => Message} ChangeHeroName
+ * @prop {(id: number) => Message} DeleteHero
+ * @prop {(name: string) => Message} NewHero
+ * @prop {() => Message} ResetName
  * @prop {() => Message} ResetSearchResults
+ * @prop {(data: State) => Message} SaveLocally
+ * @prop {() => Message} SaveName
+ * @prop {(value: string) => Message} Search
+ * @prop {(id: number) => Message} ShowDetail
+ * @prop {(data: State) => Message} UseFetchedHeroes
  */
