@@ -31,26 +31,26 @@ export function noop() {}
 /**
  * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
- * @prop {(value: string) => State} UpdateInputValue
  * @prop {() => State} AddItem
  * @prop {(key: number) => State} DeleteItem
+ * @prop {(state: State) => State} RenderLocalState
  * @prop {(id: number) => State} SetActiveState
  * @prop {() => State} ShowActive
- * @prop {() => State} ShowCompleted
  * @prop {() => State} ShowAll
- * @prop {(state: State) => State} RenderLocalState
+ * @prop {() => State} ShowCompleted
+ * @prop {(value: string) => State} UpdateInputValue
  */
 
 /**
  * Tagged union of messages.
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
- * @prop {(value: string) => Message} UpdateInputValue
  * @prop {() => Message} AddItem
  * @prop {(key: number) => Message} DeleteItem
+ * @prop {(state: State) => Message} RenderLocalState
  * @prop {(id: number) => Message} SetActiveState
  * @prop {() => Message} ShowActive
- * @prop {() => Message} ShowCompleted
  * @prop {() => Message} ShowAll
- * @prop {(state: State) => Message} RenderLocalState
+ * @prop {() => Message} ShowCompleted
+ * @prop {(value: string) => Message} UpdateInputValue
  */
