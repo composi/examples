@@ -7,11 +7,31 @@
 export function actions(state, msg, send) {
   const prevState = {...state}
   switch (msg.type) {
-    case 'use-fetched-heroes':
-      prevState.heroes = msg.data
-      return prevState
     case 'active-component':
       prevState.activeComponent = msg.data
+      return prevState
+    case 'add-hero':
+      if (prevState.newHero)
+        prevState.heroes.push({
+          id: prevState.newId++,
+          name: prevState.newHero
+        })
+      prevState.newHero = ''
+      return prevState
+    case 'change-hero-name':
+      prevState.selectedHero.name = msg.data
+      return prevState
+    case 'delete-item':
+      prevState.heroes = prevState.heroes.filter(hero => hero.id != msg.data)
+      return prevState
+    case 'new-hero':
+      prevState.newHero = msg.data
+      return prevState
+    case 'reset-name':
+      prevState.selectedHero.name = prevState.selectedHero.originalName
+      return prevState
+    case 'save-name':
+      window.location.hash = '#/heroes'
       return prevState
     case 'show-detail':
       const position = prevState.heroes.findIndex(person => person.id == msg.data)
@@ -22,28 +42,8 @@ export function actions(state, msg, send) {
         prevState.selectedHero = hero
       } catch (err) { }
       return prevState
-    case 'delete-item':
-      prevState.heroes = prevState.heroes.filter(hero => hero.id != msg.data)
-      return prevState
-    case 'change-hero-name':
-      prevState.selectedHero.name = msg.data
-      return prevState
-    case 'reset-name':
-      prevState.selectedHero.name = prevState.selectedHero.originalName
-      return prevState
-    case 'save-name':
-      window.location.hash = '#/heroes'
-      return prevState
-    case 'new-hero':
-      prevState.newHero = msg.data
-      return prevState
-    case 'add-hero':
-      if (prevState.newHero)
-        prevState.heroes.push({
-          id: prevState.newId++,
-          name: prevState.newHero
-        })
-      prevState.newHero = ''
+    case 'use-fetched-heroes':
+      prevState.heroes = msg.data
       return prevState
   }
 }
