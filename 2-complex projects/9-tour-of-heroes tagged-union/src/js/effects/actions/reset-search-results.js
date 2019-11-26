@@ -1,8 +1,8 @@
 
-
-
+/**
+ * @param {import('../../types').State} state
+ */
 export const resetSearchResults = state => {
-  console.log('resetting search results')
-  state.searchResults = ''
+  state.searchResults = []
   return state
 }
