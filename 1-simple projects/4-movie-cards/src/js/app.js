@@ -1,10 +1,10 @@
-import { h, render, run } from '@composi/core'
-import { Title } from './components/title'
-import { Movies } from './components/movie/movies'
+import {h, render, run} from '@composi/core'
+import {Title} from './components/title'
+import {Movies} from './components/movie/movies'
 import movieService from './services/movieService';
 
 // Render title for app:
-render(<Title message='Movie Cards'/>, 'header')
+render(<Title message='Movie Cards' />, 'header')
 
 /**
  * @typedef {import('./types').State} State
@@ -18,7 +18,7 @@ render(<Title message='Movie Cards'/>, 'header')
  */
 const program = {
   init() {
-    return { movies: [] }
+    return {movies: []}
   },
   /**
    * @param {State} state
@@ -26,7 +26,7 @@ const program = {
    */
   view(state, send) {
     if (!state || !state.length) return
-    return render(<Movies {...{ state, send }} />, '.container-fluid')
+    return render(<Movies {...{state, send}} />, '.container-fluid')
   },
   /**
    *

@@ -1,4 +1,4 @@
-export function noop() { }
+export function noop() {}
 
 
 /**
@@ -26,19 +26,19 @@ export function noop() { }
  * @prop {Counter[]} counters
  */
 
- /**
-  * @typedef {Object} ActionMethods
-   * @prop {() => State} AddCounter
-   * @prop {(id: number) => State} Increase
-   * @prop {(id: number) => State} Decrease
-   * @prop {(id: number) => State} Delete
-  */
+/**
+ * @typedef {Object} ActionMethods
+  * @prop {() => State} AddCounter
+  * @prop {(id: number) => State} Increase
+  * @prop {(id: number) => State} Decrease
+  * @prop {(id: number) => State} Delete
+ */
 
-  /**
-   * @typedef {Object} MessageUnion
-   * @prop {(msg: Message, Object: ActionMethods) => void} match
-   * @prop {() => Message} AddCounter
-   * @prop {(id: number) => Message} Increase
-   * @prop {(id: number) => Message} Decrease
-   * @prop {(id: number) => Message} Delete
-   */
+/**
+ * @typedef {Object} MessageUnion
+ * @prop {(msg: Message, Object: ActionMethods) => void} match
+ * @prop {() => Message} AddCounter
+ * @prop {(id: number) => Message} Increase
+ * @prop {(id: number) => Message} Decrease
+ * @prop {(id: number) => Message} Delete
+ */

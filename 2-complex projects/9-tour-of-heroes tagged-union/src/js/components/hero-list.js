@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
-import { ListItem } from './hero-list-item'
-import { NewHero, AddHero } from '../effects/messages'
+import {h} from '@composi/core'
+import {ListItem} from './hero-list-item'
+import {NewHero, AddHero} from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State
@@ -10,7 +10,7 @@ import { NewHero, AddHero } from '../effects/messages'
  * @param {{state: State, send: Send}} props
  * @returns {import('@composi/core').VNode | string} VNode
  */
-export function HeroList({ state, send }) {
+export function HeroList({state, send}) {
   if (!state || !state.heroes || !state.heroes.length) {
     return ''
   } else if (state.activeComponent === 'heroes') {
@@ -24,7 +24,7 @@ export function HeroList({ state, send }) {
         <ul class="heroes">
           {
             state.heroes.map(hero => (
-              <ListItem {...{hero, send}}/>
+              <ListItem {...{hero, send}} />
             ))
           }
         </ul>

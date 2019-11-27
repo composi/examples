@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
-import { animateIn, animateOut } from '../effects/visual-effecs'
-import { Msg, SetActiveState, DeleteItem } from '../effects/messages'
+import {h} from '@composi/core'
+import {animateIn, animateOut} from '../effects/visual-effecs'
+import {Msg, SetActiveState, DeleteItem} from '../effects/messages'
 
 /**
  * @typedef {import('../types').Item} Item
@@ -10,7 +10,7 @@ import { Msg, SetActiveState, DeleteItem } from '../effects/messages'
  * List Item Component:
  * @param {{item: Item, send: Send}} props
  */
-export function ListItem({ item, send }) {
+export function ListItem({item, send}) {
   return (
     <li
       key={item.id}

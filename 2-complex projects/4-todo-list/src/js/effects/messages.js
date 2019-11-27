@@ -1,4 +1,4 @@
-import { union } from '@composi/core'
+import {union} from '@composi/core'
 
 /** Create a tagged union.
  * @type {import('../types').MessageUnion}
@@ -15,6 +15,7 @@ export const Msg = union(
 )
 
 export const {
+  match,
   AddItem,
   DeleteItem,
   RenderLocalState,

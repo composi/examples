@@ -1,5 +1,5 @@
-import { idb } from '@composi/idb'
-import { Msg } from './messages'
+import {idb} from '@composi/idb'
+import {match} from './messages'
 
 /**
  * Set state of footer bottons to show tasks.
@@ -17,7 +17,7 @@ const setButtonState = index => {
  * @param {import('../types').Message} msg
  */
 export function actions(prevState, msg) {
-  return Msg.match(msg, {
+  return match(msg, {
     UpdateInputValue: value => {
       prevState.inputValue = value
       return prevState

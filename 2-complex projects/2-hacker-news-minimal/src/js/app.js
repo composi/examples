@@ -1,7 +1,7 @@
-import { h, render, run } from '@composi/core'
-import { HackerNews } from './components/hacker-news'
-import { loadItems } from './effects/load-items'
-import { actions } from './effects/actions'
+import {h, render, run} from '@composi/core'
+import {HackerNews} from './components/hacker-news'
+import {loadItems} from './effects/load-items'
+import {actions} from './effects/actions'
 
 /**
  * @typedef {import('./types').State} State
@@ -29,7 +29,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<HackerNews {...{ state, send }} />, '#app')
+    return render(<HackerNews {...{state, send}} />, '#app')
   },
   /**
    * @param {State} state

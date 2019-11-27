@@ -1,6 +1,6 @@
 
 // @ts-ignore
-import { scaleLinear } from 'd3'
+import {scaleLinear} from 'd3'
 
 
 // Get initial window dimensions.
@@ -35,8 +35,8 @@ export function handleMouseMove(send) {
 
   // When cursor move detected,
   // send a message to the update action.
-  const move = ({ heightFactor, lean }) => {
-    send({ type: 'update-tree', data: { heightFactor, lean } })
+  const move = ({heightFactor, lean}) => {
+    send({type: 'update-tree', data: {heightFactor, lean}})
   }
 
   // Listeners to track cursor and finger movement.

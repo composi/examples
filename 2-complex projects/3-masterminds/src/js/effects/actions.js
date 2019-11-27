@@ -1,6 +1,6 @@
-import { startGame } from './start-game'
-import { guessEngine } from '../components/game';
-import { DifficultyLevel } from '../lib/GuessEngine';
+import {startGame} from './start-game'
+import {guessEngine} from '../components/game';
+import {DifficultyLevel} from '../lib/GuessEngine';
 
 
 /**

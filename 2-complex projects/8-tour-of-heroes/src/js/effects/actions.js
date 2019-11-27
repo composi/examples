@@ -40,7 +40,7 @@ export function actions(state, msg, send) {
         hero.originalName = hero.name
         prevState.activeComponent = 'detail'
         prevState.selectedHero = hero
-      } catch (err) { }
+      } catch (err) {}
       return prevState
     case 'use-fetched-heroes':
       prevState.heroes = msg.data

@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
-import { calculateWinner } from '../effects/calculateWinner'
-import { SelectTile, JumpTo } from '../effects/message'
+import {h} from '@composi/core'
+import {calculateWinner} from '../effects/calculateWinner'
+import {SelectTile, JumpTo} from '../effects/message'
 
 /**
  * @typedef {import('../types').State} State
@@ -24,7 +24,7 @@ function Square({won, idx, value, send}) {
  * Board component:
  * @param {{squares: string[], winner: Winner, send: Send }} props
  */
-function Board({ squares, winner, send}) {
+function Board({squares, winner, send}) {
   function renderSquare(i) {
     let won
     if (winner) {
@@ -66,7 +66,7 @@ function Board({ squares, winner, send}) {
  * Define Game component:
  * @param {{state: State, send: Send}} props
  */
-export function Game({ state, send }) {
+export function Game({state, send}) {
   // Keep track of choice to enable time travel:
   const history = state.history
 

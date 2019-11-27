@@ -1,5 +1,5 @@
-import { h } from '@composi/core'
-import { ChangeHeroName, ResetName, SaveName } from '../effects/messages'
+import {h} from '@composi/core'
+import {ChangeHeroName, ResetName, SaveName} from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State
@@ -7,7 +7,7 @@ import { ChangeHeroName, ResetName, SaveName } from '../effects/messages'
  * @param {{state: State, send: Send}} props
  * @returns {import('@composi/core').VNode} VNode
  */
-export default function HeroDetail({ state, send }) {
+export default function HeroDetail({state, send}) {
   if (state.selectedHero && state.activeComponent === 'detail') {
     const {name, id} = state.selectedHero
     return (

@@ -1,5 +1,5 @@
-import { sortByScore } from './sort-by-score'
-import { loadItems } from './load-items'
+import {sortByScore} from './sort-by-score'
+import {loadItems} from './load-items'
 
 /**
  * @typedef {import('../types').State} State

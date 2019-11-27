@@ -1,5 +1,5 @@
-import { h, render, run } from '@composi/core'
-import { Title } from './components/title'
+import {h, render, run} from '@composi/core'
+import {Title} from './components/title'
 
 // Render title component:
 render(<Title message='Counter' />, 'header')
@@ -10,10 +10,10 @@ render(<Title message='Counter' />, 'header')
  * @typedef {Object} State
  * @prop {number} count
  */
- /**
-  * Define clicker as functional component.
-  * @param {{state: State, send: Send}} props
-  */
+/**
+ * Define clicker as functional component.
+ * @param {{state: State, send: Send}} props
+ */
 function Clicker({state, send}) {
   return (
     <div class="container">
@@ -71,7 +71,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<Clicker {...{state, send}}/>, '.container')
+    return render(<Clicker {...{state, send}} />, '.container')
   },
   /**
    * @param {State} state

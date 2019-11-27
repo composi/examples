@@ -13,5 +13,5 @@ export function loadItems(send) {
       item => fetch(`${API_ORIGIN}/v0/item/${item}.json`).then(asJson)
     )))
     // Send fetched data to update action:
-    .then(items => send({ type: 'load', data: items }))
+    .then(items => send({type: 'load', data: items}))
 }

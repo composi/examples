@@ -1,12 +1,12 @@
-import { h } from '@composi/core'
-import { sumUp } from '../effects/sum-up'
+import {h} from '@composi/core'
+import {sumUp} from '../effects/sum-up'
 
 /**
  * Spreadsheet footer.
  * @param {{state: import('../types').State}} props
  * @returns {import('@composi/core').VNode} VNode
  */
-export function TableFooter({ state }) {
+export function TableFooter({state}) {
   return (
     <tfoot>
       <tr>

@@ -1,7 +1,7 @@
-import { h, render, run } from '@composi/core'
-import { Title } from './components/title'
-import { actions } from './actions'
-import { Converter } from './components/converter'
+import {h, render, run} from '@composi/core'
+import {Title} from './components/title'
+import {actions} from './actions'
+import {Converter} from './components/converter'
 
 /**
  * @typedef {import('@composi/core').Message} Message
@@ -11,7 +11,7 @@ import { Converter } from './components/converter'
  */
 
 // Render the page title:
-render(<Title message='Composi Temperature Converter'/>,'header')
+render(<Title message='Composi Temperature Converter' />, 'header')
 
 
 /**
@@ -39,7 +39,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<Converter {...{ state, send }} />, '.converter')
+    return render(<Converter {...{state, send}} />, '.converter')
   },
   /**
    * @param {State} state

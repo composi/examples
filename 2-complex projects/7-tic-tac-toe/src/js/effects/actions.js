@@ -1,5 +1,5 @@
-import { Msg } from './message'
-import { handleSquareSelection } from './handleSquareSelection'
+import {match} from './message'
+import {handleSquareSelection} from './handleSquareSelection'
 
 /**
  * @typedef {import('../types').State} State
@@ -16,7 +16,7 @@ import { handleSquareSelection } from './handleSquareSelection'
 export function actions(state, msg, send) {
   const prevState = {...state}
   /** @type {import('../types').MessageUnion} */
-  return Msg.match(msg, {
+  return match(msg, {
     SelectTile: tile => {
       const newState = handleSquareSelection(prevState, tile)
       return newState

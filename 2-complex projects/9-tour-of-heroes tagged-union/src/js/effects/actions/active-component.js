@@ -1,4 +1,4 @@
-import { SaveLocally} from '../../effects/messages'
+import {SaveLocally} from '../../effects/messages'
 
 /**
  * @param {string} activeComponent
@@ -6,7 +6,7 @@ import { SaveLocally} from '../../effects/messages'
  * @param {import('../../types').Send} send
  */
 export const setActiveComponent = (activeComponent, state, send) => {
-  const result = { ...state, activeComponent }
+  const result = {...state, activeComponent}
   send(SaveLocally(result))
-  return { ...state, activeComponent }
+  return {...state, activeComponent}
 }

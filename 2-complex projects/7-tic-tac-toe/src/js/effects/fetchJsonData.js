@@ -1,5 +1,5 @@
-import { Msg } from './message'
-import { UseFetchedData } from '../effects/message'
+import {Msg} from './message'
+import {UseFetchedData} from '../effects/message'
 
 /**
  * @param {import('../types').Send} send

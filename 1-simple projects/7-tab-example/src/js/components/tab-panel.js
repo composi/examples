@@ -1,5 +1,5 @@
-import { h } from '@composi/core'
-import { Tab } from './tab'
+import {h} from '@composi/core'
+import {Tab} from './tab'
 
 /**
  * @param {{activeId: string, description: string}} props

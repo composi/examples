@@ -1,4 +1,4 @@
-import { tryToConvert, toCelsius, toFahrenheit} from './utils'
+import {tryToConvert, toCelsius, toFahrenheit} from './utils'
 
 /**
  * @param {import('./types').State} state

@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @param {{message: string}} param0

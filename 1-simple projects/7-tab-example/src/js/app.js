@@ -1,4 +1,4 @@
-import { h, render, run } from '@composi/core'
+import {h, render, run} from '@composi/core'
 import {Title} from './components/title'
 import {TabContainer} from './components/tab-container'
 import {actions} from './action'
@@ -45,7 +45,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<TabContainer {...{ state, send }} />, ".tab-list")
+    return render(<TabContainer {...{state, send}} />, ".tab-list")
   },
   /**
    * @param {State} state

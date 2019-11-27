@@ -4,7 +4,7 @@ import {ShowDetail, ActiveComponent} from '../../effects/messages'
  * @param {import('../../types').Send} send
  */
 export const useFetchedHeroes = (data, send) => {
-  const newState = { ...data }
+  const newState = {...data}
   if (data.detail) {
     setTimeout(() => send(ShowDetail(data.detail)))
   } else {

@@ -1,4 +1,4 @@
-import { Msg } from './messages'
+import {match} from './messages'
 
 /**
  * Define actions for update method:
@@ -8,7 +8,7 @@ import { Msg } from './messages'
  */
 export function actions(state, msg, send) {
   const prevState = {...state}
-  return Msg.match(msg, {
+  return match(msg, {
     AddCounter: () => {
       prevState.counters.push({
         number: 0,

@@ -1,4 +1,4 @@
-import { SaveLocally } from "../messages"
+import {SaveLocally} from "../messages"
 
 /**
  * @param {import('../../types').State} state

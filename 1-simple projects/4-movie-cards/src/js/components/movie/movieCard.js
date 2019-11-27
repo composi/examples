@@ -1,4 +1,4 @@
-import { h } from '@composi/core';
+import {h} from '@composi/core';
 import StarRating from '../starRating';
 
 // Define movie card component:

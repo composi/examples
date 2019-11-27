@@ -1,4 +1,4 @@
-import { h, render } from '@composi/core'
+import {h, render} from '@composi/core'
 
 // Date/Time utility for clock:
 class DateTime {
@@ -72,7 +72,7 @@ class DateTime {
  * Display functional component.
  * @param {{state: State, send: Send}} props
  */
-function Display({ state, send }) {
+function Display({state, send}) {
   return (
     <div class="container-fluid">
       <div class="d-flex flex-row">
@@ -91,14 +91,14 @@ function Display({ state, send }) {
  * anel functional component.
  * @param {{state: State, send: Send}} props
  */
-function Panel({ state, send }) {
+function Panel({state, send}) {
   return (
     <div class="container">
       <div class="d-flex flex-row">
         <div class="col-md-4 mx-auto">
           <div class="panel">
             <label id="date-switch" class="switch">
-              <input type="checkbox" checked={state.isDateVisible} onchange={() => send({ type: 'toggle-date' })} />
+              <input type="checkbox" checked={state.isDateVisible} onchange={() => send({type: 'toggle-date'})} />
               <span class="slider round"></span>
             </label>
             <label class="panel-switch-text" for="date-switch">
@@ -115,11 +115,11 @@ function Panel({ state, send }) {
  * lock component.
  * @param {{state: State, send: Send}} props
  */
-export function Clock({ state, send }) {
+export function Clock({state, send}) {
   return (
     <div>
-      <Panel {...{ state, send }} />
-      <Display {...{ state, send }} />
+      <Panel {...{state, send}} />
+      <Display {...{state, send}} />
     </div>
   )
 }

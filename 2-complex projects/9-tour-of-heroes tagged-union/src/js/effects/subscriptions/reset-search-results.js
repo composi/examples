@@ -1,4 +1,4 @@
-import { ResetSearchResults } from '../messages'
+import {ResetSearchResults} from '../messages'
 
 
 export const resetSearchResults = send => {

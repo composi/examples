@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
-import { Msg, ShowAll, ShowActive, ShowCompleted } from '../effects/messages'
+import {Msg, ShowAll, ShowActive, ShowCompleted} from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State
@@ -10,7 +10,7 @@ import { Msg, ShowAll, ShowActive, ShowCompleted } from '../effects/messages'
  * Footer Component:
  * @param {{state: State, send: Send}} props
  */
-export function Footer({ state, send }) {
+export function Footer({state, send}) {
   let count = 0
   state.items.forEach(item => {
     if (item.active === true) {

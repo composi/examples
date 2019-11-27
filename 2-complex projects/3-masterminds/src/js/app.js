@@ -1,12 +1,12 @@
-import { h, render, run } from '@composi/core'
+import {h, render, run} from '@composi/core'
 import {Title} from './components/title'
-import { Game } from './components/game'
-import { actions } from './effects/actions'
-import { initGame } from './effects/start-game'
+import {Game} from './components/game'
+import {actions} from './effects/actions'
+import {initGame} from './effects/start-game'
 
 // Set state on component.
 // Will cause component to render.
-render(<Title message='Masterminds'/>, 'header')
+render(<Title message='Masterminds' />, 'header')
 
 /**
  * @typedef {import('./types').State} State
@@ -38,7 +38,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    render(<Game {...{ state, send }} />, '.container')
+    render(<Game {...{state, send}} />, '.container')
   },
   /**
    * @param {State} state

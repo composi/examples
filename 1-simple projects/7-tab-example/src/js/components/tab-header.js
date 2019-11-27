@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @typedef {import('../types').State} State
@@ -7,7 +7,7 @@ import { h } from '@composi/core'
 /**
  * @param {{state: State, send: Send}} props
  */
-export const TabHeader = ({ state, send }) => {
+export const TabHeader = ({state, send}) => {
   return (
     <div class="tab-headers">
       {state.tabs.map(tab => (

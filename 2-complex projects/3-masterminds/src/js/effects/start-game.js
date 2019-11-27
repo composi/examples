@@ -1,5 +1,5 @@
 
-import { guessEngine } from '../components/game';
+import {guessEngine} from '../components/game';
 
 // Effect for startup:
 export function initGame() {

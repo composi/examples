@@ -8,5 +8,5 @@ export const search = (value, state) => {
     const name = hero.name.toLowerCase()
     return name.match(value.toLowerCase())
   })
-  return { ...state, searchResults }
+  return {...state, searchResults}
 }

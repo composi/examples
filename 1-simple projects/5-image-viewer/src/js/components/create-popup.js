@@ -1,4 +1,4 @@
-import { h, render } from '@composi/core'
+import {h, render} from '@composi/core'
 
 
 // Placeholders for popup.
@@ -12,7 +12,7 @@ export let popupImage = undefined
 export function createPopup(send) {
   function Mask() {
     return (
-      <div id="mask" onclick={() => send({ type: 'close-popup' })}>
+      <div id="mask" onclick={() => send({type: 'close-popup'})}>
         <div id="popup-image"></div>
       </div>
     )

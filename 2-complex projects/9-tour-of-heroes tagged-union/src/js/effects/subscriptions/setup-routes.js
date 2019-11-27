@@ -1,7 +1,6 @@
-import { Router } from '@composi/router'
+import {Router} from '@composi/router';
 
-
-import { ActiveComponent, ShowDetail } from '../messages'
+import {ActiveComponent, ShowDetail} from '../messages';
 
 /**
  * Setup routes for program.
@@ -11,7 +10,7 @@ import { ActiveComponent, ShowDetail } from '../messages'
 export const setupRoutes = send => {
   setTimeout(() => {
     // Setup router to track routes and send messages to update program:
-    const router = Router()
+    const router = Router();
 
     router(
       {
@@ -24,8 +23,8 @@ export const setupRoutes = send => {
       },
       {
         path: '*',
-        action: () => send(ActiveComponent('dashboard'))
+        action: () => setTimeout(() => send(ActiveComponent('dashboard')), 100)
       }
-    )
-  })
-}
+    );
+  });
+};

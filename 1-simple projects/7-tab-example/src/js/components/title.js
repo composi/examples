@@ -1,9 +1,9 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @param {{message: string}} props
  */
-export function Title({ message }) {
+export function Title({message}) {
   return (
     <header>
       <nav>

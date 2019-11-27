@@ -1,12 +1,12 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
-let getDomain = url => url && (url.split('/')[ ~url.indexOf('://') ? 2 : 0 ]).replace(/^www\./,'') || null
+let getDomain = url => url && (url.split('/')[~url.indexOf('://') ? 2 : 0]).replace(/^www\./, '') || null
 
 /**
  * @param {{item: import('../types').Item}} props
  */
 export function Item({item}) {
-	return (
+  return (
     <li class="item">
       <div class="vitals">
         <div class="score">{item.score}</div>
@@ -17,7 +17,7 @@ export function Item({item}) {
       <div class="content">
         <div class="title">
           <a target="_blank" href={item.url}>{item.title}</a>
-          <span class="domain">({ getDomain(item.url) })</span>
+          <span class="domain">({getDomain(item.url)})</span>
         </div>
       </div>
     </li>

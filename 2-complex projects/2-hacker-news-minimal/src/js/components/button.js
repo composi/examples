@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @typedef {import('../types').Message} Message

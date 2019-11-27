@@ -4,10 +4,10 @@ import {h} from '@composi/core'
  * function to show detail of character.
  * @param {{character: import('../types').Character}} props
  */
-export function DetailBox({ character }) {
+export function DetailBox({character}) {
   return (
     <div class="infobox">
-      <div class="img" style={{ backgroundImage: `url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/77047/${character.image})` }}></div>
+      <div class="img" style={{backgroundImage: `url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/77047/${character.image})`}}></div>
 
       <section class="stats">
         <h2>{character.name}</h2>

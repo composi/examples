@@ -5,7 +5,7 @@ Math['deg'] = radians => radians * (180 / Math.PI)
 export const memoizedCalc = (function () {
   const memo = {}
 
-  const key = ({ w, heightFactor, lean }) => [w, heightFactor, lean].join("-")
+  const key = ({w, heightFactor, lean}) => [w, heightFactor, lean].join('-')
 
   return args => {
     const memoKey = key(args)
@@ -13,7 +13,7 @@ export const memoizedCalc = (function () {
     if (memo[memoKey]) {
       return memo[memoKey]
     } else {
-      const { w, heightFactor, lean } = args
+      const {w, heightFactor, lean} = args
 
       const trigH = heightFactor * w
 

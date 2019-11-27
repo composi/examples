@@ -1,7 +1,7 @@
-import { h, render, run, union } from '@composi/core'
-import { Title } from './components/title'
-import { Counter } from './components/counter'
-import { actions } from './effects/actions'
+import {h, render, run, union} from '@composi/core'
+import {Title} from './components/title'
+import {Counter} from './components/counter'
+import {actions} from './effects/actions'
 
 render(<Title message='Counters' />, 'header')
 
@@ -37,7 +37,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<Counter {...{ state, send }} />, '.counters-container')
+    return render(<Counter {...{state, send}} />, '.counters-container')
   },
   /**
    * @param {State} state

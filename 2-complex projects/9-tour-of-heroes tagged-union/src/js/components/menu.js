@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @returns {import('@composi/core').VNode} VNode

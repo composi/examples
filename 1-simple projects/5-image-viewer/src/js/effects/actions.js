@@ -1,4 +1,4 @@
-import { buildData } from '../utils/build-data'
+import {buildData} from '../utils/build-data'
 
 // Actions for program update:
 /**

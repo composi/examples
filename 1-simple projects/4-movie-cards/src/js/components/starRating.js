@@ -1,4 +1,4 @@
-import { h } from '@composi/core';
+import {h} from '@composi/core';
 
 const width = 110;
 
@@ -31,7 +31,7 @@ const cropWidth = (rating) => {
  */
 const StarRating = (props) => {
 
-  const containerStyle = { width: `${cropWidth(props.rating)}px` };
+  const containerStyle = {width: `${cropWidth(props.rating)}px`};
 
   return (
     <div>

@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 import Navigation from './navigation'
-import { Item } from './item'
+import {Item} from './item'
 
 /**
  * @typedef {import('../types').State} State
@@ -10,13 +10,13 @@ import { Item } from './item'
  * Main functional component.
  * @param {{state: State, send: Send}} props
  */
-export function HackerNews({ state, send }) {
+export function HackerNews({state, send}) {
   const lastUpdate = state.lastUpdate
 
   if (state.items && state.items.length) {
     return (
       <div id="app">
-        <Navigation {...{ lastUpdate, send }} />
+        <Navigation {...{lastUpdate, send}} />
         <ul>
           {
             state.items && state.items.length && state.items.map(item => <Item item={item} />)
@@ -29,7 +29,7 @@ export function HackerNews({ state, send }) {
     // so use this as template.
     return (
       <div id="app">
-        <Navigation {...{ lastUpdate, send }} />
+        <Navigation {...{lastUpdate, send}} />
         <ul></ul>
       </div>
     )

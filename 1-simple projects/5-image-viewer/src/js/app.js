@@ -1,8 +1,8 @@
-import { h, render, run } from '@composi/core'
-import { List } from './components/list'
-import { createPopup } from './components/create-popup'
-import { buildData } from './utils/build-data'
-import { actions } from './effects/actions'
+import {h, render, run} from '@composi/core'
+import {List} from './components/list'
+import {createPopup} from './components/create-popup'
+import {buildData} from './utils/build-data'
+import {actions} from './effects/actions'
 
 /**
  * @typedef {import('./types').State} State
@@ -15,7 +15,7 @@ import { actions } from './effects/actions'
  *
  * @param {{state: State, send: Send}} props
  */
-function List2({ state, send }) {
+function List2({state, send}) {
   console.log(state)
   return (
     <div id="app">

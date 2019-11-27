@@ -1,5 +1,5 @@
-import { idb } from '@composi/idb'
-import { UseFetchedHeroes } from '../messages'
+import {idb} from '@composi/idb'
+import {UseFetchedHeroes} from '../messages'
 
 
 /**

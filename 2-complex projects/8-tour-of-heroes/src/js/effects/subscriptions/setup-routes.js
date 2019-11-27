@@ -1,4 +1,4 @@
-import { Router } from '@composi/router'
+import {Router} from '@composi/router'
 
 /**
  * Setup routes for program.
@@ -13,20 +13,20 @@ export function setupRoutes(send) {
     router(
       {
         path: "/",
-        action: () => send({ type: 'active-component', data: 'dashboard' })
+        action: () => send({type: 'active-component', data: 'dashboard'})
       },
       {
         path: '/dashboard',
-        action: () => send({ type: 'active-component', data: 'dashboard' })
+        action: () => send({type: 'active-component', data: 'dashboard'})
       },
       {
         path: '/heroes',
-        action: () => send({ type: 'active-component', data: 'heroes' })
+        action: () => send({type: 'active-component', data: 'heroes'})
       }
       ,
       {
         path: '/detail/:id',
-        action: id => send({ type: 'show-detail', data: id })
+        action: id => send({type: 'show-detail', data: id})
       }
     )
   })

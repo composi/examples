@@ -1,9 +1,9 @@
-import { h, render, run } from '@composi/core'
-import { Title } from './components/title'
-import { Menu } from './components/menu'
-import { subs } from './effects/subscriptions'
-import { App } from './components/app'
-import { actions } from './effects/actions'
+import {h, render, run} from '@composi/core'
+import {Title} from './components/title'
+import {Menu} from './components/menu'
+import {subs} from './effects/subscriptions'
+import {App} from './components/app'
+import {actions} from './effects/actions'
 
 
 render(<Title message='Tour of Heroes' />, 'header')
@@ -26,7 +26,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return state && render(<App {...{ state, send }} />, '.app-root')
+    return state && render(<App {...{state, send}} />, '.app-root')
   },
   /**
    * @param {State} state

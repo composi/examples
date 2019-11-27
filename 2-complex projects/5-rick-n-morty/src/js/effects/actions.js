@@ -1,4 +1,5 @@
-import { findCharacter } from './find-character'
+import {findCharacter} from './find-character'
+import {match} from './messages'
 
 
 /**
@@ -10,25 +11,28 @@ import { findCharacter } from './find-character'
 export function actions(state, msg, send) {
   // Clone state:
   let prevState = {...state}
-  switch (msg.type) {
-    case 'update-input-value':
-    prevState.inputValue = msg.data
-    return prevState
-    case 'show-character':
-      const target = /** @type {HTMLElement} */(msg.data.target.closest('.infobox'))
+  return match(msg, {
+    UpdateInputValue: () => {
+      prevState.inputValue = msg.data
+      return prevState
+    },
+    ShowCharacter: (element) => {
+      const target = element.closest('.infobox')
       const characters = prevState.characters
       const id = target.dataset.id
       const character = characters.filter(char => id === char.id)[0]
       prevState.character = character
       prevState.dashboard = false
       return prevState
-    case 'show-dashboard':
+    },
+    ShowDashboard: () => {
       prevState.dashboard = true
       return prevState
-    case 'find-character':
+    },
+    FindCharacter: () => {
       prevState = findCharacter(prevState)
       return prevState
-    case 'use-fetched-data':
-      return msg.data
-  }
+    },
+    UseFetchedData: (data) => data
+  })
 }

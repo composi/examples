@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
-import { TabHeader } from './tab-header'
-import { TabPanel } from './tab-panel'
+import {h} from '@composi/core'
+import {TabHeader} from './tab-header'
+import {TabPanel} from './tab-panel'
 /**
  * @typedef {import('../types').State} State
  * @typedef {import('../types').Send} Send
@@ -8,12 +8,12 @@ import { TabPanel } from './tab-panel'
 /**
  * @param {{state: State, send: Send}} props
  */
-export function TabContainer({ state, send }) {
+export function TabContainer({state, send}) {
   const result = state.tabs.find(item => state.activeId == item.id)
   return (
     <div class="tab-list">
       <TabHeader
-        {...{ state, send }}
+        {...{state, send}}
       ></TabHeader>
       <TabPanel activeId={state.activeId} description={result.description} />
     </div>

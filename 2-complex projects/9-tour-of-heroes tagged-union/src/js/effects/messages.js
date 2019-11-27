@@ -1,4 +1,4 @@
-import { union } from '@composi/core'
+import {union} from '@composi/core'
 
 /** @type {import('../types').MessageUnion} */
 export const Msg = union(
@@ -17,6 +17,7 @@ export const Msg = union(
 )
 
 export const {
+  match,
   ActiveComponent,
   AddHero,
   ChangeHeroName,

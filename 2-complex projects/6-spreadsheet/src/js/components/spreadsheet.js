@@ -1,8 +1,8 @@
-import { h } from '@composi/core'
-import { TableHeader } from './table-header'
-import { TableRow } from './tabel-row'
-import { TableFooter } from './table-footer'
-import { NewRowForm } from './new-row-form'
+import {h} from '@composi/core'
+import {TableHeader} from './table-header'
+import {TableRow} from './tabel-row'
+import {TableFooter} from './table-footer'
+import {NewRowForm} from './new-row-form'
 
 /**
  * @typedef {import('../types').State} State
@@ -19,13 +19,13 @@ function Spreadsheet({state, send}) {
   return (
     <li class='list--spreadsheet__item'>
       <table id='spreadsheet'>
-        <TableHeader/>
+        <TableHeader />
         {
           state.items.map((row, idx) => (
-            <TableRow {...{row, idx, send}}/>
+            <TableRow {...{row, idx, send}} />
           ))
         }
-        <TableFooter {...{ state}}/>
+        <TableFooter {...{state}} />
       </table>
     </li>
   )
@@ -39,7 +39,7 @@ function Spreadsheet({state, send}) {
 export function SpreadSheet({state, send}) {
   return (
     <ul class='list--spreadsheet'>
-      <Spreadsheet {...{ state, send }} />
+      <Spreadsheet {...{state, send}} />
       <li class='list--spreadsheet__item'>
         <NewRowForm {...{state, send}} />
       </li>

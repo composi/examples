@@ -1,5 +1,5 @@
-import { h } from '@composi/core'
-import { HeroSearch } from './hero-search'
+import {h} from '@composi/core'
+import {HeroSearch} from './hero-search'
 
 /**
  * @typedef {import('../types').State} State
@@ -9,7 +9,7 @@ import { HeroSearch } from './hero-search'
  * @param {{state: State, send: Send}} props
  * @returns {import('@composi/core').VNode | string} VNode
  */
-export default function HeroDashboard({ state, send }) {
+export default function HeroDashboard({state, send}) {
   if (!state) {
     return ''
   } else if (state.activeComponent === 'dashboard' && state.heroes) {
@@ -29,7 +29,7 @@ export default function HeroDashboard({ state, send }) {
             ))
           }
         </div>
-        <HeroSearch {...{ state, send }}/>
+        <HeroSearch {...{state, send}} />
       </div>
     )
   } else {

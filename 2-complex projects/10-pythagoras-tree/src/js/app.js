@@ -1,6 +1,6 @@
-import { h, render, run, union } from '@composi/core'
-import { Tree } from './components/tree'
-import { handleMouseMove } from './effects/subscription'
+import {h, render, run, union} from "@composi/core"
+import {Tree} from "./components/tree"
+import {handleMouseMove} from "./effects/subscription"
 
 /**
  * @typedef {import('./types').State} State
@@ -23,7 +23,7 @@ const state = {
 }
 
 // Get reference to component container.
-const section = document.querySelector('section')
+const section = document.querySelector("section")
 
 /**
  * Define program to run animated fractal.
@@ -39,7 +39,7 @@ const program = {
    */
   view(state, send) {
     let SVG_HEIGHT = 0
-    return render(<Tree {...{ state, send, SVG_HEIGHT }} />, '#svg-base')
+    return render(<Tree {...{state, send, SVG_HEIGHT}} />, "#svg-base")
   },
   /**
    * @param {State} state
@@ -48,7 +48,7 @@ const program = {
    */
   update(state, msg, send) {
     const prevState = {...state}
-    if (msg.type === 'update-tree') {
+    if (msg.type === "update-tree") {
       prevState.heightFactor = msg.data.heightFactor
       prevState.lean = msg.data.lean
       return prevState

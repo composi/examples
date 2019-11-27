@@ -1,10 +1,10 @@
 import {h, render, run} from '@composi/core'
 import {Title} from './components/title'
-import { SpreadSheet } from './components/spreadsheet'
-import { fruitData } from './data'
-import { actions } from './effects/actions'
+import {SpreadSheet} from './components/spreadsheet'
+import {fruitData} from './data'
+import {actions} from './effects/actions'
 
-render(<Title message='@composi/core Spreadsheet'/>, 'header')
+render(<Title message='@composi/core Spreadsheet' />, 'header')
 
 /**
  * @typedef {import('./types').State} State
@@ -36,7 +36,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<SpreadSheet {...{ state, send }} />, '.list--spreadsheet')
+    return render(<SpreadSheet {...{state, send}} />, '.list--spreadsheet')
   },
   /**
    * @param {State} state

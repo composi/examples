@@ -1,8 +1,8 @@
-import { h, render, run } from '@composi/core'
-import { Title } from './components/title'
-import { Game } from './components/game'
-import { fetchJsonData } from './effects/fetchJsonData'
-import { actions } from './effects/actions'
+import {h, render, run} from '@composi/core'
+import {Title} from './components/title'
+import {Game} from './components/game'
+import {fetchJsonData} from './effects/fetchJsonData'
+import {actions} from './effects/actions'
 
 /**
  * @typedef {import('./types').State} State
@@ -29,7 +29,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return state && render(<Game {...{ state, send }} />, '.game')
+    return state && render(<Game {...{state, send}} />, '.game')
   },
   /**
  * @param {State} state

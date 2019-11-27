@@ -1,6 +1,5 @@
-import { h, Fragment } from '@composi/core'
-import { Msg } from '../effects/messages'
-const { Decrease, Increase, Delete } = Msg
+import {h, Fragment} from '@composi/core'
+import {Decrease, Increase, Delete} from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State
@@ -12,7 +11,7 @@ const { Decrease, Increase, Delete } = Msg
 /**
  * @param {{ counter: Counter, send: Send }} props
  */
-export function CounterButtons({ counter, send }) {
+export function CounterButtons({counter, send}) {
   return (
     <Fragment>
       <button disabled={counter.number < 1} onclick={() => send(Decrease(counter.key))} id="decrease">-</button>

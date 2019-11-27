@@ -2,10 +2,10 @@
  * @param {import('../types').Send} send
  */
 export default function movieService(send) {
-  (async() => {
+  (async () => {
     const response = await fetch('/src/js/data/movies.json')
     const movies = await response.json()
-    send({ type: 'load-movies', data: movies })
+    send({type: 'load-movies', data: movies})
     console.log(movies)
   })()
 }

@@ -7,6 +7,6 @@ export function getHeroes(send) {
     const data = await fetch('/src/js/data/mock-heroes.json')
     /** @type {import('../../types').Hero[]} */
     const json = await data.json()
-    send({ type: 'use-fetched-heroes', data: json })
+    send({type: 'use-fetched-heroes', data: json})
   })()
 }

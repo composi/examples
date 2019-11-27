@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { h } from '@composi/core'
-import { Pythagoras } from './pythagoras'
+import {h} from '@composi/core'
+import {Pythagoras} from './pythagoras'
 
 
 // These are used for first render of tree.
@@ -15,7 +15,7 @@ const SVG_HEIGHT = () => window.innerHeight
  * @param {{state: State, send: Send}} props
  * @returns {VNode} VNode
  */
-export function Tree({ state, send }) {
+export function Tree({state, send}) {
   return (
     <svg
       id='svg-base'

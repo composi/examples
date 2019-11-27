@@ -1,4 +1,5 @@
-import { batch } from '@composi/core'
+import {batch} from '@composi/core'
+import {FindCharacter, UseFetchedData} from '../effects/messages'
 
 /**
  * @typedef {import('../types').GetState} GetState
@@ -10,7 +11,7 @@ import { batch } from '@composi/core'
  */
 function handleEnterKey(send) {
   document.addEventListener('keypress', e => {
-    if (e.keyCode === 13) send({ type: 'find-character'})
+    if (e.keyCode === 13) send(FindCharacter())
   })
 }
 
@@ -25,7 +26,7 @@ function getCharacters(send, getState) {
     let data = await response.json()
     state.characters = data
     state.character = data[0]
-    send({type: 'use-fetched-data', data: state})
+    send(UseFetchedData(state))
   })()
 }
 

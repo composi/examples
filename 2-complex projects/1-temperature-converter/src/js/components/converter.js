@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @typedef {import('../types').Send} Send
@@ -16,7 +16,7 @@ const scaleNames = {
  * Determine if the boiling point was reached.
  * @param {{result: number}} props
  */
-function BoilingVerdict({ result }) {
+function BoilingVerdict({result}) {
   if (result >= 100) {
     return <p class='boiling'>The water would boil!</p>;
   }
@@ -28,11 +28,11 @@ function BoilingVerdict({ result }) {
  * @param {{send: Send, scale: string, temperature: string}} props
  */
 const TemperatureInput = (props) => {
-  const { send, scale, temperature } = props
+  const {send, scale, temperature} = props
   return (
     <fieldset>
       <legend>Enter temperature in {scaleNames[props.scale]}:</legend>
-      <input oninput={e => send({ type: scale, data: e })} value={temperature} type='number' />
+      <input oninput={e => send({type: scale, data: e})} value={temperature} type='number' />
     </fieldset>
   )
 }
@@ -42,14 +42,14 @@ const TemperatureInput = (props) => {
  * Component to render.
  * @param {{state: State, send: Send}} props
  */
-export function Converter({ state, send }) {
-  const { celsius, fahrenheit } = state
+export function Converter({state, send}) {
+  const {celsius, fahrenheit} = state
   const result = parseInt(celsius)
   return (
     <div class='converter'>
-      <TemperatureInput {...{ send, temperature: celsius, scale: 'c' }} />
-      <TemperatureInput {...{ send, temperature: fahrenheit, scale: 'f' }} />
-      <BoilingVerdict {...{ result }} />
+      <TemperatureInput {...{send, temperature: celsius, scale: 'c'}} />
+      <TemperatureInput {...{send, temperature: fahrenheit, scale: 'f'}} />
+      <BoilingVerdict {...{result}} />
     </div>
   )
 }

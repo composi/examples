@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @typedef {import('../types').State} State
@@ -10,7 +10,7 @@ import { h } from '@composi/core'
  */
 function Slide({img, idx, count}) {
   return (
-    <div  class={`slide ${count == idx + 1 ? 'active' : ''}`} style={{backgroundImage: `url(${img})`}}></div>
+    <div class={`slide ${count == idx + 1 ? 'active' : ''}`} style={{backgroundImage: `url(${img})`}}></div>
   )
 }
 
@@ -28,7 +28,7 @@ export function SlideShow({state}) {
       <section>
         <div class='slide-show'>
           {
-            state.pics.map((img, idx) => <Slide {...{ count: state.count, idx, img }} />)
+            state.pics.map((img, idx) => <Slide {...{count: state.count, idx, img}} />)
           }
         </div>
       </section>

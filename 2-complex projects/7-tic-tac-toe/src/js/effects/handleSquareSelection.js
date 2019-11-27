@@ -1,4 +1,4 @@
-import { calculateWinner } from './calculateWinner'
+import {calculateWinner} from './calculateWinner'
 
 /**
  * Function to handle tile selection.
@@ -13,7 +13,7 @@ export function handleSquareSelection(state, idx) {
     return
   }
   squares[idx] = state.xIsNext ? "X" : "O"
-  state.history = history.concat([{ squares: squares }])
+  state.history = history.concat([{squares: squares}])
   state.stepNumber = history.length,
     state.xIsNext = !state.xIsNext
   return state

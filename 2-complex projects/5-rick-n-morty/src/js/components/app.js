@@ -1,7 +1,7 @@
-import { h } from '@composi/core'
-import { InfoBox } from './infobox'
-import { DetailBox } from './detailbox'
-import { TopBar } from './topbar'
+import {h} from '@composi/core'
+import {InfoBox} from './infobox'
+import {DetailBox} from './detailbox'
+import {TopBar} from './topbar'
 
 /**
  * Main component for app where we assemble the pieces together.
@@ -9,7 +9,7 @@ import { TopBar } from './topbar'
  * @typedef {import('../types').Send} Send
  * @param {{state: State, send: Send}} props
  */
-export function App({ state, send }) {
+export function App({state, send}) {
   const dashboard = state.dashboard
 
   // If no characters yet, return.
@@ -18,11 +18,11 @@ export function App({ state, send }) {
   if (dashboard) {
     return (
       <section>
-        <TopBar {...{ dashboard, send }} />
+        <TopBar {...{dashboard, send}} />
         <div id="infocontainer">
           {
             state.characters.map(char => (
-              <InfoBox {...{ send, character: char }} />
+              <InfoBox {...{send, character: char}} />
             ))}
         </div>
       </section>
@@ -30,7 +30,7 @@ export function App({ state, send }) {
   } else {
     return (
       <section>
-        <TopBar {...{ dashboard, send }} />
+        <TopBar {...{dashboard, send}} />
         <div id="infocontainer">
           <DetailBox character={state.character} />
         </div>

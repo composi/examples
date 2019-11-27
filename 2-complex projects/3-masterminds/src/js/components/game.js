@@ -1,5 +1,5 @@
-import { h } from '@composi/core'
-import { DifficultyLevel, GuessEngine } from '../lib/GuessEngine';
+import {h} from '@composi/core'
+import {DifficultyLevel, GuessEngine} from '../lib/GuessEngine';
 
 /**
  * @typedef {import('../types').State} State
@@ -62,11 +62,11 @@ export function Game({state, send}) {
                   </li>
                   <li class="nav-item">
                     <a class={`nav-link ${activeLinkClass(DifficultyLevel.MEDIUM)}`}
-                      onclick={() => send({ type: 'MEDIUM' })}>MEDIUM</a>
+                      onclick={() => send({type: 'MEDIUM'})}>MEDIUM</a>
                   </li>
                   <li class="nav-item">
                     <a class={`nav-link ${activeLinkClass(DifficultyLevel.HARD)}`}
-                      onclick={() => send({ type: 'HARD' })}>HARD</a>
+                      onclick={() => send({type: 'HARD'})}>HARD</a>
                   </li>
                 </ul>
               </div>
@@ -78,7 +78,7 @@ export function Game({state, send}) {
               </div>
               <div class="form-group">
                 <button class="btn btn-lg btn-success btn-block"
-                  onclick={e => send({ type: 'guess-number'})}>GUESS</button>
+                  onclick={e => send({type: 'guess-number'})}>GUESS</button>
               </div>
             </div>
           }
@@ -96,7 +96,7 @@ export function Game({state, send}) {
               <div class="game-outcome">
                 <h3 class='win'>{state.outcome}</h3>
                 <button class="btn btn-lg btn-success btn-block"
-                  onclick={() => send({type:'EASY'})}>PLAY AGAIN</button>
+                  onclick={() => send({type: 'EASY'})}>PLAY AGAIN</button>
               </div>
             </div>
           }

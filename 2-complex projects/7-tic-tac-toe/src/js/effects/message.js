@@ -1,4 +1,4 @@
-import { union } from '@composi/core'
+import {union} from '@composi/core'
 
 /**
  * Define union.
@@ -6,4 +6,4 @@ import { union } from '@composi/core'
  */
 export const Msg = union('SelectTile', 'JumpTo', 'UseFetchedData')
 
-export const { SelectTile, JumpTo, UseFetchedData } = Msg
+export const {match, SelectTile, JumpTo, UseFetchedData} = Msg

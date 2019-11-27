@@ -1,9 +1,9 @@
 // @ts-ignore
-import { h, render, run, union } from 'https://unpkg.com/@composi/core@latest/dist/composi-core.mjs?module'
+import {h, render, run, union} from 'https://unpkg.com/@composi/core@latest/dist/composi-core.mjs?module'
 // @ts-ignore
 import htm from 'https://unpkg.com/htm/dist/htm.mjs?module'
 // @ts-ignore
-import { clone } from 'https://unpkg.com/@composi/clone/src/index.js?module'
+import {clone} from 'https://unpkg.com/@composi/clone/src/index.js?module'
 
 const html = htm.bind(h)
 
@@ -23,13 +23,13 @@ render(html`<${Title} msg='In the Browser'/>`, 'header')
  * @type {MessageUnion}
  */
 const Msg = union('UpdateInputValue', 'AddItem', 'DeleteItem')
-const { UpdateInputValue, AddItem, DeleteItem } = Msg
+const {UpdateInputValue, AddItem, DeleteItem} = Msg
 
 /**
  * Functional list component for view.
  * @param {{state: State, send: Send}} props
  */
-function List({ state, send }) {
+function List({state, send}) {
   /**
    * @param {HTMLInputElement} input
    */
@@ -67,7 +67,7 @@ function List({ state, send }) {
             <span>${fruit.value}</span>
             <button class='delete-item' onclick=${() => send(DeleteItem(fruit.key))}>X</button>
           </li>`)
-        }
+    }
       </ul>
     </div>
   `
@@ -126,7 +126,7 @@ function actions(state, msg, send) {
     },
     // Delete item based on its key:
     DeleteItem: key => {
-      prevState.items =  prevState.items.filter(fruit => fruit.key != key)
+      prevState.items = prevState.items.filter(fruit => fruit.key != key)
       return prevState
     }
   })
@@ -157,7 +157,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(html`<${List} ...${{ state, send }} />`, '.container')
+    return render(html`<${List} ...${{state, send}} />`, '.container')
   },
   /**
    * @param {State} state
@@ -170,7 +170,7 @@ const program = {
   /**
    * @param {Send} send
    */
-  subscriptions(send ) {
+  subscriptions(send) {
     return handleEnterKey(send)
   }
 }

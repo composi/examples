@@ -1,9 +1,9 @@
-import { h, render, run } from '@composi/core'
-import { Title } from './components/title'
-import { Clock } from './components/clock'
+import {h, render, run} from '@composi/core'
+import {Title} from './components/title'
+import {Clock} from './components/clock'
 
 
-render(<Title message='Clock'/>, 'header')
+render(<Title message='Clock' />, 'header')
 
 
 /**
@@ -30,7 +30,7 @@ const state = {
  * @param {Send} send
  */
 function startClock(send) {
-  setInterval(() => send({ type: 'update-time' }), 1000)
+  setInterval(() => send({type: 'update-time'}), 1000)
 }
 
 /**
@@ -61,7 +61,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    render(<Clock {...{ state, send }} />, '.container-fluid')
+    render(<Clock {...{state, send}} />, '.container-fluid')
   },
   /**
    * @param {State} state

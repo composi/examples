@@ -1,6 +1,6 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 import HeroDashboard from './hero-dashboard'
-import { HeroList } from './hero-list'
+import {HeroList} from './hero-list'
 import HeroDetail from './hero-detail'
 
 /**
@@ -9,12 +9,12 @@ import HeroDetail from './hero-detail'
  * @param {{state: State, send: Send}} props
  * @returns {import('@composi/core').VNode} VNode
  */
-export function App({ state, send }) {
+export function App({state, send}) {
   return (
     <div class="app-root">
-      <HeroDashboard {...{ state, send }} />
-      <HeroList {...{ state, send }} />
-      <HeroDetail {...{ state, send }} />
+      <HeroDashboard {...{state, send}} />
+      <HeroList {...{state, send}} />
+      <HeroDetail {...{state, send}} />
     </div>
   )
 }

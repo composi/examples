@@ -1,7 +1,7 @@
 // @ts-nocheck
-import { h } from '@composi/core'
-import { memoizedCalc } from '../effects/memoized-calc'
-import { interpolateWarm } from 'd3'
+import {h} from '@composi/core'
+import {memoizedCalc} from '../effects/memoized-calc'
+import {interpolateWarm} from 'd3'
 
 /**
  * Function component to create tree segments.
@@ -34,13 +34,13 @@ export const Pythagoras = ({
     return null
   }
 
-  const { nextRight, nextLeft, A, B } = memoizedCalc({
+  const {nextRight, nextLeft, A, B} = memoizedCalc({
     w: w,
     heightFactor: heightFactor,
     lean: lean
   })
 
-  let rotate = ""
+  let rotate = ''
 
   if (left) {
     rotate = `rotate(${-A} 0 ${w})`
@@ -49,7 +49,7 @@ export const Pythagoras = ({
   }
 
   return (
-    <g ns="svg" transform={`translate(${x} ${y}) ${rotate}`}>
+    <g ns='svg' transform={`translate(${x} ${y}) ${rotate}`}>
       <rect
         width={w}
         height={w}

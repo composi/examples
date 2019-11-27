@@ -1,4 +1,4 @@
-import { h } from '@composi/core'
+import {h} from '@composi/core'
 
 /**
  * @typedef {import('../types').State} State
@@ -14,7 +14,7 @@ export function HeroList({state, send}) {
       <div>
         <p class='form--add-hero'>
           <label for="add-hero">Hero name: </label>
-          <input id='add-hero' type="text" oninput={e => send({type:'new-hero', data: e.target.value})} value={state.newHero}/>
+          <input id='add-hero' type="text" oninput={e => send({type: 'new-hero', data: e.target.value})} value={state.newHero} />
           <button onclick={() => send({type: 'add-hero'})}>Add</button>
         </p>
         <ul class="heroes">
@@ -27,7 +27,7 @@ export function HeroList({state, send}) {
                     <span class="badge">{id}</span>
                     <span class='hero-link'>{name}</span>
                   </a>
-                  <button data-id={id} class="delete" title="delete hero" onclick={e => send({ type: 'delete-item', data: id })}>x</button>
+                  <button data-id={id} class="delete" title="delete hero" onclick={e => send({type: 'delete-item', data: id})}>x</button>
                 </li>
               )
             })

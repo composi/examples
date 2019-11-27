@@ -1,8 +1,8 @@
-import { h, render, run } from '@composi/core'
-import { clone } from '@composi/merge-objects'
-import { startShow } from './subscription'
-import { SlideShow } from './components/slideshow'
-import { setupPics } from './utils'
+import {h, render, run} from '@composi/core'
+import {clone} from '@composi/merge-objects'
+import {startShow} from './subscription'
+import {SlideShow} from './components/slideshow'
+import {setupPics} from './utils'
 
 /**
  * @typedef {import('./types').State} State
@@ -26,7 +26,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    return render(<SlideShow {...{ state }} />, 'main')
+    return render(<SlideShow {...{state}} />, 'main')
   },
   /**
    * @param {State} state

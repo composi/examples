@@ -1,5 +1,5 @@
-import { h } from '@composi/core'
-import { DeleteHero } from '../effects/messages'
+import {h} from '@composi/core'
+import {DeleteHero} from '../effects/messages'
 
 /**
  * @typedef {import('../types').Hero} Hero
@@ -9,7 +9,7 @@ import { DeleteHero } from '../effects/messages'
  * @param {{hero: Hero, send: Send}} props
  * @returns {import('@composi/core').VNode} VNode
  */
-export function ListItem({ hero, send }) {
+export function ListItem({hero, send}) {
   const {name, id} = hero
   return (
     <li key={id}>
