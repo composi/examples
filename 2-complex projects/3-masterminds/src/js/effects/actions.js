@@ -15,43 +15,42 @@ import {DifficultyLevel} from '../lib/GuessEngine';
  */
 export function actions(state, msg, send) {
 
-  const prevState = {...state}
   switch (msg.type) {
     case 'EASY':
       startGame(DifficultyLevel.EASY)
-      prevState.outcome = ''
-      prevState.guess = 0
-      return prevState
+      state.outcome = ''
+      state.guess = 0
+      return state
     case 'MEDIUM':
       startGame(DifficultyLevel.MEDIUM)
-      prevState.outcome = ''
-      prevState.guess = 0
-      return prevState
+      state.outcome = ''
+      state.guess = 0
+      return state
     case 'HARD':
       startGame(DifficultyLevel.HARD)
-      prevState.outcome = ''
-      prevState.guess = 0
-      return prevState
+      state.outcome = ''
+      state.guess = 0
+      return state
     case 'number-change':
       const guess = msg.data.target.value;
       if (!isNaN(guess)) {
-        prevState.guess = parseInt(guess)
+        state.guess = parseInt(guess)
       }
-      return prevState
+      return state
     case 'guess-number':
       const guessOutcome = guessEngine.guess(state.guess);
 
       if (guessOutcome.accuracy === 0) {
-        prevState.outcome = 'you win'
+        state.outcome = 'you win'
       } else {
         const outcome = `${guessOutcome.getIndicator()} : ${guessOutcome.getSuggestion()}`;
         const indicator = guessOutcome.getIndicator();
-        prevState.outcome = outcome
-        prevState.indicator = indicator
+        state.outcome = outcome
+        state.indicator = indicator
       }
-      return prevState
+      return state
     case 'play-again':
       startGame('EASY')
-      return prevState
+      return state
   }
 }

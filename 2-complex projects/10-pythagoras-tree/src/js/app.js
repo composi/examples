@@ -1,4 +1,5 @@
-import {h, render, run, union} from "@composi/core"
+import {h, render, run} from "@composi/core"
+import {clone} from '@composi/clone'
 import {Tree} from "./components/tree"
 import {handleMouseMove} from "./effects/subscription"
 
@@ -47,7 +48,8 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    const prevState = {...state}
+    /** @type {State} */
+    const prevState = clone(state)
     if (msg.type === "update-tree") {
       prevState.heightFactor = msg.data.heightFactor
       prevState.lean = msg.data.lean

@@ -13,63 +13,63 @@ const setButtonState = index => {
 
 /**
  * Actions for program's update method.
- * @param {import('../types').State} prevState
+ * @param {import('../types').State} state
  * @param {import('../types').Message} msg
  */
-export function actions(prevState, msg) {
+export function actions(state, msg) {
   return match(msg, {
     UpdateInputValue: value => {
-      prevState.inputValue = value
-      return prevState
+      state.inputValue = value
+      return state
     },
     AddItem: () => {
-      if (prevState.inputValue) {
-        prevState.items.push({
+      if (state.inputValue) {
+        state.items.push({
           active: true,
-          value: prevState.inputValue,
-          id: prevState.newKey++,
+          value: state.inputValue,
+          id: state.newKey++,
           hidden: false
         })
-        prevState.inputValue = ''
-        idb.set('todos', prevState)
+        state.inputValue = ''
+        idb.set('todos', state)
       } else {
         alert('Please provide a value before submitting.')
       }
-      return prevState
+      return state
     },
     DeleteItem: id => {
-      prevState.items = prevState.items.filter(item => item.id != id)
-      idb.set('todos', prevState)
-      return prevState
+      state.items = state.items.filter(item => item.id != id)
+      idb.set('todos', state)
+      return state
     },
     SetActiveState: id => {
-      const index = prevState.items.findIndex(item => {
+      const index = state.items.findIndex(item => {
         return item.id == id
       })
-      prevState.items[index].active = !prevState.items[index].active
-      idb.set('todos', prevState)
-      return prevState
+      state.items[index].active = !state.items[index].active
+      idb.set('todos', state)
+      return state
     },
     ShowActive: () => {
-      prevState.items.map(item => {
+      state.items.map(item => {
         if (!item.active) item.hidden = true
         else item.hidden = false
       })
-      prevState.selectedButton = setButtonState(1)
-      return prevState
+      state.selectedButton = setButtonState(1)
+      return state
     },
     ShowCompleted: () => {
-      prevState.items.map(item => {
+      state.items.map(item => {
         if (item.active) item.hidden = true
         else item.hidden = false
       })
-      prevState.selectedButton = setButtonState(2)
-      return prevState
+      state.selectedButton = setButtonState(2)
+      return state
     },
     ShowAll: () => {
-      prevState.items.map(item => item.hidden = false)
-      prevState.selectedButton = setButtonState(0)
-      return prevState
+      state.items.map(item => item.hidden = false)
+      state.selectedButton = setButtonState(0)
+      return state
     },
     RenderLocalState: state => {
       return state

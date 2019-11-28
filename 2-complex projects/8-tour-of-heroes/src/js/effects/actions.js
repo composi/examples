@@ -5,45 +5,44 @@
  * @param {import('../types').Send} send
  */
 export function actions(state, msg, send) {
-  const prevState = {...state}
   switch (msg.type) {
     case 'active-component':
-      prevState.activeComponent = msg.data
-      return prevState
+      state.activeComponent = msg.data
+      return state
     case 'add-hero':
-      if (prevState.newHero)
-        prevState.heroes.push({
-          id: prevState.newId++,
-          name: prevState.newHero
+      if (state.newHero)
+        state.heroes.push({
+          id: state.newId++,
+          name: state.newHero
         })
-      prevState.newHero = ''
-      return prevState
+      state.newHero = ''
+      return state
     case 'change-hero-name':
-      prevState.selectedHero.name = msg.data
-      return prevState
+      state.selectedHero.name = msg.data
+      return state
     case 'delete-item':
-      prevState.heroes = prevState.heroes.filter(hero => hero.id != msg.data)
-      return prevState
+      state.heroes = state.heroes.filter(hero => hero.id != msg.data)
+      return state
     case 'new-hero':
-      prevState.newHero = msg.data
-      return prevState
+      state.newHero = msg.data
+      return state
     case 'reset-name':
-      prevState.selectedHero.name = prevState.selectedHero.originalName
-      return prevState
+      state.selectedHero.name = state.selectedHero.originalName
+      return state
     case 'save-name':
       window.location.hash = '#/heroes'
-      return prevState
+      return state
     case 'show-detail':
-      const position = prevState.heroes.findIndex(person => person.id == msg.data)
-      const hero = prevState.heroes[position]
+      const position = state.heroes.findIndex(person => person.id == msg.data)
+      const hero = state.heroes[position]
       try {
         hero.originalName = hero.name
-        prevState.activeComponent = 'detail'
-        prevState.selectedHero = hero
+        state.activeComponent = 'detail'
+        state.selectedHero = hero
       } catch (err) {}
-      return prevState
+      return state
     case 'use-fetched-heroes':
-      prevState.heroes = msg.data
-      return prevState
+      state.heroes = msg.data
+      return state
   }
 }

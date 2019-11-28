@@ -5,7 +5,6 @@
  * @param {import('./types').Send} send
  */
 export function actions(state, msg, send) {
-  const prevState = {...state}
-  prevState.activeId = msg.data
-  return prevState
+  state.activeId = msg.data
+  return state
 }

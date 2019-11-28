@@ -1,4 +1,5 @@
 import {h, render, run} from '@composi/core'
+import {clone} from '@composi/clone'
 import {List} from './components/list'
 import {createPopup} from './components/create-popup'
 import {buildData} from './utils/build-data'
@@ -16,7 +17,6 @@ import {actions} from './effects/actions'
  * @param {{state: State, send: Send}} props
  */
 function List2({state, send}) {
-  console.log(state)
   return (
     <div id="app">
       <ul class='list'>
@@ -49,7 +49,9 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    return actions(state, msg, send)
+    /** @type {State} */
+    const prevState = clone(state)
+    return actions(prevState, msg, send)
   },
   /**
    * @param {Send} send

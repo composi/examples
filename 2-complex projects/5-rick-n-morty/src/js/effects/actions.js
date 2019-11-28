@@ -9,29 +9,27 @@ import {match} from './messages'
  * @param {import('../types').Send} send
  */
 export function actions(state, msg, send) {
-  // Clone state:
-  let prevState = {...state}
   return match(msg, {
     UpdateInputValue: () => {
-      prevState.inputValue = msg.data
-      return prevState
+      state.inputValue = msg.data
+      return state
     },
     ShowCharacter: (element) => {
       const target = element.closest('.infobox')
-      const characters = prevState.characters
+      const characters = state.characters
       const id = target.dataset.id
       const character = characters.filter(char => id === char.id)[0]
-      prevState.character = character
-      prevState.dashboard = false
-      return prevState
+      state.character = character
+      state.dashboard = false
+      return state
     },
     ShowDashboard: () => {
-      prevState.dashboard = true
-      return prevState
+      state.dashboard = true
+      return state
     },
     FindCharacter: () => {
-      prevState = findCharacter(prevState)
-      return prevState
+      state = findCharacter(state)
+      return state
     },
     UseFetchedData: (data) => data
   })

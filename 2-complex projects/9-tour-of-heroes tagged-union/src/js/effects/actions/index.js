@@ -1,4 +1,3 @@
-import {clone} from '@composi/clone'
 import {match} from '../messages'
 import {useFetchedHeroes} from './use-fetched-heroes'
 import {setActiveComponent} from './active-component'
@@ -20,31 +19,30 @@ import {resetSearchResults} from './reset-search-results'
  */
 export function actions(state, msg, send) {
   /** @type {import('../../types').State} */
-  const prevState = clone(state)
 
   return match(msg, {
 
-    ActiveComponent: activeComponent => setActiveComponent(activeComponent, prevState, send),
+    ActiveComponent: activeComponent => setActiveComponent(activeComponent, state, send),
 
-    AddHero: () => addHero(prevState, send),
+    AddHero: () => addHero(state, send),
 
-    ChangeHeroName: name => changeHeroName(name, prevState),
+    ChangeHeroName: name => changeHeroName(name, state),
 
-    DeleteHero: id => deleteHero(id, prevState, send),
+    DeleteHero: id => deleteHero(id, state, send),
 
-    NewHero: name => newHero(name, prevState),
+    NewHero: name => newHero(name, state),
 
-    ResetName: () => resetName(prevState),
+    ResetName: () => resetName(state),
 
-    ResetSearchResults: () => resetSearchResults(prevState),
+    ResetSearchResults: () => resetSearchResults(state),
 
-    SaveLocally: data => saveLocally(data, prevState),
+    SaveLocally: data => saveLocally(data, state),
 
-    SaveName: () => saveName(prevState, send),
+    SaveName: () => saveName(state, send),
 
-    Search: value => search(value, prevState),
+    Search: value => search(value, state),
 
-    ShowDetail: id => showDetail(id, prevState, send),
+    ShowDetail: id => showDetail(id, state, send),
 
     UseFetchedHeroes: data => useFetchedHeroes(data, send)
   })

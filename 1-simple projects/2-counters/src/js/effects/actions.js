@@ -7,32 +7,31 @@ import {match} from './messages'
  * @param {import('@composi/core').Send} send
  */
 export function actions(state, msg, send) {
-  const prevState = {...state}
   return match(msg, {
     AddCounter: () => {
-      prevState.counters.push({
+      state.counters.push({
         number: 0,
-        key: prevState.key++
+        key: state.key++
       })
-      return prevState
+      return state
     },
     Increase: id => {
-      const position = prevState.counters.findIndex(counter => id == counter.key)
-      prevState.counters[position].number++
-      prevState.sum++
-      return prevState
+      const position = state.counters.findIndex(counter => id == counter.key)
+      state.counters[position].number++
+      state.sum++
+      return state
     },
     Decrease: id => {
-      const position = prevState.counters.findIndex(counter => id == counter.key)
-      prevState.counters[position].number--
-      prevState.sum--
-      return prevState
+      const position = state.counters.findIndex(counter => id == counter.key)
+      state.counters[position].number--
+      state.sum--
+      return state
     },
     Delete: id => {
-      const counters = prevState.counters.filter(counter => id != counter.key)
-      prevState.counters = counters
-      prevState.sum = prevState.counters.reduce((a, b) => a + b.number, 0)
-      return prevState
+      const counters = state.counters.filter(counter => id != counter.key)
+      state.counters = counters
+      state.sum = state.counters.reduce((a, b) => a + b.number, 0)
+      return state
     }
   })
 }

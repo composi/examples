@@ -1,4 +1,5 @@
-import {h, render, run, union} from '@composi/core'
+import {h, render, run} from '@composi/core'
+import {clone} from '@composi/clone'
 import {Title} from './components/title'
 import {Counter} from './components/counter'
 import {actions} from './effects/actions'
@@ -45,7 +46,9 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    return actions(state, msg, send)
+    /** @type {State} */
+    const prevState = clone(state)
+    return actions(prevState, msg, send)
   }
 }
 

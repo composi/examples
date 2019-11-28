@@ -14,17 +14,16 @@ import {handleSquareSelection} from './handleSquareSelection'
  * @param {Send} send
  */
 export function actions(state, msg, send) {
-  const prevState = {...state}
   /** @type {import('../types').MessageUnion} */
   return match(msg, {
     SelectTile: tile => {
-      const newState = handleSquareSelection(prevState, tile)
+      const newState = handleSquareSelection(state, tile)
       return newState
     },
     JumpTo: jump => {
-      prevState.stepNumber = jump
-      prevState.xIsNext = (jump % 2) === 0
-      return prevState
+      state.stepNumber = jump
+      state.xIsNext = (jump % 2) === 0
+      return state
     },
     UseFetchedData: data => data
   })

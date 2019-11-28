@@ -1,7 +1,8 @@
-import { h, render, run } from '@composi/core'
-import { subs } from './effects/subscriptions'
-import { TodoList } from './components/todo-list'
-import { actions } from './effects/actions'
+import {h, render, run} from '@composi/core'
+import {clone} from '@composi/clone'
+import {subs} from './effects/subscriptions'
+import {TodoList} from './components/todo-list'
+import {actions} from './effects/actions'
 
 /**
  * @typedef {import('./types').State} State
@@ -26,7 +27,7 @@ const program = {
    * @param {Send} send
    */
   view(state, send) {
-    state && render(<TodoList {...{ state, send }} />, '.parent-view')
+    state && render(<TodoList {...{state, send}} />, '.parent-view')
   },
   /**
    * @param {State} state
@@ -34,7 +35,8 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    const prevState = {...state}
+    /** @type {State} */
+    const prevState = clone(state)
     return actions(prevState, msg)
   },
   /**

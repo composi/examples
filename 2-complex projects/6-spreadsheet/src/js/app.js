@@ -1,4 +1,5 @@
 import {h, render, run} from '@composi/core'
+import {clone} from '@composi/clone'
 import {Title} from './components/title'
 import {SpreadSheet} from './components/spreadsheet'
 import {fruitData} from './data'
@@ -44,7 +45,9 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    return actions(state, msg, send)
+    /** @type {State} */
+    const prevState = clone(state)
+    return actions(prevState, msg, send)
   }
 }
 

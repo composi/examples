@@ -1,4 +1,5 @@
 import {h, render, run} from '@composi/core'
+import {clone} from '@composi/clone'
 import {HackerNews} from './components/hacker-news'
 import {loadItems} from './effects/load-items'
 import {actions} from './effects/actions'
@@ -37,7 +38,8 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    const prevState = {...state}
+    /** @type {State} */
+    const prevState = clone(state)
     return actions(prevState, msg, send)
   },
   /**
