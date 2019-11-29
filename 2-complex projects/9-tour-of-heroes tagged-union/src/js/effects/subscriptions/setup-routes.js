@@ -15,11 +15,11 @@ export const setupRoutes = send => {
     router(
       {
         path: '/heroes',
-        action: () => send(ActiveComponent('heroes'))
+        action: () => send(ActiveComponent, 'heroes')
       },
       {
         path: '/detail/:id',
-        action: id => send(ShowDetail(id))
+        action: id => send(ShowDetail, id)
       },
       {
         path: '*',

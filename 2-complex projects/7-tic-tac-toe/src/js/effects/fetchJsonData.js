@@ -8,6 +8,6 @@ export function fetchJsonData(send) {
   (async () => {
     const data = await fetch('/src/js/data/state.json')
     const json = await data.json()
-    send(UseFetchedData(json))
+    send(UseFetchedData, json)
   })()
 }

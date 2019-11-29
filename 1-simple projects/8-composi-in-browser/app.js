@@ -55,8 +55,8 @@ function List({state, send}) {
   return html`
     <div class='container'>
       <p>
-        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(UpdateInputValue(e.target.value))} />
-        <button onclick=${() => send(AddItem())} class='add-item'>Add</button>
+        <input autofocus onupdate=${setFocus} value=${state.inputValue} type='text' oninput=${e => send(UpdateInputValue, e.target.value)} />
+        <button onclick=${() => send(AddItem)} class='add-item'>Add</button>
       </p>
       <ul class='list'>
         ${state.items.map(fruit => html`
@@ -65,7 +65,7 @@ function List({state, send}) {
             onmount=${animateIn}
             onunmount=${animateOut}>
             <span>${fruit.value}</span>
-            <button class='delete-item' onclick=${() => send(DeleteItem(fruit.key))}>X</button>
+            <button class='delete-item' onclick=${() => send(DeleteItem, fruit.key)}>X</button>
           </li>`)
     }
       </ul>
@@ -199,7 +199,7 @@ run(program)
 * @typedef {Object<string, any>} Message
 * @prop {string} type
 * @prop {any} [data]
-* @typedef {(msg?: Message) => Message} Send
+* @typedef {(msg?: Message | Function, data?: any) => Message} Send
 * @typedef {() => State} GetState
 */
 /**

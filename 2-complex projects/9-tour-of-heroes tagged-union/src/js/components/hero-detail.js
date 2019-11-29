@@ -16,11 +16,11 @@ export default function HeroDetail({state, send}) {
         <div><label>id:</label> {id}</div>
         <div>
           <label for='update-name'>name: </label>
-          <input value={name} id='update-name' placeholder={name} oninput={e => send(ChangeHeroName(e.target.value))} />
+          <input value={name} id='update-name' placeholder={name} oninput={e => send(ChangeHeroName, e.target.value)} />
         </div>
         <p class='hero-detail--buttons'>
-          <button onclick={() => send(ResetName())}>Reset</button>
-          <button onclick={() => send(SaveName())}>Save</button>
+          <button onclick={() => send(ResetName)}>Reset</button>
+          <button onclick={() => send(SaveName)}>Save</button>
         </p>
       </div>
     )

@@ -15,7 +15,7 @@ const {AddItem, RenderLocalState} = Msg
 function handleEnterKey(send) {
   document.addEventListener('keypress', e => {
     if (e.keyCode === 13) {
-      send(AddItem())
+      send(AddItem)
     }
   })
 }
@@ -41,9 +41,9 @@ function getData(send) {
   (async () => {
     const todos = await idb.get('todos')
     if (todos) {
-      send(RenderLocalState(todos))
+      send(RenderLocalState, todos)
     } else {
-      send(RenderLocalState(initialState))
+      send(RenderLocalState, initialState)
     }
   })()
 }

@@ -12,7 +12,7 @@ export function HeroSearch({state, send}) {
     <div id="search-component">
       <h4>Hero Search</h4>
 
-      <input id="search-box" oninput={e => send(Search(e.target.value))} />
+      <input id="search-box" oninput={e => send(Search, e.target.value)} />
       <ul class="search-result">
         {
           state.searchResults && state.searchResults.map(hero => (

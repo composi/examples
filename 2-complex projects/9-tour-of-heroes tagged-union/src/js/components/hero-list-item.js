@@ -17,7 +17,7 @@ export function ListItem({hero, send}) {
         <span class="badge">{id}</span>
         <span class='hero-link'>{name}</span>
       </a>
-      <button data-id={id} class="delete" title="delete hero" onclick={e => send(DeleteHero(id))}>x</button>
+      <button data-id={id} class="delete" title="delete hero" onclick={e => send(DeleteHero, id)}>x</button>
     </li>
   )
 }

@@ -14,7 +14,7 @@ import {SelectTile, JumpTo} from '../effects/message'
  */
 function Square({won, idx, value, send}) {
   return (
-    <button class={`square ${won ? 'won' : ''}`} onclick={() => send(SelectTile(idx))}>
+    <button class={`square ${won ? 'won' : ''}`} onclick={() => send(SelectTile, idx)}>
       {value}
     </button>
   )
@@ -79,7 +79,7 @@ export function Game({state, send}) {
       'Go to game start'
     return (
       <li key={move}>
-        <button class='button-moves' onclick={() => send(JumpTo(move))}>{desc}</button>
+        <button class='button-moves' onclick={() => send(JumpTo, move)}>{desc}</button>
       </li>
     )
   })

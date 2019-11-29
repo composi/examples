@@ -11,7 +11,7 @@ import {ShowCharacter} from '../effects/messages'
  */
 export function InfoBox({character, send}) {
   return (
-    <div data-id={character.id} class="infobox closed" onclick={(e) => send(ShowCharacter(e.target))}>
+    <div data-id={character.id} class="infobox closed" onclick={(e) => send(ShowCharacter, e.target)}>
       <div class="img" style={{backgroundImage: `url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/77047/${character.image})`}}></div>
 
       <section class="stats">

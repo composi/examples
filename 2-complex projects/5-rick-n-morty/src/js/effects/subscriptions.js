@@ -11,7 +11,7 @@ import {FindCharacter, UseFetchedData} from '../effects/messages'
  */
 function handleEnterKey(send) {
   document.addEventListener('keypress', e => {
-    if (e.keyCode === 13) send(FindCharacter())
+    if (e.keyCode === 13) send(FindCharacter)
   })
 }
 
@@ -26,7 +26,7 @@ function getCharacters(send, getState) {
     let data = await response.json()
     state.characters = data
     state.character = data[0]
-    send(UseFetchedData(state))
+    send(UseFetchedData, state)
   })()
 }
 
