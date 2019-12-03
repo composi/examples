@@ -1,6 +1,6 @@
 import {h} from '@composi/core'
 
-import {Msg, ShowAll, ShowActive, ShowCompleted} from '../effects/messages'
+import {ShowAll, ShowActive, ShowCompleted} from '../effects/messages'
 
 /**
  * @typedef {import('../types').State} State

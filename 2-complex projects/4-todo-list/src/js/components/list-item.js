@@ -1,6 +1,6 @@
 import {h} from '@composi/core'
 import {animateIn, animateOut} from '../effects/visual-effecs'
-import {Msg, SetActiveState, DeleteItem} from '../effects/messages'
+import {SetActiveState, DeleteItem} from '../effects/messages'
 
 /**
  * @typedef {import('../types').Item} Item

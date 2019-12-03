@@ -1,7 +1,7 @@
 import {h} from '@composi/core'
 import {ListItem} from './list-item'
 import {Footer} from './footer'
-import {Msg, UpdateInputValue, AddItem} from '../effects/messages'
+import {UpdateInputValue, AddItem} from '../effects/messages'
 import {setFocus} from '../effects/visual-effecs'
 
 /**

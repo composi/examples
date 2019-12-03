@@ -17,33 +17,29 @@ import {resetSearchResults} from './reset-search-results'
  * @param {import('../../types').Message} msg
  * @param {import('../../types').Send} send
  */
-export function actions(state, msg, send) {
-  /** @type {import('../../types').State} */
+export const actions = (state, msg, send) => match(msg, {
 
-  return match(msg, {
+  ActiveComponent: activeComponent => setActiveComponent(activeComponent, state, send),
 
-    ActiveComponent: activeComponent => setActiveComponent(activeComponent, state, send),
+  AddHero: () => addHero(state, send),
 
-    AddHero: () => addHero(state, send),
+  ChangeHeroName: name => changeHeroName(name, state),
 
-    ChangeHeroName: name => changeHeroName(name, state),
+  DeleteHero: id => deleteHero(id, state, send),
 
-    DeleteHero: id => deleteHero(id, state, send),
+  NewHero: name => newHero(name, state),
 
-    NewHero: name => newHero(name, state),
+  ResetName: () => resetName(state),
 
-    ResetName: () => resetName(state),
+  ResetSearchResults: () => resetSearchResults(state),
 
-    ResetSearchResults: () => resetSearchResults(state),
+  SaveLocally: data => saveLocally(data, state),
 
-    SaveLocally: data => saveLocally(data, state),
+  SaveName: () => saveName(state, send),
 
-    SaveName: () => saveName(state, send),
+  Search: value => search(value, state),
 
-    Search: value => search(value, state),
+  ShowDetail: id => showDetail(id, state, send),
 
-    ShowDetail: id => showDetail(id, state, send),
-
-    UseFetchedHeroes: data => useFetchedHeroes(data, send)
-  })
-}
+  UseFetchedHeroes: data => useFetchedHeroes(data, send)
+})

@@ -103,31 +103,29 @@ const state = {
  * @param {Send} send
  */
 function actions(state, msg, send) {
-  /** @type {State} */
-  const prevState = clone(state)
   return Msg.match(msg, {
     // Update value as user types.
     UpdateInputValue: value => {
-      prevState.inputValue = value
-      return prevState
+      state.inputValue = value
+      return state
     },
     // Add new item to list:
     AddItem: () => {
-      if (prevState.inputValue) {
-        prevState.items.push({
-          key: prevState.newKey++,
-          value: prevState.inputValue
+      if (state.inputValue) {
+        state.items.push({
+          key: state.newKey++,
+          value: state.inputValue
         })
-        prevState.inputValue = ''
+        state.inputValue = ''
       } else {
         alert('Please provide a value before submitting.')
       }
-      return prevState
+      return state
     },
     // Delete item based on its key:
     DeleteItem: key => {
-      prevState.items = prevState.items.filter(fruit => fruit.key != key)
-      return prevState
+      state.items = state.items.filter(fruit => fruit.key != key)
+      return state
     }
   })
 }
@@ -165,7 +163,9 @@ const program = {
    * @param {Send} send
    */
   update(state, msg, send) {
-    return actions(state, msg, send)
+    /** @type {State} */
+    const prevState = clone(state)
+    return actions(prevState, msg, send)
   },
   /**
    * @param {Send} send

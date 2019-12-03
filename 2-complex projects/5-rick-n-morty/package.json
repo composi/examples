@@ -22,7 +22,7 @@
     "@babel/plugin-transform-react-jsx": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@composi/are-equal": "^1.0.7",
-    "@composi/clone": "^1.0.1",
+    "@composi/clone": "^1.2.1",
     "@composi/core": "^2.7.0",
     "@composi/gestures": "^1.0.8",
     "@composi/get-type": "^1.0.7",
