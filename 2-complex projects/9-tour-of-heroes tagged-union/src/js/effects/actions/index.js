@@ -33,7 +33,7 @@ export const actions = (state, msg, send) => match(msg, {
 
   ResetSearchResults: () => resetSearchResults(state),
 
-  SaveLocally: data => saveLocally(data, state),
+  SaveLocally: data => saveLocally(data),
 
   SaveName: () => saveName(state, send),
 

@@ -23,7 +23,7 @@ export const setupRoutes = send => {
       },
       {
         path: '*',
-        action: () => setTimeout(() => send(ActiveComponent('dashboard')), 100)
+        action: () => setTimeout(() => send(ActiveComponent, 'dashboard'), 100)
       }
     );
   });
