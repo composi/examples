@@ -508,9 +508,12 @@ footer button.selected {
 }
 .add-todo {
   padding: 3rem 2rem 2rem;
+  display: flex;
+  flex-direction: row;
 }
 .add-todo input {
-  margin-right: 2rem;
+  margin-right: 10px;
+  flex: 1;
 }
 .addItem {
   border-color: #007AFF;
