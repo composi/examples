@@ -1,4 +1,3 @@
-import {Msg} from './message'
 import {UseFetchedData} from '../effects/message'
 
 /**

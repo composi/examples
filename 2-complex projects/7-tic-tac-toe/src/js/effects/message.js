@@ -4,6 +4,13 @@ import {union} from '@composi/core'
  * Define union.
  * @type {import('../types').MessageUnion}
  */
-export const Msg = union('SelectTile', 'JumpTo', 'UseFetchedData')
-
-export const {match, SelectTile, JumpTo, UseFetchedData} = Msg
+export const {
+  match,
+  SelectTile,
+  JumpTo,
+  UseFetchedData
+} = union(
+  'SelectTile',
+  'JumpTo',
+  'UseFetchedData'
+)
