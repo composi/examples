@@ -11,7 +11,7 @@ const SVG_HEIGHT = () => window.innerHeight
 /**
  * @typedef {import('../types').State} State
  * @typedef {import('../types').Send} Send
- * @typedef {import('@composi/core').VNode} VNode
+ * @typedef {import('../types').VNode} VNode
  * @param {{state: State, send: Send}} props
  * @returns {VNode} VNode
  */

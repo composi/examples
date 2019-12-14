@@ -7,7 +7,7 @@ import {HeroSearch} from './hero-search'
  */
 /**
  * @param {{state: State, send: Send}} props
- * @returns {import('@composi/core').VNode | string} VNode
+ * @returns {import('../types').VNode | string} VNode
  */
 export default function HeroDashboard({state, send}) {
   if (!state) {

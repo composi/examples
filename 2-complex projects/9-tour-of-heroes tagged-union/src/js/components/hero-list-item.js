@@ -7,7 +7,7 @@ import {DeleteHero} from '../effects/messages'
  */
 /**
  * @param {{hero: Hero, send: Send}} props
- * @returns {import('@composi/core').VNode} VNode
+ * @returns {import('../types').VNode} VNode
  */
 export function ListItem({hero, send}) {
   const {name, id} = hero

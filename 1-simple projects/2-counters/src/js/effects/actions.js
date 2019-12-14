@@ -3,8 +3,8 @@ import {match} from './messages'
 /**
  * Define actions for update method:
  * @param {import('../types').State} state
- * @param {import('@composi/core').Message} msg
- * @param {import('@composi/core').Send} send
+ * @param {import('../types').Message} msg
+ * @param {import('../types').Send} send
  */
 export function actions(state, msg, send) {
   return match(msg, {

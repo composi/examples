@@ -65,7 +65,7 @@ class DateTime {
 
 /**
  * @typedef {import('../app').State} State
- * @typedef {import('@composi/core').Send} Send
+ * @typedef {import('../types').Send} Send
  */
 
 /**

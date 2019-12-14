@@ -1,7 +1,7 @@
 import {h} from '@composi/core'
 
 /**
- * @returns {import('@composi/core').VNode} VNode
+ * @returns {import('../types').VNode} VNode
  */
 export function Menu() {
   return (

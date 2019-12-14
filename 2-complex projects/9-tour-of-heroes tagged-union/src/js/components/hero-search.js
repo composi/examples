@@ -5,7 +5,7 @@ import {Search} from '../effects/messages'
  * @typedef {import('../types').State} State
  * @typedef {import('../types').Send} Send
  * @param {{state: State, send: Send}} props
- * @returns {import('@composi/core').VNode} VNode
+ * @returns {import('../types').VNode} VNode
  */
 export function HeroSearch({state, send}) {
   return (

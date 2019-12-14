@@ -1,5 +1,5 @@
 import {h, render, run} from '@composi/core'
-import {clone} from '@composi/merge-objects'
+import {clone} from '@composi/clone'
 import {startShow} from './subscription'
 import {SlideShow} from './components/slideshow'
 import {setupPics} from './utils'

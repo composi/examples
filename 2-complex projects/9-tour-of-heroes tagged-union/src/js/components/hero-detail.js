@@ -5,7 +5,7 @@ import {ChangeHeroName, ResetName, SaveName} from '../effects/messages'
  * @typedef {import('../types').State} State
  * @typedef {import('../types').Send} Send
  * @param {{state: State, send: Send}} props
- * @returns {import('@composi/core').VNode} VNode
+ * @returns {import('../types').VNode} VNode
  */
 export default function HeroDetail({state, send}) {
   if (state.selectedHero && state.activeComponent === 'detail') {

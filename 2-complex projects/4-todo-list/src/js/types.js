@@ -2,24 +2,21 @@ export function noop() {}
 
 
 /**
- * Core types for use with view, update, subscriptions and actions.
- * @typedef {import('@composi/core').Message} Message
- * @typedef {import('@composi/core').Send} Send
- * @typedef {import('@composi/core').Program} Program
- * @typedef {import('@composi/core').VNode} VNode
+ * @typedef {import('@composi/core/types').Message} Message
+ * @typedef {import('@composi/core/types').Send} Send
+ * @typedef {import('@composi/core/types').Program} Program
+ * @typedef {import('@composi/core/types').VNode} VNode
  * @typedef {string | number | undefined | null | VNode | VNode[]} Children
- * @typedef {import('@composi/core').Props} Props
+ * @typedef {import('@composi/core/types').Props} Props
  * @typedef {() => State} GetState
  */
 /**
- * Item type.
  * @typedef {Object} Item
  * @prop {number} id
  * @prop {string} value
  * @prop {boolean} active
  * @prop {boolean} hidden
 /**
- * Application state.
  * @typedef {Object} State
  * @prop {number} newKey
  * @prop {string} inputValue
@@ -29,7 +26,6 @@ export function noop() {}
 
 
 /**
- * Actions to match with tagged union.
  * @typedef {Object} ActionMethods
  * @prop {() => State} AddItem
  * @prop {(key: number) => State} DeleteItem
@@ -42,7 +38,6 @@ export function noop() {}
  */
 
 /**
- * Tagged union of messages.
  * @typedef {Object} MessageUnion
  * @prop {(msg: Message, Object: ActionMethods) => State} match
  * @prop {() => Message} AddItem

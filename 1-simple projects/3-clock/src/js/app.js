@@ -7,8 +7,8 @@ render(<Title message='Clock' />, 'header')
 
 
 /**
- * @typedef {import('@composi/core').Message} Message
- * @typedef {import('@composi/core').Send} Send
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').Send} Send
  * @typedef {() => State} GetState
  */
 /**
@@ -51,7 +51,7 @@ function actions(state, msg, send) {
 }
 
 // Define program to run:
-/** @type {import('@composi/core').Program} */
+/** @type {import('./types').Program} */
 const program = {
   init() {
     return state

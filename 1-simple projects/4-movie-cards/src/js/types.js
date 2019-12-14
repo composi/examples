@@ -2,17 +2,15 @@ export function noop() {}
 
 
 /**
- * Core types for use with view, update, subscriptions and actions.
- * @typedef {import('@composi/core').Message} Message
- * @typedef {import('@composi/core').Send} Send
- * @typedef {import('@composi/core').Program} Program
- * @typedef {import('@composi/core').VNode} VNode
+ * @typedef {import('@composi/core/types').Message} Message
+ * @typedef {import('@composi/core/types').Send} Send
+ * @typedef {import('@composi/core/types').Program} Program
+ * @typedef {import('@composi/core/types').VNode} VNode
  * @typedef {string | number | undefined | null | VNode | VNode[]} Children
- * @typedef {import('@composi/core').Props} Props
+ * @typedef {import('@composi/core/types').Props} Props
  * @typedef {() => State} GetState
  */
 /**
- * Types for movie object.
  * @typedef {Object} Movie
  * @prop {number} id
  * @prop {string} title
@@ -23,6 +21,5 @@ export function noop() {}
  * @prop {number} rating
  */
 /**
- * Application state.
  * @typedef {Movie[]} State
  */

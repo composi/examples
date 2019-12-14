@@ -8,7 +8,7 @@ import {NewHero, AddHero} from '../effects/messages'
  */
 /**
  * @param {{state: State, send: Send}} props
- * @returns {import('@composi/core').VNode | string} VNode
+ * @returns {import('../types').VNode | string} VNode
  */
 export function HeroList({state, send}) {
   if (!state || !state.heroes || !state.heroes.length) {

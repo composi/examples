@@ -17,7 +17,7 @@ import {interpolateWarm} from 'd3'
  * @prop {number} lvl
  * @prop {number} maxlvl
  * @param {Props} props
- * @returns {VNode} VNode
+ * @returns {import('../types').VNode} VNode
  */
 export const Pythagoras = ({
   w,

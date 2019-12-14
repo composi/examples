@@ -6,7 +6,7 @@ import {AddItem} from '../effects/messages'
  * @typedef {import('../types').State} State
  * @typedef {import('../types').Send} Send
  * @param {{state: State, send: Send}} props
- * @returns {import('@composi/core').VNode}
+ * @returns {import('../types').VNode}
  */
 export function NewRowForm({state, send}) {
   let product, price, quantity

@@ -21,6 +21,7 @@ const state = {
 
 // Define program to run.
 // Init will run effect "loadItems" to fetch data from HackerNews.
+/** @type {import('./types').Program} */
 const program = {
   init() {
     return state

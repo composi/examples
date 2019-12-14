@@ -9,7 +9,7 @@ import HeroDetail from './hero-detail'
  */
 /**
  * @param {{state: State, send: Send}} props
- * @returns {import('@composi/core').VNode | string} VNode
+ * @returns {import('../types').VNode | string} VNode
  */
 export function App({state, send}) {
   return (

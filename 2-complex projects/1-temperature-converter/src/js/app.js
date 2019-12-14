@@ -5,9 +5,9 @@ import {actions} from './actions'
 import {Converter} from './components/converter'
 
 /**
- * @typedef {import('@composi/core').Message} Message
- * @typedef {import('@composi/core').Send} Send
- * @typedef {import('@composi/core').Program} Program
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').Send} Send
+ * @typedef {import('./types').Program} Program
  * @typedef {import('./types').State} State
  */
 

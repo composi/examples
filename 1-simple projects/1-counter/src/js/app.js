@@ -5,8 +5,8 @@ import {Title} from './components/title'
 render(<Title message='Counter' />, 'header')
 
 /**
- * @typedef {import('@composi/core').Message} Message
- * @typedef {import('@composi/core').Send} Send
+ * @typedef {import('./types').Message} Message
+ * @typedef {import('./types').Send} Send
  * @typedef {Object} State
  * @prop {number} count
  */
@@ -59,7 +59,7 @@ function actions(state, msg, send) {
 
 // Define program to run:
 /**
- * @type {import('@composi/core').Program}
+ * @type {import('./types').Program}
  */
 const program = {
   init() {
