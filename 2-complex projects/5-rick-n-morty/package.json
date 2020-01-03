@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.2.3",
     "@composi/are-equal": "^1.0.9",
     "@composi/clone": "^1.2.2",
-    "@composi/core": "^2.7.5",
+    "@composi/core": "^2.7.6",
     "@composi/gestures": "^1.0.6",
     "@composi/get-type": "^1.0.10",
     "@composi/idb": "^1.0.9",
